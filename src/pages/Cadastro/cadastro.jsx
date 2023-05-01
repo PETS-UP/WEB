@@ -17,11 +17,11 @@ const Cadastro = () => {
             <input type="text" placeholder="Digite seu nome aqui"/>
             </div>
             <div className="inputs-email">
-            <label htmlFor="Email">Email</label>
+            <label htmlFor="Email">E-mail</label>
             <input type="email" placeholder="Digite seu email aqui"/>
             </div>
             <div className="inputs-password">
-            <label htmlFor="Email">Senha</label>
+            <label htmlFor="Senha">Senha</label>
             <input type="password" placeholder="*******"/>
             </div>
             <div className="inputs-confirm-password">
