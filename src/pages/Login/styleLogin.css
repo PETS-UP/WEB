@@ -1,0 +1,159 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    color: black;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagebg{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.modal-login{
+    width: 60%;
+    height: 75%;
+    background-color: white;
+    box-shadow: 0px 3px 15px 0px rgb(187, 187, 187);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-inputs{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image{
+    width: 45%;
+    height: 100%;
+    background-color: #F49C63;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-image p{
+    color: white;
+}
+
+.image-modal{
+    width: 300px;
+    height: 300px;
+}
+
+
+.form-inputs{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.index-cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 35px;
+}
+
+.index-cadastro p{
+    color: #858585;
+}
+
+.index-cadastro button{
+    width: 110px;
+    height: 30px;
+    margin-left: 2%;
+}
+
+.button-cadastro{
+    background-color: #F49C63;
+    color: white;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.inputs-cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputs-cadastro p{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+label{
+    color: black;
+    display: flex;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.inputs-email{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputs-password{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input{
+    width: 99%;
+    height: 35px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding-left: 4px;
+    box-shadow: 0px 3px 10px 0px rgb(187, 187, 187);
+    border-radius: 2px;
+}
+
+.inputs button{
+    width: 90%;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    box-shadow: 0px 3px 10px 0px rgb(187, 187, 187);
+}
