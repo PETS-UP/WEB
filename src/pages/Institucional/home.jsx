@@ -8,11 +8,6 @@ export default function Root() {
   return (
     <>
     <BaseComponent />
-    Home page
-
-    <Link to="/login">Ir para login de outra forma</Link>
-    
-    <button onClick={() => navigate('/login')}>Ir para login</button>
     </>
   );
 }

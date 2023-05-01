@@ -2,7 +2,7 @@ import './styles.css';
 
 const BaseComponent = () => {
   return (
-    <div className="container"></div>
+    <div className="banner"></div>
   );
 }
 
