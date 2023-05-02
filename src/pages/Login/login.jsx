@@ -18,13 +18,15 @@ const Login = () => {
         <div className="inputs">
           <div className="inputs-email">
           <label htmlFor="Email">E-mail</label>
-          <input type="text" placeholder="usuario@exemplo.com"/>
+          <input onKeyUp={validarEmail} type="text" placeholder="usuario@exemplo.com"/>
+          <div className="frases-validacao" id="frase-email"></div>
           </div>
           <div className="inputs-password">
           <label htmlFor="Senha">Senha</label>
-          <input type="password" placeholder="*******"/>
+          <input onKeyUp={validarSenha} type="password" placeholder="*******"/>
+          <div className="frases-validacao" id="frase-senha"></div>
           </div>
-          <button className="button-cadastro">ENTRAR</button>
+          <button onClick={validarLogin} className="button-cadastro">ENTRAR</button>
         </div>
       </div>
       </div>

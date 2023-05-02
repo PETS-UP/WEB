@@ -12,23 +12,27 @@ const Cadastro = () => {
         <div className="inputs-cadastro">
           <p>Faça seu cadastro</p>
           <div className="inputs">
-          <div className="inputs-nome">
+            <div className="inputs-nome">
             <label htmlFor="Nome">Nome</label>
-            <input type="text" placeholder="Digite seu nome aqui"/>
+            <input onKeyUp={validarNome} id="input-nome" type="text" placeholder="Digite seu nome aqui"/>
+            <div className="frases-validacao" id="frase-nome"></div>
             </div>
             <div className="inputs-email">
             <label htmlFor="Email">E-mail</label>
-            <input type="email" placeholder="Digite seu email aqui"/>
+            <input onKeyUp={validarEmail} id="input-email" type="email" placeholder="Digite seu e-mail aqui"/>
+            <div className="frases-validacao" id="frase-email"></div>
             </div>
             <div className="inputs-password">
             <label htmlFor="Senha">Senha</label>
-            <input type="password" placeholder="*******"/>
+            <input onKeyUp={validarSenha} id="input-senha" type="password" placeholder="*******"/>
+            <div className="frases-validacao" id="frase-senha"></div>
             </div>
             <div className="inputs-confirm-password">
             <label htmlFor="Confirmacao-senha">Confirme sua senha</label>
-            <input type="password" placeholder="*******"/>
+            <input onKeyUp={validarConfirmacaoSenha} id="input-confirmacao-senha" type="password" placeholder="*******"/>
+            <div className="frases-validacao" id="frase-confirmacao-senha"></div>
             </div>
-            <button className="button-cadastro">CADASTRAR</button>
+            <button onClick={validarCadastroInicial} className="button-cadastro">CADASTRAR</button>
           </div>
         </div>
         </div>
