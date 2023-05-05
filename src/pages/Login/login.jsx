@@ -14,17 +14,19 @@ const Login = () => {
       <button className="button-cadastro">CADASTRAR</button>
       </div> 
       <div className="inputs-cadastro">
-        <p>Olá! Seja bem-vindo</p>
+        <p>Olá! Seja bem-vindo!</p>
         <div className="inputs">
           <div className="inputs-email">
-          <label htmlFor="Email">Email</label>
-          <input type="text" placeholder="Digite seu email aqui"/>
+          <label htmlFor="Email">E-mail</label>
+          <input onKeyUp={validarEmail} type="text" placeholder="usuario@exemplo.com"/>
+          <div className="frases-validacao" id="frase-email"></div>
           </div>
           <div className="inputs-password">
-          <label htmlFor="Email">Senha</label>
-          <input type="password" placeholder="*******"/>
+          <label htmlFor="Senha">Senha</label>
+          <input onKeyUp={validarSenha} type="password" placeholder="*******"/>
+          <div className="frases-validacao" id="frase-senha"></div>
           </div>
-          <button className="button-cadastro">ENTRAR</button>
+          <button onClick={validarLogin} className="button-cadastro">ENTRAR</button>
         </div>
       </div>
       </div>
@@ -33,7 +35,7 @@ const Login = () => {
       <p>HOME</p>
       <img src={Image} className="image-modal" />
       <p>PETSUP</p>
-      <p>Os melhores pet-Shops perto de você.</p>
+      <p>Os melhores pet shops perto de você.</p>
       </div>
       </div>
     </div>
