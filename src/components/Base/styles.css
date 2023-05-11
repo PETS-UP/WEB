@@ -1,3 +1,51 @@
-.container {
-  /* css */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.banner{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content-index{
+  width: 90%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.image-main{
+  width: 50%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-main{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-main img{
+  width: 450px;
+  height: 450px;
+}
+
+.title-content{
+  color: black;
+  font-size: 80px;
+}
+
+.text-content{
+  width: 80%;
+  height: 80%;
+  font-size: 25px;
 }
