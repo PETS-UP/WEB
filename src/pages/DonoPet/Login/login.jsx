@@ -1,3 +1,4 @@
+import api from '../../../api';
 import './styleLogin.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
@@ -6,6 +7,22 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+
+  function logar(e) {
+    e.preventDefault();
+    const cliente = {
+      email: email,
+      senha: senha
+    }
+
+    api.post('/clientes/login', cliente) 
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((erro) => {
+      console.log(erro)
+    })
+  }
 
   return (
     <div className="container">
@@ -30,7 +47,7 @@ const Login = () => {
                   <InputMask className="input-mask" value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
-                <button className="button-cadastro">ENTRAR</button>
+                <button className="button-cadastro" onClick={logar}>ENTRAR</button>
               </div>
             </div>
           </div>

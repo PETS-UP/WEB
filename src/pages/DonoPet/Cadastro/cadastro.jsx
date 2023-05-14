@@ -1,3 +1,4 @@
+import api from '../../../api';
 import './styleCadastro.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
@@ -10,6 +11,22 @@ const Cadastro = () => {
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("")
+
+  function cadastrar(e) {
+    e.preventDefault();
+    const cliente = {
+      nome: nome,
+      email: email,
+      senha: senha
+    }
+
+    api.post('/clientes', cliente)
+    .then((response) => {
+      console.log(response)
+    }).catch((erro) => {
+      console.log(erro)
+    })
+  }
 
   return (
     <div className="container">
@@ -40,7 +57,7 @@ const Cadastro = () => {
                   <input className="input-mask" value={confirmacaoSenha} onChange={(e) => setConfirmacaoSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao"></div>
                 </div>
-                <button className="button-cadastro">CADASTRAR</button>
+                <button className="button-cadastro" onClick={cadastrar}>CADASTRAR</button>
               </div>
             </div>
           </div>
