@@ -39,12 +39,12 @@ const Login = () => {
               <div className="inputs">
                 <div className="inputs-email">
                   <label htmlFor="Email">E-mail</label>
-                  <InputMask className="input-mask" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="usuario@exemplo.com" />
+                  <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="usuario@exemplo.com" />
                   <div className="frases-validacao" id="frase-email"></div>
                 </div>
                 <div className="inputs-password">
                   <label htmlFor="Senha">Senha</label>
-                  <InputMask className="input-mask" value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
+                  <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
                 <button className="button-cadastro" onClick={logar}>ENTRAR</button>

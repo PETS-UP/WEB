@@ -39,22 +39,22 @@ const Cadastro = () => {
               <div className="inputs">
                 <div className="inputs-nome">
                   <label htmlFor="Nome">Nome</label>
-                  <InputMask className="input-mask" value={nome} onChange={(e) => setNome(e.target.value)} type="text" placeholder="Digite seu nome aqui" />
+                  <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" placeholder="Digite seu nome aqui" />
                   <div className="frases-validacao" id="frase-nome"></div>
                 </div>
                 <div className="inputs-email">
                   <label htmlFor="Email">E-mail</label>
-                  <InputMask className="input-mask" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Digite seu e-mail aqui" />
+                  <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Digite seu e-mail aqui" />
                   <div className="frases-validacao" id="frase-email"></div>
                 </div>
                 <div className="inputs-password">
                   <label htmlFor="Senha">Senha</label>
-                  <InputMask className="input-mask" value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
+                  <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
                 <div className="inputs-confirm-password">
                   <label htmlFor="Confirmacao-senha">Confirme sua senha</label>
-                  <input className="input-mask" value={confirmacaoSenha} onChange={(e) => setConfirmacaoSenha(e.target.value)} type="password" placeholder="*******" />
+                  <input value={confirmacaoSenha} onChange={(e) => setConfirmacaoSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao"></div>
                 </div>
                 <button className="button-cadastro" onClick={cadastrar}>CADASTRAR</button>
