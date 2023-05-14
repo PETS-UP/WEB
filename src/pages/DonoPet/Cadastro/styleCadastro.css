@@ -151,7 +151,7 @@ label{
     margin-bottom: 10px;
 }
 
-input{
+.input-mask{
     width: 99%;
     height: 35px;
     background-color: transparent;
