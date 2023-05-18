@@ -7,8 +7,9 @@ import {
 import "./index.css";
 
 import Home from "./pages/Institucional/home";
-import Login from "./pages/Login/login";
-import Cadastro from "./pages/Cadastro/cadastro";
+import Login from "./pages/DonoPet/Login/login";
+import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
+import Menu from "./components/Base/Menu/menu";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastro",
     element: <Cadastro />
+  },
+  {
+    path: "/menu",
+    element: <Menu />
   }
 ]);
 
