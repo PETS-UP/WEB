@@ -9,7 +9,7 @@ import "./index.css";
 import Home from "./pages/Institucional/home";
 import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
-import Menu from "./components/Base/Menu/menu";
+import Inicio from "./pages/DonoPet/Inicio/inicio";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
-    path: "/menu",
-    element: <Menu />
+    path: "/Inicio",
+    element: <Inicio />
   }
 ]);
 
