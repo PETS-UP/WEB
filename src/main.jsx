@@ -10,6 +10,8 @@ import Home from "./pages/Institucional/home";
 import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
 import Inicio from "./pages/DonoPet/Inicio/inicio";
+import LoginEmpresa from "./pages/Petshop/Login/Login";
+import CadastroEmpresa from "./pages/Petshop/Cadastro/Cadastro";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
   {
     path: "/Inicio",
     element: <Inicio />
+  },
+  {
+    path: "/LoginEmpresa",
+    element: <LoginEmpresa />
+  },
+  {
+    path: "/CadastroEmpresa",
+    element: <CadastroEmpresa />
   }
 ]);
 
