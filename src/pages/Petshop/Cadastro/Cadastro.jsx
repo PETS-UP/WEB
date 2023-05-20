@@ -1,3 +1,4 @@
+import api from '../../../api';
 import './styleCadastroEmpresa.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
@@ -14,15 +15,27 @@ const Cadastro = () => {
   const [razaoSocial, setRazaoSocial] = useState("")
   const [cnpj, setCnpj] = useState("")
   const [cep, setCep] = useState("")
+  const [estado, setEstado] = useState("")
+  const [cidade, setCidade] = useState("")
+  const [bairro, setBairro] = useState("")
+  const [rua, setRua] = useState("")
   const [numero, setNumero] = useState("")
+
+  const [data, setData] = useState(null)
 
 //  const [editavel, setEditavel] = useState(false)
 
-  const buscarCep = async(e) => {
+  const buscarCep = async() => {
     if (cep.length === 8) {
       try {
         const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-        setCep(response.data);
+        response.json().then(function(data) {
+          setData = data;
+          setEstado = data.uf;
+          setCidade = data.localidade;
+          setBairro = data.bairro;
+          setRua = data.logradouro  
+        })
       } catch (error) {
         console.log(error);
       }
@@ -39,10 +52,10 @@ const Cadastro = () => {
       razaoSocial: razaoSocial,
       cnpj: cnpj,
       cep: cep,
-      estado: cep.uf,
-      cidade: cep.localidade,
-      bairro: cep.bairro,
-      rua: cep.logradouro,
+      estado: estado,
+      cidade: cidade,
+      bairro: bairro,
+      rua: rua,
       numero: numero
     }
 
@@ -104,22 +117,22 @@ const Cadastro = () => {
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Estado-endereco">Estado</label>
-                  <input type="text" value={cep?.uf || ""} placeholder="SP" />
+                  <input type="text" value={data?.uf || ""} onChange={(e) => setEstado(e.target.value)} placeholder="SP" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Cidade-endereco">Cidade</label>
-                  <input type="text" value={cep?.localidade || ""} placeholder="São Paulo" />
+                  <input type="text" value={data?.localidade || ""} onChange={(e) => setCidade(e.target.value)} placeholder="São Paulo" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Bairro-endereco">Bairro</label>
-                  <input type="text" value={cep?.bairro || ""} placeholder="Jardim São Paulo" />
+                  <input type="text" value={data?.bairro || ""} onChange={(e) => setBairro(e.target.value)} placeholder="Jardim São Paulo" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Rua-endereco">Rua</label>
-                  <input type="text" value={cep?.logradouro || ""} placeholder="Av. João Salgueiro Neto" />
+                  <input type="text" value={data?.logradouro || ""} onChange={(e) => setRua(e.target.value)} placeholder="Av. João Salgueiro Neto" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
