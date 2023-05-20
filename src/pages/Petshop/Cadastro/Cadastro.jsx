@@ -34,23 +34,48 @@ const Cadastro = () => {
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
-                  <label htmlFor="Confirmacao-senha">Telefone</label>
+                  <label htmlFor="Telefone-empresa">Telefone</label>
                   <input type="text" placeholder="(55) 11 94002-8922" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
-                  <label htmlFor="Confirmacao-senha">Razão social</label>
+                  <label htmlFor="Razao-social-empresa">Razão social</label>
                   <input type="text" placeholder="Fofinho Petshop" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
-                  <label htmlFor="Confirmacao-senha">CNPJ</label>
+                  <label htmlFor="CNPJ-empresa">CNPJ</label>
                   <input type="number" placeholder="4514298746124-F" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
-                  <label htmlFor="Confirmacao-senha">CEP</label>
-                  <input type="number" placeholder="801245-15" />
+                  <label htmlFor="Cep-endereco">CEP</label>
+                  <input type="text" placeholder="801245-15" />
+                  <div className="frases-validacao"></div>
+                </div>
+                <div className="inputs-padrao">
+                  <label htmlFor="Estado-endereco">Estado</label>
+                  <input type="text" placeholder="SÃO PAULO" />
+                  <div className="frases-validacao"></div>
+                </div>
+                <div className="inputs-padrao">
+                  <label htmlFor="Cidade-endereco">Cidade</label>
+                  <input type="text" placeholder="SP" />
+                  <div className="frases-validacao"></div>
+                </div>
+                <div className="inputs-padrao">
+                  <label htmlFor="Bairro-endereco">Bairro</label>
+                  <input type="text" placeholder="Jardim São Paulo" />
+                  <div className="frases-validacao"></div>
+                </div>
+                <div className="inputs-padrao">
+                  <label htmlFor="Rua-endereco">Rua</label>
+                  <input type="text" placeholder="Av.João Salgueiro Neto" />
+                  <div className="frases-validacao"></div>
+                </div>
+                <div className="inputs-padrao">
+                  <label htmlFor="Numero-endereco">Número</label>
+                  <input type="number" placeholder="27B" />
                   <div className="frases-validacao"></div>
                 </div>
                 <button className="button-cadastro">CADASTRAR</button>
