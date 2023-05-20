@@ -21,17 +21,17 @@ const Cadastro = () => {
   const [rua, setRua] = useState("")
   const [numero, setNumero] = useState("")
 
-  const [data, setData] = useState(null)
+  const [cepData, setCepData] = useState(null)
 
   const buscarCep = async() => {
     if (cep.length === 8) {
       try {
         const response = await api.get(`https://viacep.com.br/ws/${cep}/json/`);
-        setData(response.data)
-        setEstado = data.uf;
-        setCidade = data.localidade;
-        setBairro = data.bairro;
-        setRua = data.logradouro
+        setCepData(response.data);
+        setEstado(response.data.uf);
+        setCidade(response.data.localidade);
+        setBairro(response.data.bairro);
+        setRua(response.data.logradouro)
       } catch (error) {
         console.log(error);
       }
@@ -113,27 +113,27 @@ const Cadastro = () => {
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Estado-endereco">Estado</label>
-                  <input type="text" value={data?.uf || ""} onChange={(e) => setEstado(e.target.value)} placeholder="SP" />
+                  <input type="text" value={cepData?.uf || ""} placeholder="SP" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Cidade-endereco">Cidade</label>
-                  <input type="text" value={data?.localidade || ""} onChange={(e) => setCidade(e.target.value)} placeholder="São Paulo" />
+                  <input type="text" value={cepData?.localidade || ""} placeholder="São Paulo" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Bairro-endereco">Bairro</label>
-                  <input type="text" value={data?.bairro || ""} onChange={(e) => setBairro(e.target.value)} placeholder="Jardim São Paulo" />
+                  <input type="text" value={cepData?.bairro || ""} placeholder="Jardim São Paulo" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Rua-endereco">Rua</label>
-                  <input type="text" value={data?.logradouro || ""} onChange={(e) => setRua(e.target.value)} placeholder="Av. João Salgueiro Neto" />
+                  <input type="text" value={cepData?.logradouro || ""} placeholder="Av. João Salgueiro Neto" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="Numero-endereco">Número</label>
-                  <input value={numero} onChange={(e) => setNumero(e.target.value)} type="number" placeholder="27B" />
+                  <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" placeholder="123" />
                   <div className="frases-validacao"></div>
                 </div>
                 <button onClick={cadastrar} className="button-cadastro">CADASTRAR</button>
