@@ -23,19 +23,15 @@ const Cadastro = () => {
 
   const [data, setData] = useState(null)
 
-//  const [editavel, setEditavel] = useState(false)
-
   const buscarCep = async() => {
     if (cep.length === 8) {
       try {
-        const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-        response.json().then(function(data) {
-          setData = data;
-          setEstado = data.uf;
-          setCidade = data.localidade;
-          setBairro = data.bairro;
-          setRua = data.logradouro  
-        })
+        const response = await api.get(`https://viacep.com.br/ws/${cep}/json/`);
+        setData(response.data)
+        setEstado = data.uf;
+        setCidade = data.localidade;
+        setBairro = data.bairro;
+        setRua = data.logradouro
       } catch (error) {
         console.log(error);
       }
@@ -107,7 +103,7 @@ const Cadastro = () => {
                 </div>
                 <div className="inputs-padrao">
                   <label htmlFor="CNPJ-empresa">CNPJ</label>
-                  <InputMask value={cnpj} onChange={(e) => setCnpj(e.target.value)} mask="99.999.999/9999-99" unmask="true" type="number" placeholder="12.345.678/9012-34" />
+                  <InputMask value={cnpj} onChange={(e) => setCnpj(e.target.value)} mask="99.999.999/9999-99" unmask="true" type="text" placeholder="12.345.678/9012-34" />
                   <div className="frases-validacao"></div>
                 </div>
                 <div className="inputs-padrao">
