@@ -4,6 +4,25 @@ import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
 
 const LoginEmpresa = () => {
 
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+
+  function logar(e) {
+    e.preventDefault();
+    const petshop = {
+      email: email,
+      senha: senha
+    }
+
+    api.post('/petshops/login', petshop) 
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((erro) => {
+      console.log(erro)
+    })
+  }
+
   return (
     <div className="container">
       <img src={Background} className="imagebg" />
@@ -27,7 +46,7 @@ const LoginEmpresa = () => {
                   <input type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
-                <button className="button-cadastro">ENTRAR</button>
+                <button onClick={logar} className="button-cadastro">ENTRAR</button>
               </div>
             </div>
           </div>
