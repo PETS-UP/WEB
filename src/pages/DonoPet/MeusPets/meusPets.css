@@ -17,25 +17,77 @@
 .content-main h2 {
     color: black;
     text-align: left;
-    background-color: yellowgreen;
     width: 100%;
+    margin-top: 4%;
+    margin-left: 10%;
 }
 
-.content input{
+.content input {
     width: 20%;
 }
 
-.content2{
-    background-color: black;
+.content2 {
     width: 100%;
     height: 40vh;
 }
 
-.teste{
-    background-color: brown;
+.teste {
+    background-color: white;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
+.teste select {
+    background-color: #7E2C61;
+}
+
+.table-container {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-container th {
+    background-color: #7E2C61;
+    color: #fff;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid white;
+}
+
+.table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    color: black;
+}
+
+.filtro {
+    position: relative;
+    display: inline-block;
+}
+
+.filtro {
+    display: flex;
+    width: 200px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: black;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filtro::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    border-color: #999 transparent transparent;
+}
