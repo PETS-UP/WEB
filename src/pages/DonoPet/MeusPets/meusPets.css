@@ -17,9 +17,9 @@
 .content-main h2 {
     color: black;
     text-align: left;
-    width: 100%;
+    width: 50%;
     margin-top: 4%;
-    margin-left: 10%;
+    margin-right: 40%;
 }
 
 .content input {
@@ -43,9 +43,17 @@
     background-color: #7E2C61;
 }
 
-.table-container {
-    border-collapse: collapse;
+.tabela{
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    margin-top: 2%;
+    border-collapse: collapse;
+    width: 90%;
+    align-items: center;
 }
 
 .table-container th {
