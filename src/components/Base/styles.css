@@ -1,51 +1,41 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-
-.banner{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-content-index{
-  width: 90%;
-  height: 500px;
+.header{
+  width: 100%;
+  height: 8vh;
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+
 }
 
-.image-main{
-  width: 50%;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header img{
+  height: 40px;
+  width: 200px;
 }
 
-.content-main{
-  width: 90%;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+.btn{
+background-color: brown;
+width: 30%;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: space-around;
 }
 
-.image-main img{
-  width: 450px;
-  height: 450px;
-}
-
-.title-content{
-  color: black;
-  font-size: 80px;
-}
-
-.text-content{
-  width: 80%;
+#btn-cliente{
+  background-color: #F49C63;
+  border: none;
+  width: 40%;
   height: 80%;
-  font-size: 25px;
+  cursor: pointer;
+  font-size: 65%;
+}
+
+#btn-petshop{
+  background-color: #7E2C61;
+  border: none;
+  width: 40%;
+  height: 80%;
+  cursor: pointer;
+  font-size: 65%;
 }
