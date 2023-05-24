@@ -60,14 +60,136 @@
 
 .filter-buttons button{
     color: #7E2C61;
-    font-weight: bold;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 19px;
+}
+
+.filter-buttons button:hover{
+    border-bottom: 2px solid #7E2C61;
+    padding-bottom: 2px;
+    transition: 0.8ms;
 }
 
 .image-button{
     width: 30px;
     height: 30px;
+}
+
+.cards-petshop{
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-items-petshop{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F8F8F8;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    height: 300px;
+    box-shadow: 0px 0px 3px 0px rgb(187, 187, 187);  
+}
+
+.card-image-petshop{
+    width: 30%;
+    height: 90%;
+    border-radius: 2px;
+}
+
+.card-image-petshop img{
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.card-info-petshop{
+    width: 65%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.card-info-petshop-title{
+    width: 100%;
+    height: 30%;
+}
+
+.card-info-petshop-content{
+    width: 100%;
+    height: 60%;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info-petshop-title{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.info-petshop-title p{
+    font-size: 35px;
+}
+
+.petshop-content-title{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    background-color: red;
+}
+
+.petshop-content-servicos{
+    width: 40%;
+    height: 100%;
+    background-color: pink;
+}
+
+.petshop-content-preco{
+    width: 40%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.petshop-content-subtitle{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    background-color: black;
+}
+
+.petshop-content-distancia{
+    width: 30%;
+    height: 100%;
+    background-color: blue;
+}
+
+.petshop-content-tempo{
+    width: 30%;
+    height: 100%;
+    background-color: red;
+}
+
+.petshop-content-status{
+    width: 30%;
+    height: 100%;
+    background-color: pink;
 }
