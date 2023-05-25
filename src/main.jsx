@@ -27,15 +27,15 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
-    path: "/Inicio",
+    path: "/inicio",
     element: <Inicio />
   },
   {
-    path: "/LoginEmpresa",
+    path: "/login-empresa",
     element: <LoginEmpresa />
   },
   {
-    path: "/CadastroEmpresa",
+    path: "/cadastro-empresa",
     element: <CadastroEmpresa />
   }
 ]);
