@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import BaseComponent from "../../components/Base";
+import BaseComponent from "../../components/Base/index";
+import QuemSomos from "../../components/QuemSomos/quemSomos"
+import NossaEquipe from "../../components/NossaEquipe/nossaEquipe";
 
 export default function Root() {
 
@@ -7,7 +9,9 @@ export default function Root() {
 
   return (
     <>
-    <BaseComponent />
+      <BaseComponent />
+      <QuemSomos />
+      <NossaEquipe/>
     </>
   );
 }
