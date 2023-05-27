@@ -3,6 +3,7 @@ import BaseComponent from "../../components/Base/index";
 import QuemSomos from "../../components/QuemSomos/quemSomos"
 import NossaEquipe from "../../components/NossaEquipe/nossaEquipe";
 import Cards from "../../components/Cards/cards";
+import FooterHome from "../../components/FooterHome/footerHome";
 
 export default function Root() {
 
@@ -14,6 +15,7 @@ export default function Root() {
       <QuemSomos />
       <NossaEquipe />
       <Cards />
+      <FooterHome />
     </>
   );
 }
