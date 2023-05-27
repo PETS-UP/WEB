@@ -2,7 +2,7 @@ import api from '../../../api';
 import './styleCadastro.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
-import { InputMask } from 'primereact/inputmask';
+//import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
 
 const Cadastro = () => {

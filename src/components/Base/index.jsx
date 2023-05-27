@@ -1,18 +1,27 @@
 import './styles.css';
-import Background from '../../assets/images/PETSUP-BACKGROUND-HOME.png';
-import Image from '../../assets/icons/PETSUP-LOGO-ICON.png';
+import Logo from '../../assets/icons/ICON-LOGO.svg';
 
 const BaseComponent = () => {
   return (
     <div className="banner">
-      <img src={Background} className="imagebg" />
-      <div className="main-content-index">
-        <div className="image-main"><img src={Image} /></div>
-        <div className="content-main">
-          <p className="title-content">Seja bem vindo! </p>
+      <div className='header'>
+        <img src={Logo} alt="" />
+        <div className='btn'>
+          <button id='btn-cliente'>ENTRAR COMO CLIENTE</button>
+          <button id='btn-petshop'>ENTRAR COMO EMPRESA</button>
         </div>
       </div>
+      <div className='content-text'>
+        <h2>
+          Encontre os melhores
+          pet shops e agende
+          os serviços online
+          mais próximos
+          de você
+        </h2>
+      </div>
     </div>
+
   );
 }
 
