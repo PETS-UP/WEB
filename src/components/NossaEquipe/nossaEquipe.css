@@ -3,11 +3,15 @@
 .main {
     background-color: #7E2C61;
     width: 100%;
-    height: 125vh;
+    height: 135vh;
     display: flex;
     align-items: center;
     flex-direction: column;
 
+}
+
+.titulo h2{
+    color: white;
 }
 
 .borda3 {
@@ -31,6 +35,7 @@
     justify-content: center;
     justify-content: space-evenly;
     flex-direction: column;
+    padding-left: 6%;
 }
 
 .retangulos2 {
@@ -42,6 +47,7 @@
     justify-content: center;
     justify-content: space-evenly;
     flex-direction: column;
+    padding-right: 6%;
 }
 
 .retangulos3 {
@@ -88,7 +94,7 @@
     width: 30%;
     height: 75%;
     border-radius: 100%;
-    margin-left: 4%;
+    padding-left: 4%;
 }
 
 .circulo1 img,
@@ -97,7 +103,7 @@
 .circulo4 img,
 .circulo5 img{
     width: 125px;
-    height: 130px;
+    height: 125px;
 }
 
 .bordinha,
@@ -127,6 +133,7 @@
 .content-text5 p{
     margin: 0%;
     color: #767676;
-    padding-left: 15px;
+    padding-left: 28px;
     padding-top: 5px;
+    font-family: 'Signika', sans-serif;
 }
