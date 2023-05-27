@@ -1,49 +1,63 @@
-.container-main {
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
+
+.container-main-meus-pets {
+    background-color: white;
     width: 100%;
     height: 100vh;
     display: flex;
+    align-items: center;
     flex-direction: row;
-    background-color: white;
 }
 
-.content {
+.titulo-meus-pets{
     width: 100%;
-    height: 100vh;
+    height: 20vh;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: flex-end;
 }
 
-.content-main h2 {
+.titulo-meus-pets h2{
     color: black;
-    text-align: left;
-    width: 50%;
-    margin-top: 4%;
-    margin-right: 40%;
-}
-
-.content input {
-    width: 20%;
-}
-
-.content2 {
+    margin: 0%;
     width: 100%;
-    height: 40vh;
+    padding-left: 5%;
+    font-family: 'Signika', sans-serif;
 }
 
-.teste {
-    background-color: white;
-    width: 100%;
+.content-meus-pets{
+    width: 80%;
+    height: 90vh;
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-content: flex-start;
+}
+
+.selecionaveis-meus-pets{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-around;
+    flex-direction: row;
 }
 
-.teste select {
+.selecionaveis-meus-pets input{
+    width: 20%;
+    height: 5vh;
+}
+
+.selecionaveis-meus-pets button{
+    margin: 0;
+    width: 20%;
+    height: 5vh;
     background-color: #7E2C61;
+    font-family: 'Signika', sans-serif;
 }
 
-.tabela{
+.tabela-meus-pets{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -70,12 +84,20 @@
     color: black;
 }
 
-.filtro {
+.filtro-pets{
+    display: flex;
+}
+
+.filtro-pets label{
+    padding-right: 2%;
+}
+
+.filtro-meus-pets {
     position: relative;
     display: inline-block;
 }
 
-.filtro {
+.filtro-meus-pets {
     display: flex;
     width: 200px;
     padding: 6px 12px;
@@ -87,7 +109,7 @@
     border-radius: 4px;
 }
 
-.filtro::after {
+.filtro-meus-pets::after {
     content: '';
     position: absolute;
     top: 50%;
