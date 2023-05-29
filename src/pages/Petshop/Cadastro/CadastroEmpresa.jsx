@@ -71,7 +71,7 @@ const Cadastro = () => {
           <div className="form-inputs">
             <div className="inputs-cadastro">
               <div className="inputs">
-                <div className="inputs-nome">
+                <div className="inputs-padrao">
                   <label htmlFor="Nome">Nome</label>
                   <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" placeholder="Digite seu nome aqui" />
                   <div className="frases-validacao" id="frase-nome"></div>
