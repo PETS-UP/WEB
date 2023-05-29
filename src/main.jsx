@@ -11,7 +11,7 @@ import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
 import Inicio from "./pages/DonoPet/Inicio/inicio";
 import LoginEmpresa from "./pages/Petshop/Login/Login";
-import CadastroEmpresa from "./pages/Petshop/Cadastro/Cadastro";
+import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 
 const router = createBrowserRouter([

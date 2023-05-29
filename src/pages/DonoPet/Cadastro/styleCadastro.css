@@ -26,7 +26,7 @@ p{
     z-index: -1;
 }
 
-.modal-login{
+.modal-login-cliente{
     width: 65%;
     height: 80%;
     background-color: white;
@@ -37,7 +37,7 @@ p{
     align-items: center;
 }
 
-.modal-inputs{
+.modal-inputs-cliente{
     width: 55%;
     height: 100%;
     display: flex;
@@ -45,7 +45,7 @@ p{
     align-items: center;
 }
 
-.modal-image{
+.modal-image-cliente{
     width: 45%;
     height: 100%;
     background-color: #F49C63;
@@ -55,17 +55,17 @@ p{
     flex-direction: column;
 }
 
-.modal-image p{
+.modal-image-cliente p{
     color: white;
 }
 
-.image-modal{
+.image-modal-cliente{
     width: 350px;
     height: 350px;
 }
 
 
-.form-inputs{
+.form-inputs-cliente{
     width: 90%;
     height: 100%;
     display: flex;
@@ -73,7 +73,7 @@ p{
     justify-content: center;
 }
 
-.index-cadastro{
+.index-cadastro-cliente{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,17 +81,17 @@ p{
     margin-bottom: 35px;
 }
 
-.index-cadastro p{
+.index-cadastro-cliente p{
     color: #858585;
 }
 
-.index-cadastro button{
+.index-cadastro-cliente button{
     width: 110px;
     height: 30px;
     margin-left: 2%;
 }
 
-.button-cadastro{
+.button-cadastro-cliente{
     background-color: #F49C63;
     color: white;
     border-radius: 2px;
@@ -99,14 +99,14 @@ p{
     cursor: pointer;
 }
 
-.inputs-cadastro{
+.inputs-cadastro-cliente{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.inputs-cadastro p{
+.inputs-cadastro-cliente p{
     font-weight: bolder;
     font-size: 20px;
 }
@@ -118,7 +118,7 @@ label{
     font-weight: bolder;
 }
 
-.inputs{
+.inputs-cliente{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -127,26 +127,26 @@ label{
     margin-top: 10px;
 }
 
-.inputs-nome{
+.inputs-nome-cliente{
     width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 
-.inputs-email{
+.inputs-email-cliente{
     width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.inputs-password{
+.inputs-password-cliente{
     width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.inputs-confirm-password{
+.inputs-confirm-password-cliente{
     width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -163,7 +163,7 @@ input{
     border-radius: 2px;
 }
 
-.inputs button{
+.inputs-cliente button{
     width: 90%;
     height: 40px;
     margin-top: 25px;
@@ -171,3 +171,4 @@ input{
     font-size: 16px;
     box-shadow: 0px 3px 10px 0px rgb(187, 187, 187);
 }
+

@@ -2,6 +2,8 @@ import api from '../../../api';
 import './styleLogin.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
+import { InputMask } from 'primereact/inputmask';
+import { useState } from 'react';
 
 const Login = () => {
 
@@ -11,7 +13,7 @@ const Login = () => {
   function logar(e) {
     e.preventDefault();
     const cliente = {
-      email: email,
+     email: email,
       senha: senha
     }
 
@@ -27,32 +29,32 @@ const Login = () => {
   return (
     <div className="container">
       <img src={Background} className="imagebg" />
-      <div className="modal-login">
-        <div className="modal-inputs">
-          <div className="form-inputs">
-            <div className="index-cadastro">
+      <div className="modal-login-cliente">
+        <div className="modal-inputs-cliente">
+          <div className="form-inputs-cliente">
+            <div className="index-cadastro-cliente">
               <p>Ainda não se cadastrou?</p>
-              <button className="button-cadastro">CADASTRAR</button>
+              <button className="button-cadastro-cliente">CADASTRAR</button>
             </div>
-            <div className="inputs-cadastro">
+            <div className="inputs-cadastro-cliente">
               <p>Olá! Seja bem-vindo!</p>
-              <div className="inputs">
-                <div className="inputs-email">
+              <div className="inputs-cliente">
+                <div className="inputs-email-cliente">
                   <label htmlFor="Email">E-mail</label>
                   <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="usuario@exemplo.com" />
                   <div className="frases-validacao" id="frase-email"></div>
                 </div>
-                <div className="inputs-password">
+                <div className="inputs-password-cliente">
                   <label htmlFor="Senha">Senha</label>
                   <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
-                <button className="button-cadastro" onClick={logar}>ENTRAR</button>
+                <button className="button-cadastro-cliente" onClick={logar}>ENTRAR</button>
               </div>
             </div>
           </div>
         </div>
-        <div className="modal-image">
+        <div className="modal-image-cliente">
           <p>HOME</p>
           <img src={Image} className="image-modal" />
           <p>PETSUP</p>
