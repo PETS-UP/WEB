@@ -1,11 +1,10 @@
-import api from '../../../api';
-import './styleLogin.css';
+import './styleLoginEmpresa.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
 import { useState } from 'react';
 import { useNavigate } from 'react';
 
-const Login = () => {
+const LoginEmpresa = () => {
 
   const navigate = useNavigate()
 
@@ -14,12 +13,12 @@ const Login = () => {
 
   function logar(e) {
     e.preventDefault();
-    const cliente = {
-     email: email,
+    const petshop = {
+      email: email,
       senha: senha
     }
 
-    api.post('/clientes/login', cliente) 
+    api.post('/petshops/login', petshop) 
     .then((response) => {
       console.log(response)
     })
@@ -31,32 +30,32 @@ const Login = () => {
   return (
     <div className="container">
       <img src={Background} className="imagebg" />
-      <div className="modal-login-cliente">
-        <div className="modal-inputs-cliente">
-          <div className="form-inputs-cliente">
-            <div className="index-cadastro-cliente">
+      <div className="modal-login">
+        <div className="modal-inputs">
+          <div className="form-inputs">
+            <div className="index-cadastro">
               <p>Ainda não se cadastrou?</p>
-              <button onClick={() => navigate("/cadastro")} className="button-cadastro-cliente">CADASTRAR</button>
+              <button onClick={() => navigate("/cadastro-empresa")} className="button-cadastro">CADASTRAR</button>
             </div>
-            <div className="inputs-cadastro-cliente">
+            <div className="inputs-cadastro">
               <p>Olá! Seja bem-vindo!</p>
-              <div className="inputs-cliente">
-                <div className="inputs-email-cliente">
+              <div className="inputs">
+                <div className="inputs-email">
                   <label htmlFor="Email">E-mail</label>
-                  <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="usuario@exemplo.com" />
+                  <input type="email" placeholder="usuario@exemplo.com" />
                   <div className="frases-validacao" id="frase-email"></div>
                 </div>
-                <div className="inputs-password-cliente">
+                <div className="inputs-password">
                   <label htmlFor="Senha">Senha</label>
-                  <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
+                  <input type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
-                <button className="button-cadastro-cliente" onClick={logar}>ENTRAR</button>
+                <button onClick={logar} className="button-cadastro">ENTRAR</button>
               </div>
             </div>
           </div>
         </div>
-        <div className="modal-image-cliente">
+        <div className="modal-image">
           <p>HOME</p>
           <img src={Image} className="image-modal" />
           <p>PETSUP</p>
@@ -67,4 +66,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default LoginEmpresa;

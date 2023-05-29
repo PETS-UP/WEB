@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
+
+.content-main {
+    width: 100%;
+    height: 190vh;
+    background-color: white;
+}
+
+.titulo {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo p {
+    margin: 0%;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: 'Signika', sans-serif;
+}
+
+.borda {
+    width: 100%;
+    border-bottom: 1.5px solid gray;
+}
+
+/* .imagem-corpo {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.imagecorpo1m- img {
+    width: 70%;
+    height: 100vh;
+    border-radius: 5px;
+} */
+
+.imagem-corpo {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 150vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.imagem-corpo .div-content {
+    width: 35%;
+    height: 100%;
+    /* background-color: brown; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.imagem-corpo .div-content .img1 {
+    width: 100%;
+    height: 75%;
+    /* background-color: chartreuse; */
+    margin: 20px;
+}
+
+.img1 img{
+    width: 100%;
+    height: 95%;
+    /* background-color: chartreuse; */
+    margin: 20px;
+}
+
+.imagem-corpo .div-content .text1 {
+    width: 100%;
+    height: 25%;
+    /* background-color: chartreuse; */
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-corpo .div-content .text1 p {
+    font-size: 1.5rem;
+    font-family: 'Signika', sans-serif;
+    padding-left: 7%;
+    padding-bottom: 15%;
+}
+
+.imagem-corpo .div-content .text2 {
+    width: 100%;
+    height: 25%;
+    /* background-color: chartreuse; */
+
+}
+
+.imagem-corpo .div-content .img2{
+    width: 100%;
+    height: 75%;
+    /* background-color: chartreuse; */
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-corpo .div-content .text2 p {
+    font-size: 1.5rem;
+    font-family: 'Signika', sans-serif;
+    padding-top: 15%;
+}
+
+.img2 img{
+    width: 100%;
+    height: 95%;
+    /* background-color: chartreuse; */
+}
+
+.borda2{
+    width: 100%;
+    border-bottom: 1.5px solid gray;
+    margin-top: 8%;
+}

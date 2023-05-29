@@ -1,7 +1,17 @@
-
 body{
     margin: 0;
     padding: 0;
+}
+
+::-webkit-scrollbar{
+    width: 12px;
+    background-color:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    border: 3px solid #F49C63;
+    background-color: #F49C63;
+    border-radius: 5px;
 }
 
 p{
@@ -26,7 +36,7 @@ p{
     z-index: -1;
 }
 
-.modal-login-cliente{
+.modal-login{
     width: 65%;
     height: 80%;
     background-color: white;
@@ -37,7 +47,7 @@ p{
     align-items: center;
 }
 
-.modal-inputs-cliente{
+.modal-inputs{
     width: 55%;
     height: 100%;
     display: flex;
@@ -45,7 +55,7 @@ p{
     align-items: center;
 }
 
-.modal-image-cliente{
+.modal-image{
     width: 45%;
     height: 100%;
     background-color: #F49C63;
@@ -55,17 +65,17 @@ p{
     flex-direction: column;
 }
 
-.modal-image-cliente p{
+.modal-image p{
     color: white;
 }
 
-.image-modal-cliente{
+.image-modal{
     width: 350px;
     height: 350px;
 }
 
 
-.form-inputs-cliente{
+.form-inputs{
     width: 90%;
     height: 100%;
     display: flex;
@@ -73,7 +83,7 @@ p{
     justify-content: center;
 }
 
-.index-cadastro-cliente{
+.index-cadastro{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,17 +91,17 @@ p{
     margin-bottom: 35px;
 }
 
-.index-cadastro-cliente p{
+.index-cadastro p{
     color: #858585;
 }
 
-.index-cadastro-cliente button{
+.index-cadastro button{
     width: 110px;
     height: 30px;
     margin-left: 2%;
 }
 
-.button-cadastro-cliente{
+.button-cadastro{
     background-color: #F49C63;
     color: white;
     border-radius: 2px;
@@ -99,14 +109,15 @@ p{
     cursor: pointer;
 }
 
-.inputs-cadastro-cliente{
+.inputs-cadastro{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
-.inputs-cadastro-cliente p{
+.inputs-cadastro p{
     font-weight: bolder;
     font-size: 20px;
 }
@@ -118,35 +129,16 @@ label{
     font-weight: bolder;
 }
 
-.inputs-cliente{
+.inputs{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 180%;
 }
 
-.inputs-nome-cliente{
-    width: 90%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-
-.inputs-email-cliente{
-    width: 90%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.inputs-password-cliente{
-    width: 90%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.inputs-confirm-password-cliente{
+.inputs-padrao{
     width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -163,7 +155,7 @@ input{
     border-radius: 2px;
 }
 
-.inputs-cliente button{
+.inputs button{
     width: 90%;
     height: 40px;
     margin-top: 25px;

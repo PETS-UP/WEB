@@ -9,7 +9,10 @@ import "./index.css";
 import Home from "./pages/Institucional/home";
 import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
-import Menu from "./components/Base/Menu/menu";
+import Inicio from "./pages/DonoPet/Inicio/inicio";
+import LoginEmpresa from "./pages/Petshop/Login/Login";
+import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
+import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +28,20 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
-    path: "/menu",
-    element: <Menu />
+    path: "/inicio",
+    element: <Inicio />
+  },
+  {
+    path: "/login-empresa",
+    element: <LoginEmpresa />
+  },
+  {
+    path: "/cadastro-empresa",
+    element: <CadastroEmpresa />
+  },
+  {
+    path: "/meusPets",
+    element: <MeusPets />
   }
 ]);
 
