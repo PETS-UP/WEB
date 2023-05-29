@@ -2,10 +2,12 @@ import api from '../../../api';
 import './styleLogin.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
-import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
+import { useNavigate } from 'react';
 
 const Login = () => {
+
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
@@ -34,7 +36,7 @@ const Login = () => {
           <div className="form-inputs-cliente">
             <div className="index-cadastro-cliente">
               <p>Ainda não se cadastrou?</p>
-              <button className="button-cadastro-cliente">CADASTRAR</button>
+              <button onClick={() => navigate("/cadastro")} className="button-cadastro-cliente">CADASTRAR</button>
             </div>
             <div className="inputs-cadastro-cliente">
               <p>Olá! Seja bem-vindo!</p>
