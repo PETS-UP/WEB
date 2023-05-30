@@ -39,7 +39,7 @@ const LoginEmpresa = () => {
             </div>
             <div className="inputs-cadastro">
               <p>Olá! Seja bem-vindo!</p>
-              <div className="inputs">
+              <div className="inputs-cliente">
                 <div className="inputs-email">
                   <label htmlFor="Email">E-mail</label>
                   <input type="email" placeholder="usuario@exemplo.com" />
