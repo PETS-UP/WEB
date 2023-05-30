@@ -3,7 +3,7 @@ import './styleLogin.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
 import { useState } from 'react';
-import { useNavigate } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -36,7 +36,7 @@ const Login = () => {
           <div className="form-inputs-cliente">
             <div className="index-cadastro-cliente">
               <p>Ainda não se cadastrou?</p>
-              <button onClick={() => navigate("/cadastro")} className="button-cadastro-cliente">CADASTRAR</button>
+              <button onClick={() => navigate("/cadastro-cliente")} className="button-cadastro-cliente">CADASTRAR</button>
             </div>
             <div className="inputs-cadastro-cliente">
               <p>Olá! Seja bem-vindo!</p>
