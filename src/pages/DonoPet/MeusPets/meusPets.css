@@ -55,6 +55,7 @@
     height: 5vh;
     background-color: #7E2C61;
     font-family: 'Signika', sans-serif;
+    cursor: pointer;
 }
 
 .tabela-meus-pets{
