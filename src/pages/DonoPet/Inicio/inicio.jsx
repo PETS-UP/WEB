@@ -1,7 +1,6 @@
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import '../Inicio/styleinicio.css';
-import ImgPetshop from '../../../assets/images/fofinho-pet-shop-image.jpg';
 import React, { useEffect } from "react";
 import '../../stylepadrao.css';
 import { useState } from "react";
