@@ -1,6 +1,6 @@
 import api from '../../../api';
 import React from "react";
-import './styleCardMenu.css';
+import './styleCardPetshop.css';
 import { useState } from 'react';
 
 const CardPetshop = () => {
