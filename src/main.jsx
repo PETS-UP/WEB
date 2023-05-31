@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-
+import 'react-tooltip/dist/react-tooltip.css'
 import Home from "./pages/Institucional/home";
 import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
@@ -13,6 +13,7 @@ import Inicio from "./pages/DonoPet/Inicio/inicio";
 import LoginEmpresa from "./pages/Petshop/Login/Login";
 import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
+import Perfil from "./pages/DonoPet/Perfil/perfil";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/login",
+    path: "/login-cliente",
     element: <Login />
   },
   {
-    path: "/cadastro",
+    path: "/cadastro-cliente",
     element: <Cadastro />
   },
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/meusPets",
     element: <MeusPets />
+  },
+  {
+    path: "/perfil-cliente",
+    element: <Perfil />
   }
 ]);
 

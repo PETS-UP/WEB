@@ -1,15 +1,12 @@
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import '../Inicio/styleinicio.css';
-import ImgPetshop from '../../../assets/images/fofinho-pet-shop-image.jpg';
 import React, { useEffect } from "react";
 import '../../stylepadrao.css';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
 
 export default function Inicio() {
-
     useEffect(() => {
         api.get('/petshops')
             .then((resposta) => {
@@ -19,8 +16,6 @@ export default function Inicio() {
                 console.log(erro);
             });
     }, []);
-
-    const navigate = useNavigate();
 
     const [petshops, setPetshops] = useState([]);
 

@@ -21,8 +21,7 @@
 
 .coluna-footer1,
 .coluna-footer2,
-.coluna-footer3,
-.coluna-footer4 {
+.coluna-footer3 {
     /* background-color: green; */
     width: 20%;
     height: 70vh;
@@ -31,6 +30,20 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+}
+
+.coluna-footer4 {
+    width: 20%;
+    height: 57vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.coluna-footer4 h2 {
+    margin-top: 25vh;
 }
 
 .coluna-footer1 h2,
@@ -81,7 +94,6 @@
     padding-right: 17%;
 }
 
-.content-final-footer img{
-    width: 20%;
-    height: 20vh;
+img{
+    height: 7vh;
 }

@@ -2,11 +2,11 @@ import './styleLoginEmpresa.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
 import { useState } from 'react';
-import { useNavigate } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginEmpresa = () => {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
@@ -35,11 +35,11 @@ const LoginEmpresa = () => {
           <div className="form-inputs">
             <div className="index-cadastro">
               <p>Ainda não se cadastrou?</p>
-              <button onClick={() => navigate("/cadastro-empresa")} className="button-cadastro">CADASTRAR</button>
+              <button onClick={() => navigate('/cadastro-empresa')} className="button-cadastro">CADASTRAR</button>
             </div>
             <div className="inputs-cadastro">
               <p>Olá! Seja bem-vindo!</p>
-              <div className="inputs">
+              <div className="inputs-cliente">
                 <div className="inputs-email">
                   <label htmlFor="Email">E-mail</label>
                   <input type="email" placeholder="usuario@exemplo.com" />
