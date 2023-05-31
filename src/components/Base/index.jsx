@@ -11,8 +11,8 @@ const BaseComponent = () => {
       <div className='header'>
         <img src={Logo} alt="" />
         <div className='btn'>
-          <button onClick={() => navigate('/login-cliente')} id='btn-cliente'>ENTRAR COMO CLIENTE</button>
-          <button onClick={() => navigate('/login-empresa')} id='btn-petshop'>ENTRAR COMO EMPRESA</button>
+          <button onClick={() => navigate("/login-cliente")} id='btn-cliente'>ENTRAR COMO CLIENTE</button>
+          <button onClick={() => navigate("/login-empresa")} id='btn-petshop'>ENTRAR COMO EMPRESA</button>
         </div>
       </div>
       <div className='content-text'>

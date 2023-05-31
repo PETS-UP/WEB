@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-
+import 'react-tooltip/dist/react-tooltip.css'
 import Home from "./pages/Institucional/home";
 import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
