@@ -13,6 +13,7 @@ import Inicio from "./pages/DonoPet/Inicio/inicio";
 import LoginEmpresa from "./pages/Petshop/Login/Login";
 import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
+import Perfil from "./pages/DonoPet/Perfil/perfil";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/meusPets",
     element: <MeusPets />
+  },
+  {
+    path: "/perfil-cliente",
+    element: <Perfil />
   }
 ]);
 
