@@ -21,7 +21,22 @@ export default function Inicio() {
                         </div>
                     </div>
                     <div className="inputs-items-perfil">
-
+                        <div className="inputs-user-perfil">
+                        <label htmlFor="Nome">Nome</label>
+                            <input type="text" disabled placeholder="William Matos"/>
+                        <label htmlFor="Nome">Email</label>
+                            <input type="email" disabled placeholder="William.matos@sptech.school"/>
+                        <label htmlFor="Nome">Data de nascimento</label>
+                            <input type="text" disabled placeholder="02/08/99"/>
+                        </div>
+                        <div className="inputs-user-perfil">
+                        <label htmlFor="Nome">CEP</label>
+                            <input type="number" disabled placeholder="08145795-3"/>
+                        <label htmlFor="Nome">CPF</label>
+                            <input type="number" disabled placeholder="294.358.501-15"/>
+                        <label htmlFor="Nome">TEL</label>
+                            <input type="number" disabled placeholder="(11) 94956-3874"/>
+                        </div>
                     </div>
                 </div>
             </div>            
