@@ -44,7 +44,7 @@ const NossaEquipe = () => {
                             </div>
                             <div className='content-text2'>
                                 <p>
-                                    “O sucesso de um empresa é o resultado do trabalho de uma grande equipe. ”
+                                    “O sucesso de um empresa é o resultado do trabalho de uma grande equipe.”
                                 </p>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ const NossaEquipe = () => {
                         </div>
                         <div className='content-text5'>
                             <p>
-                                “O segredo de um grande sucesso esta no trabalho de uma grande equipe.”
+                                “O segredo de um grande sucesso está no trabalho de uma grande equipe.”
                             </p>
                         </div>
                     </div>
