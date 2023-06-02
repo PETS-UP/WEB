@@ -1,24 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
 
-.main-cadastro-pet{
+.main-cadastro-pet {
     width: 100%;
     height: 100vh;
-    background-color: aqua;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.content-cadastro-pet{
-    width: 90%;
-    height: 98vh;
-    background-color: brown;
+.content-cadastro-pet-especie {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.titulo-cadastro-pet{
+.titulo-cadastro-pet {
     width: 90%;
     height: 15vh;
     display: flex;
@@ -26,47 +39,171 @@
     align-items: center;
 }
 
-.titulo-cadastro-pet h2{
+.titulo-cadastro-pet h2 {
     margin: 0%;
     font-size: 35px;
     font-family: 'Signika', sans-serif;
+    color: black;
 }
 
-.cards-cadastro-pet{
-    width: 90%;
-    height: 80vh;
-    background-color: blueviolet;
+.borda-cadastro-pet {
+    width: 100%;
+    border-bottom: 1.5px solid black;
+}
+
+.cards-cadastro-pet {
+    width: 100%;
+    height: 60vh;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+}
+
+.cards-cadastro-pet-genero {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     justify-content: space-evenly;
 }
 
 .card1-cadastro-pet,
 .card2-cadastro-pet,
 .card3-cadastro-pet,
-.card4-cadastro-pet{
+.card4-cadastro-pet {
     width: 20%;
     height: 35vh;
-    background-color: chocolate;
+    border-radius: 15px;
+    background-color: #F49C63;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
+    transition: all 0.5s;
+    cursor: pointer;
 }
 
 .card1-cadastro-pet img,
 .card2-cadastro-pet img,
 .card3-cadastro-pet img,
-.card4-cadastro-pet img{
-    width: 70%;
-    height: 25vh;
+.card4-cadastro-pet img {
+    width: 50%;
+    height: 20vh;
+}
+
+.card1-cadastro-pet:hover,
+.card2-cadastro-pet:hover,
+.card3-cadastro-pet:hover,
+.card4-cadastro-pet:hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.1);
 }
 
 .card1-cadastro-pet p,
 .card2-cadastro-pet p,
 .card3-cadastro-pet p,
-.card4-cadastro-pet p{
+.card4-cadastro-pet p {
     margin: 0%;
     font-size: 30px;
     font-family: 'Signika', sans-serif;
 }
+
+.content-foto-cadastro-pet{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.fotinha-cadastro-pet {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-perfil-cadastro-pet{
+    width: 20%;
+    height: 35vh;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.foto-perfil-cadastro-pet img{
+    width: 150px;
+    height: 150px;
+}
+
+.input-cadastro-pet {
+    width: 50%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-cadastro-pet input {
+    width: 60%;
+    height: 6vh;
+    border: 1px solid black;
+}
+
+.input-cadastro-pet label {
+    font-size: 20px;
+    font-family: 'Signika', sans-serif;
+    margin: 0;
+}
+
+.btn-finalizar-cadastro-pet{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-finalizar-cadastro-pet button{
+    width: 25%;
+    height: 6vh;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Signika', sans-serif;
+}
+
+.btn-navegacao-cadastro-pet{
+    width: 30%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn-navegacao-cadastro-pet button {
+    width: 30%;
+    height: 5vh;
+    cursor: pointer;
+}
+
+.adc-foto-cadastro-pet{
+    width: 15%;
+    height: 6vh;
+    border: none;
+    font-size: 20px;
+    font-family: 'Signika', sans-serif;
+}
+
+/* .espacinho-cadastro-pet{
+    width: 100%;
+    height: 8vh;
+} */

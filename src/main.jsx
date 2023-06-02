@@ -15,6 +15,7 @@ import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 import CadastrarPet from "./pages/DonoPet/CadastrarPet/cadastroPet"
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,8 +42,12 @@ const router = createBrowserRouter([
     element: <CadastroEmpresa />
   },
   {
-    path: "/meusPets",
+    path: "/meus-pets",
     element: <MeusPets />
+  },
+  {
+    path: "/cadastrar-pet",
+    element: <CadastrarPet />
   },
   {
     path: "/cadastrar-pet",
