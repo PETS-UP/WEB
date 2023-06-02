@@ -60,6 +60,15 @@ const CadastrarPet = () => {
 
                         </div>
 
+                        <div className='btn-navegacao-cadastro-pet'>
+                            {/* <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                                Anterior
+                            </button> */}
+                            <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
+                                Próximo
+                            </button>
+                        </div>
+
                     </div>
                 );
             case 1:
@@ -88,6 +97,15 @@ const CadastrarPet = () => {
 
                         </div>
 
+                        <div className='btn-navegacao-cadastro-pet'>
+                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                                Anterior
+                            </button>
+                            <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
+                                Próximo
+                            </button>
+                        </div>
+
                     </div>
                 );
             case 2:
@@ -107,6 +125,15 @@ const CadastrarPet = () => {
                             <label htmlFor="">Nome:</label>
                             <input type="text" />
 
+                        </div>
+
+                        <div className='btn-navegacao-cadastro-pet'>
+                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                                Anterior
+                            </button>
+                            <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
+                                Próximo
+                            </button>
                         </div>
 
                     </div>
@@ -142,6 +169,15 @@ const CadastrarPet = () => {
 
                         </div>
 
+                        <div className='btn-navegacao-cadastro-pet'>
+                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                                Anterior
+                            </button>
+                            {/* <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
+                                Próximo
+                            </button> */}
+                        </div>
+
                     </div>
 
                 );
@@ -159,17 +195,6 @@ const CadastrarPet = () => {
                     {renderPageContent()}
                 </div>
 
-                    <div className='espacinho-cadastro-pet'>
-                    </div>
-                    
-                <div className='btn-navegacao-cadastro-pet'>
-                    <button onClick={handlePrevPage} disabled={currentPage === 0}>
-                        Anterior
-                    </button>
-                    <button onClick={handleNextPage} disabled={currentPage === 3}>
-                        Próximo
-                    </button>
-                </div>
             </div>
         </div>
     );
