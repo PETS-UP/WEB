@@ -4,6 +4,8 @@ import './styleperfil.css';
 import '../../stylepadrao.css';
 import imgUser from '../../../assets/icons/ICON-BACHIRA-USER.jpg';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { InputMask } from 'primereact/inputmask';
 
 export default function Inicio() {
 
@@ -19,45 +21,95 @@ export default function Inicio() {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
 
-    const [cepData, setCepData] = useState(null);
+    useEffect(() => {
+        api.get(`/clientes/${id}`)
+            .then((resposta) => {
+                setNome(resposta.data.nome);
+                setEmail(resposta.data.email);
+                setDataNasc(resposta.data.dataNasc);
+                setCep(resposta.data.cep);
+                setCpf(resposta.data.cpf);
+                setTelefone(resposta.data.telefone);
+            })
+            .catch((erro) => {
+                console.log(erro);
+            });
+    }, [id]);
+
+    const buscarCep = async () => {
+        if (cep.length === 8) {
+            try {
+                const response = await api.get(`https://viacep.com.br/ws/${cep}/json/`);
+                setEstado(response.data.uf);
+                setCidade(response.data.localidade);
+                setBairro(response.data.bairro);
+                setRua(response.data.logradouro)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
+
+    function atualizar(e) {
+        e.preventDefault();
+        const cliente = {
+            nome: nome,
+            email: email,
+            dataNasc: dataNasc,
+            cep: cep,
+            cpf: cpf,
+            telefone: telefone,
+            estado: estado,
+            cidade: cidade,
+            bairro: bairro,
+            rua: rua
+        }
+
+        api.patch(`/clientes/${id}`, cliente)
+            .then((response) => {
+                console.log(response)
+            }).catch((erro) => {
+                console.log(erro)
+            });
+    }
 
     return (
         <div className="container-main-perfil">
-            
-            <Menu/>
+
+            <Menu />
             <div className="content-card-perfil">
 
-            <div className="perfil-content">
-                <div className="items-perfil">
-                    <div className="header-items-perfil">
-                        <div className="img-user-perfil">
-                            <img src={imgUser} />
+                <div className="perfil-content">
+                    <div className="items-perfil">
+                        <div className="header-items-perfil">
+                            <div className="img-user-perfil">
+                                <img src={imgUser} />
+                            </div>
+                            <div className="text-user-perfil">
+                                <p>{nome}</p>
+                            </div>
                         </div>
-                        <div className="text-user-perfil">
-                            <p>William Matos</p>
-                        </div>
-                    </div>
-                    <div className="inputs-items-perfil">
-                        <div className="inputs-user-perfil">
-                        <label htmlFor="Nome">Nome</label>
-                            <input type="text" disabled placeholder="William Matos"/>
-                        <label htmlFor="Nome">E-mail</label>
-                            <input type="email" disabled placeholder="William.matos@sptech.school"/>
-                        <label htmlFor="Nome">Data de nascimento</label>
-                            <input type="text" disabled placeholder="02/08/99"/>
-                        </div>
-                        <div className="inputs-user-perfil">
-                        <label htmlFor="Nome">CEP</label>
-                            <input type="number" disabled placeholder="08145795-3"/>
-                        <label htmlFor="Nome">CPF</label>
-                            <input type="number" disabled placeholder="294.358.501-15"/>
-                        <label htmlFor="Nome">Telefone</label>
-                            <input type="number" disabled placeholder="(11) 94956-3874"/>
+                        <div className="inputs-items-perfil">
+                            <div className="inputs-user-perfil">
+                                <label htmlFor="Nome">Nome</label>
+                                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
+                                <label htmlFor="Nome">E-mail</label>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                                <label htmlFor="Nome">Data de nascimento</label>
+                                <InputMask value={dataNasc} onChange={(e) => setDataNasc(e.target.value)} type="text" mask="9999-99-99" unmask="false" />
+                            </div>
+                            <div className="inputs-user-perfil">
+                                <label htmlFor="Nome">CEP</label>
+                                <InputMask value={cep} onChange={(e) => setCep(e.target.value)} type="text" onBlur={buscarCep} mask="99999-999" unmask="true" />
+                                <label htmlFor="Nome">CPF</label>
+                                <InputMask value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" />
+                                <label htmlFor="Nome">Telefone</label>
+                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>            
-                
+
             </div>
         </div>
     )
