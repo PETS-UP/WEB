@@ -14,6 +14,7 @@ import LoginEmpresa from "./pages/Petshop/Login/Login";
 import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 import CadastrarPet from "./pages/DonoPet/CadastrarPet/cadastroPet"
+import Calendario from "./components/Calendario/calendario";
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastrar-pet",
     element: <CadastrarPet />
+  },
+  {
+    path: "/calendario-pet",
+    element: <Calendario />
   }
 ]);
 
