@@ -17,6 +17,40 @@ export default function Inicio() {
             });
     }, []);
 
+    function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        } else {
+          console.log("Geolocalização não suportada pelo navegador.");
+        }
+      }
+    
+      function successCallback(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+    
+        console.log("Latitude: " + latitude);
+        console.log("Longitude: " + longitude);
+      }
+    
+      function errorCallback(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            console.log("Permissão para obter localização negada pelo usuário.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            console.log("Informações de localização não estão disponíveis.");
+            break;
+          case error.TIMEOUT:
+            console.log("Tempo limite da requisição para obter localização foi atingido.");
+            break;
+          case error.UNKNOWN_ERROR:
+            console.log("Erro desconhecido ao obter localização.");
+            break;
+        }
+      }
+    
+
     const [petshops, setPetshops] = useState([]);
 
     return (
