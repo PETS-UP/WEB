@@ -12,6 +12,10 @@ function Calendario() {
 
     return (
         <div className="content-calendar-main">
+            <div className="titulo-meus-pedidos">
+                <h2>Agendamentos</h2>
+                <div className='borda-cadastro-pet'></div>
+            </div>
             <div className="calendario-pets">
                 <Calendar onChange={onChange} value={date} />
             </div>
