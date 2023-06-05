@@ -13,6 +13,8 @@ import Inicio from "./pages/DonoPet/Inicio/inicio";
 import LoginEmpresa from "./pages/Petshop/Login/Login";
 import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
+import CadastrarPet from "./pages/DonoPet/CadastrarPet/cadastroPet"
+import MeusPedidos from "./pages/Petshop/MeusPedidos/meusPedidos";
 import Perfil from "./pages/DonoPet/Perfil/perfil";
 import InfoPetshop from "./pages/DonoPet/InfoPetshop/infoPetshop";
 
@@ -42,8 +44,16 @@ const router = createBrowserRouter([
     element: <CadastroEmpresa />
   },
   {
-    path: "/meusPets",
+    path: "/meus-pets",
     element: <MeusPets />
+  },
+  {
+    path: "/cadastrar-pet",
+    element: <CadastrarPet />
+  },
+  {
+    path: "/meus-pedidos",
+    element: <MeusPedidos />
   },
   {
     path: "/perfil-cliente",
