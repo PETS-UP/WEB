@@ -14,6 +14,7 @@ import LoginEmpresa from "./pages/Petshop/Login/Login";
 import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 import Perfil from "./pages/DonoPet/Perfil/perfil";
+import InfoPetshop from "./pages/DonoPet/InfoPetshop/infoPetshop";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: "/perfil-cliente",
     element: <Perfil />
+  },
+  {
+    path: "/info-petshop-cliente",
+    element: <InfoPetshop />
   }
 ]);
 

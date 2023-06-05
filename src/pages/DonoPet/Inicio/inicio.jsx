@@ -21,8 +21,7 @@ export default function Inicio() {
 
     return (
         <div className="container-main">
-            
-            <Menu/>
+         <Menu/>
             <div className="content">
                 <div className="filter">
                     <div className="filter-header">
