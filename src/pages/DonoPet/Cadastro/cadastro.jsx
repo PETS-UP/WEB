@@ -3,7 +3,9 @@ import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
 import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
+import '../../Global/styleTooltip.css';
 import '../Cadastro/styleCadastro.css';
+import { Tooltip } from 'react-tooltip';
 
 const Cadastro = () => {
 
@@ -30,6 +32,7 @@ const Cadastro = () => {
 
   return (
     <div className="container">
+      
       <img src={Background} className="imagebg" />
       <div className="modal-login-cliente">
         <div className="modal-inputs-cliente">
@@ -39,22 +42,26 @@ const Cadastro = () => {
               <div className="inputs-cliente">
                 <div className="inputs-nome-cliente">
                   <label htmlFor="Nome">Nome</label>
-                  <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" placeholder="Digite seu nome aqui" />
+                  <input data-tooltip-id='anchor' data-tooltip-content='Digite um nome válido (mínimo 3 letras)' 
+                  value={nome} onChange={(e) => setNome(e.target.value)} type="text" placeholder="Digite seu nome aqui" />
                   <div className="frases-validacao" id="frase-nome"></div>
                 </div>
                 <div className="inputs-email-cliente">
                   <label htmlFor="Email">E-mail</label>
-                  <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Digite seu e-mail aqui" />
+                  <input value={email} data-tooltip-id='anchor' data-tooltip-content='Digite um e-mail válido' 
+                  onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Digite seu e-mail aqui" />
                   <div className="frases-validacao" id="frase-email"></div>
                 </div>
                 <div className="inputs-password-cliente">
                   <label htmlFor="Senha">Senha</label>
-                  <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
+                  <input value={senha} data-tooltip-id='anchor' data-tooltip-content='A senha deve conter no mínimo 6 caracteres e 1 caracter especial' 
+                  onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
                 <div className="inputs-confirm-password-cliente">
                   <label htmlFor="Confirmacao-senha">Confirme sua senha</label>
-                  <input value={confirmacaoSenha} onChange={(e) => setConfirmacaoSenha(e.target.value)} type="password" placeholder="*******" />
+                  <input value={confirmacaoSenha} data-tooltip-id='anchor' data-tooltip-content='Confirme a senha digitando ela exatamente igual' 
+                  onChange={(e) => setConfirmacaoSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao"></div>
                 </div>
                 <button className="button-cadastro-cliente" onClick={cadastrar}>CADASTRAR</button>
@@ -66,7 +73,10 @@ const Cadastro = () => {
           <img src={Image} className="image-modal-cliente" />
         </div>
       </div>
+      <Tooltip id='anchor' className='tooltip-custom'/>
     </div>
+
+    
   );
 }
 

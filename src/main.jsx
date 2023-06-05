@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-
+import 'react-tooltip/dist/react-tooltip.css'
 import Home from "./pages/Institucional/home";
 import Login from "./pages/DonoPet/Login/login";
 import Cadastro from "./pages/DonoPet/Cadastro/cadastro";
@@ -15,6 +15,8 @@ import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 import CadastrarPet from "./pages/DonoPet/CadastrarPet/cadastroPet"
 import MeusPedidos from "./pages/Petshop/MeusPedidos/meusPedidos";
+import Perfil from "./pages/DonoPet/Perfil/perfil";
+import InfoPetshop from "./pages/DonoPet/InfoPetshop/infoPetshop";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +24,11 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/login",
+    path: "/login-cliente",
     element: <Login />
   },
   {
-    path: "/cadastro",
+    path: "/cadastro-cliente",
     element: <Cadastro />
   },
   {
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
   {
     path: "/meus-pedidos",
     element: <MeusPedidos />
+  },
+  {
+    path: "/perfil-cliente",
+    element: <Perfil />
+  },
+  {
+    path: "/info-petshop-cliente",
+    element: <InfoPetshop />
   }
 ]);
 

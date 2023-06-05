@@ -51,7 +51,7 @@
 }
 
 .imagem-corpo .div-content {
-    width: 35%;
+    width: 45%;
     height: 100%;
     /* background-color: brown; */
     display: flex;
@@ -87,7 +87,7 @@
 .imagem-corpo .div-content .text1 p {
     font-size: 1.5rem;
     font-family: 'Signika', sans-serif;
-    padding-left: 7%;
+    padding-left: 3%;
     padding-bottom: 15%;
 }
 

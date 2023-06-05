@@ -1,15 +1,12 @@
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import '../Inicio/styleinicio.css';
-import ImgPetshop from '../../../assets/images/fofinho-pet-shop-image.jpg';
 import React, { useEffect } from "react";
 import '../../stylepadrao.css';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
 
 export default function Inicio() {
-
     useEffect(() => {
         api.get('/petshops')
             .then((resposta) => {
@@ -20,14 +17,11 @@ export default function Inicio() {
             });
     }, []);
 
-    const navigate = useNavigate();
-
     const [petshops, setPetshops] = useState([]);
 
     return (
         <div className="container-main">
-            
-            <Menu/>
+         <Menu/>
             <div className="content">
                 <div className="filter">
                     <div className="filter-header">
