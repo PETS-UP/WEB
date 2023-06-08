@@ -66,12 +66,12 @@
     font-family: 'Signika', sans-serif;
 }
 
-.borda-footer{
+.borda-footer {
     width: 100%;
     border-bottom: 1px solid black;
 }
 
-.content-final{
+.content-final {
     width: 100%;
     height: 20vh;
     display: flex;
@@ -79,7 +79,7 @@
     align-items: center;
 }
 
-.content-final-footer{
+.content-final-footer {
     width: 100%;
     display: flex;
     align-items: center;
@@ -87,13 +87,17 @@
     justify-content: space-evenly;
 }
 
-.content-final-footer p{
+.content-final-footer p {
     color: #8c8c8c;
     font-size: 20px;
     font-family: 'Signika', sans-serif;
     padding-right: 17%;
 }
 
-img{
+.content-final-footer img {
+    height: 20vh;
+}
+
+img {
     height: 7vh;
 }

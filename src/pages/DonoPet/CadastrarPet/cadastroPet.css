@@ -179,6 +179,7 @@
     font-size: 20px;
     font-family: 'Signika', sans-serif;
     cursor: pointer;
+    color: white;
 }
 
 .btn-navegacao-cadastro-pet{
@@ -193,6 +194,7 @@
 .btn-navegacao-cadastro-pet button {
     width: 30%;
     height: 5vh;
+    color: white;
 }
 
 .adc-foto-cadastro-pet{
