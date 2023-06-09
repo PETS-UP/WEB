@@ -2,13 +2,12 @@ import './styleMenu.css';
 import LabelMenu from '../../LabelMenu/LabelMenu';
 import inicio from "../../../assets/icons/ICON-HOME.png"
 import perfil from "../../../assets/icons/ICON-USER.png"
-import pets from "../../../assets/icons/ICON-PATA-BRANCA.png"
-import enderecos from "../../../assets/icons/ICON-MARCADOR.png"
+import gerenciamento from "../../../assets/icons/DASH-ICON.png"
 import pedidos from "../../../assets/icons/ICON-CALENDARIO.png"
 import sair from "../../../assets/icons/ICON-SAIR.png"
 import { useNavigate } from 'react-router-dom';
 
-const Menu = () => {
+const MenuPetshop = () => {
 
     const navigate = useNavigate();
 
@@ -21,15 +20,11 @@ const Menu = () => {
                 </div>
 
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/perfil-cliente')}>
-                    <LabelMenu img={perfil} item="Meu Perfil" />
+                    <LabelMenu img={perfil} item="Meu Petshop" />
                 </div>
 
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/meus-pets')}>
-                    <LabelMenu img={pets} item="Meus Pets" />
-                </div>
-
-                <div className='div-menu-lateral-edit'>
-                    <LabelMenu img={enderecos} item="Endereços" />
+                    <LabelMenu img={gerenciamento} item="Gerenciamento" />
                 </div>
 
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/meus-pedidos')}>
@@ -40,8 +35,10 @@ const Menu = () => {
             <div className='div-menu-lateral-edit' onClick={() => navigate('/')}>
                 <LabelMenu img={sair} item="Sair" />
             </div>
+
         </div >
+
     )
 }
 
-export default Menu;
+export default MenuPetshop;

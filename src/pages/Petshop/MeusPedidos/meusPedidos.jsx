@@ -1,5 +1,5 @@
 import "../MeusPedidos/meusPedidos.css";
-import Menu from "../../../components/Base/Menu/menu";
+import Menu from "../../../components/Base/Menu/menuPetshop";
 import Calendario from "../../../components/Calendario/calendario"
 
 const MeusPedidos = () => {
