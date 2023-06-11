@@ -19,7 +19,16 @@ const Login = () => {
       senha: senha
     }
 
-    api.post('/clientes/login', cliente)
+    api.get(`/clientes/busca-email/${email}`)
+      .then((response) => {
+        sessionStorage.ID_CLIENTE = response.data.id
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+
+    if (sessionStorage.ID_CLIENTE != null) {
+      api.post('/clientes/login', cliente)
       .then((response) => {
         console.log(response)
         setTimeout(() => {
@@ -29,6 +38,7 @@ const Login = () => {
       .catch((erro) => {
         console.log(erro)
       })
+    }
   }
 
   return (
