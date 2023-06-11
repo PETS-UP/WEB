@@ -8,18 +8,8 @@ import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
 
 export default function Inicio() {
     useEffect(() => {
-      const local = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }
-
-        api.patch(`/clientes/latitude-longitude/${id}`, local)
-            .then((response) => {
-                console.log(response)
-            }).catch((erro) => {
-                console.log(erro)
-        });
-
+      getLocation();
+      
         api.get('/petshops')
             .then((resposta) => {
                 setPetshops(resposta.data);
@@ -38,11 +28,17 @@ export default function Inicio() {
       }
     
       function successCallback(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
+        const local = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
     
-        console.log("Latitude: " + latitude);
-        console.log("Longitude: " + longitude);
+        api.patch(`/clientes/latitude-longitude/${id}`, local)
+            .then((response) => {
+                console.log(response)
+            }).catch((erro) => {
+                console.log(erro)
+        });
       }
     
       function errorCallback(error) {
