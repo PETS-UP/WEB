@@ -4,7 +4,6 @@ import QuemSomos from "../../components/QuemSomos/quemSomos"
 import NossaEquipe from "../../components/NossaEquipe/nossaEquipe";
 import Cards from "../../components/Cards/cards";
 import FooterHome from "../../components/FooterHome/footerHome";
-import VLibras from "@djpfs/react-vlibras";
 
 export default function Root() {
 
@@ -12,7 +11,6 @@ export default function Root() {
 
   return (
     <>
-      <VLibras forceOnload={true}/>
       <BaseComponent />
       <QuemSomos />
       <NossaEquipe />
