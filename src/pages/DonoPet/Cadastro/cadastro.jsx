@@ -2,12 +2,15 @@ import api from '../../../api';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
 import { InputMask } from 'primereact/inputmask';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
 import '../../Global/styleTooltip.css';
 import '../Cadastro/styleCadastro.css';
 import { Tooltip } from 'react-tooltip';
 
 const Cadastro = () => {
+
+  const navigate = useNavigate();
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -24,10 +27,16 @@ const Cadastro = () => {
 
     api.post('/clientes', cliente)
     .then((response) => {
-      console.log(response)
+      console.log(response);
+      alert('Cadastro realizado com sucesso!');
+      setTimeout(() => {
+        navigate("/login-cliente");
+    }, "1000")
+
     }).catch((erro) => {
       console.log(erro)
     })
+    
   }
 
   return (

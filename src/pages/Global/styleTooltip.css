@@ -1,4 +1,5 @@
 .container .tooltip-custom{
     background-color: #f1a06a;
     border-radius: 8px;
+    opacity: 0.9;
 }

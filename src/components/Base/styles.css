@@ -49,6 +49,7 @@
   border-radius: 3px;
   border: none;
   margin-right: 1%;
+  color: white;
 }
 
 #btn-petshop {
@@ -63,6 +64,7 @@
   font-size: 12px;
   border-radius: 3px;
   margin-left: 1%;
+  color: white;
 }
 
 .content-text {
@@ -83,4 +85,5 @@
   font-weight: 500;
   font-size: 30px;
   text-shadow: black 2px 3px 5px;
+  color: white;
 }

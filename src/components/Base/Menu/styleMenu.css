@@ -1,4 +1,4 @@
-.menu-lateral{
+.menu-lateral {
     background-color: #7E2C61;
     width: 15%;
     height: 100vh;
@@ -8,14 +8,14 @@
     justify-content: space-evenly;
 }
 
-.menu-lateral img{
+.menu-lateral img {
     width: 25px;
     height: 25px;
     margin-right: 6%;
     margin-left: 4%;
 }
 
-.container-icons{
+.container-icons {
     width: 100%;
     height: 70%;
     display: flex;
@@ -24,14 +24,15 @@
     justify-content: center;
 }
 
-.container-icons img{
+.container-icons img {
     width: 25px;
     height: 25px;
     margin-right: 6%;
     margin-left: 4%;
+    cursor: pointer;
 }
 
-.img-user{
+.img-user {
     margin-top: 10%;
     width: 100px;
     height: 100px;
@@ -39,4 +40,48 @@
     background-image: url(../../../assets/icons/ICON-BACHIRA-USER.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.div-menu-lateral-edit {
+    width: 100%;
+    height: 11vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-menu-lateral-edit label {
+    color: white;
+    margin-top: 5%;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.modal {
+    width: 40%;
+    height: 30vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal h3{
+    color: #7E2C61;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

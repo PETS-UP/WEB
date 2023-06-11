@@ -104,7 +104,7 @@ const Cards = () => {
             <div className="button-cards">
                 <div className='txt-tittle'>
                     <h2>
-                        Conheça nosso app
+                        <b>Conheça nosso app</b>
                     </h2>
                 </div>
 
