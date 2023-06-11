@@ -15,17 +15,30 @@ const Login = () => {
   function logar(e) {
     e.preventDefault();
     const cliente = {
-     email: email,
+      email: email,
       senha: senha
     }
 
-    api.post('/clientes/login', cliente) 
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((erro) => {
-      console.log(erro)
-    })
+    api.get(`/clientes/busca-email/${email}`)
+      .then((response) => {
+        sessionStorage.ID_CLIENTE = response.data.id
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+
+    if (sessionStorage.ID_CLIENTE != null) {
+      api.post('/clientes/login', cliente)
+      .then((response) => {
+        console.log(response)
+        setTimeout(() => {
+          navigate("/inicio");
+        }, "500")
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+    }
   }
 
   return (

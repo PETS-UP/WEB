@@ -18,13 +18,26 @@ const LoginEmpresa = () => {
       senha: senha
     }
 
-    api.post('/petshops/login', petshop) 
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((erro) => {
-      console.log(erro)
-    })
+    api.get(`/petshops/busca-email/${email}`)
+      .then((response) => {
+        sessionStorage.ID_PETSHOP = response.data.id
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+
+    if (sessionStorage.ID_PETSHOP != null) {
+      api.post('/petshops/login', petshop)
+      .then((response) => {
+        console.log(response)
+        setTimeout(() => {
+          navigate("/perfil-petshop");
+        }, "500")
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+    }
   }
 
   return (
