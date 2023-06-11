@@ -6,8 +6,11 @@ import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
 import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
+import { useNavigate } from 'react-router-dom';
 
 const Cadastro = () => {
+
+  const navigate = useNavigate();
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -59,7 +62,11 @@ const Cadastro = () => {
 
     api.post('/petshops', petshop)
     .then((response) => {
-      console.log(response)
+      console.log(response);
+      alert('Cadastro realizado com sucesso!');
+      setTimeout(() => {
+        navigate("/login-empresa");
+    }, "1000")
     }).catch((erro) => {
       console.log(erro)
     })
