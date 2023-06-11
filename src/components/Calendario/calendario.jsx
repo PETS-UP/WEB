@@ -60,12 +60,12 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Cliente</label>
-                                            <input type="text" />
+                                            <input type="text" disabled/>
                                         </div>
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Horário</label>
-                                            <input type="text" />
+                                            <input type="text" disabled/>
                                         </div>
                                     </div>
 
@@ -77,12 +77,12 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Serviço</label>
-                                            <input type="text" />
+                                            <input type="text" disabled />
                                         </div>
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Data</label>
-                                            <input type="text" />
+                                            <input type="text" disabled/>
                                         </div>
 
                                     </div>
