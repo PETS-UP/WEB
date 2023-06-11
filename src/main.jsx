@@ -17,6 +17,7 @@ import CadastrarPet from "./pages/DonoPet/CadastrarPet/cadastroPet"
 import MeusPedidos from "./pages/Petshop/MeusPedidos/meusPedidos";
 import Perfil from "./pages/DonoPet/Perfil/perfil";
 import InfoPetshop from "./pages/DonoPet/InfoPetshop/infoPetshop";
+import PerfilPetshop from "./pages/Petshop/PerfilPetshop/perfilPetshop";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,12 @@ const router = createBrowserRouter([
   {
     path: "/info-petshop-cliente",
     element: <InfoPetshop />
+  },
+  {
+    path: "/perfil-petshop",
+    element: <PerfilPetshop />
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

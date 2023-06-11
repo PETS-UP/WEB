@@ -1,5 +1,5 @@
 .content-calendar-main {
-    width: 100%;
+    width: 85%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -90,6 +90,95 @@
 .react-calendar__month-view__weekdays__weekday {
     border: 1px solid #ccc;
     padding: 0.5rem;
+}
+
+.modal {
+    height: 60vh;
+    width: 40%;
+    justify-content: space-evenly;
+}
+
+.modal h3,
+.modal p {
+    margin: 0%;
+}
+
+.content-modal-calendario {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.container-modal-calendario {
+    width: 45%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container-modal-calendario input {
+    width: 94%;
+}
+
+.container-modal-calendario label {
+    font-size: 16px;
+    font-family: 'Signika', sans-serif;
+    margin: 0%;
+}
+
+.retangulo-calendario {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.content-fechar-modal-calendario {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-fechar-modal-calendario button {
+    border-radius: 100%;
+    border: none;
+    background-color: red;
+    font-family: 'Signika', sans-serif;
+    font-size: small;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.buttons-agendamento-calendario{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons-agendamento-calendario button{
+    border: none;
+    cursor: pointer;
+    font-family: 'Signika', sans-serif;
+    color: white;
+    border-radius: 4px;
+}
+
+.btn-cancelar-agendamento-calendario{
+    background-color: #ED1616;
+    color: white;
+}
+
+.btn-aceitar-agendamento-calendario{
+    background-color: #16D81D;
+    color: white;
 }
 
 :root {

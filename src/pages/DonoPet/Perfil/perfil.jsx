@@ -80,11 +80,15 @@ export default function Inicio() {
             <div className="content-card-perfil">
 
                 <div className="perfil-content">
+
                     <div className="items-perfil">
+
                         <div className="header-items-perfil">
+
                             <div className="img-user-perfil">
                                 <img src={imgUser} />
                             </div>
+
                             <div className="text-user-perfil">
                                 <p>{nome}</p>
                             </div>
@@ -108,6 +112,7 @@ export default function Inicio() {
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
