@@ -11,6 +11,7 @@ export default function Root() {
 
   return (
     <>
+      <VLibras forceOnload={true}/>
       <BaseComponent />
       <QuemSomos />
       <NossaEquipe />
