@@ -9,7 +9,8 @@ Ao clonar o projeto, siga os passos abaixo:
 1. npm i
 2. npm i axios
 3. npm i primereact
-4. npm run dev
+4. npm i djpfs/react-vlibras
+5. npm run dev
 
 ## Carregando o projeto no Stackblitz
 URL para visualizar a branch main: https://stackblitz.com/github/PETS-UP/WEB
