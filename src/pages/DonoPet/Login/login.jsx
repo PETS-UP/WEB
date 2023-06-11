@@ -15,17 +15,20 @@ const Login = () => {
   function logar(e) {
     e.preventDefault();
     const cliente = {
-     email: email,
+      email: email,
       senha: senha
     }
 
-    api.post('/clientes/login', cliente) 
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((erro) => {
-      console.log(erro)
-    })
+    api.post('/clientes/login', cliente)
+      .then((response) => {
+        console.log(response)
+        setTimeout(() => {
+          navigate("/inicio");
+        }, "500")
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
   }
 
   return (
