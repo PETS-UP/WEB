@@ -164,3 +164,42 @@
     height: 5vh;
     cursor: pointer;
 }
+
+.div-pet-empty{
+    width: 70%;
+    height: 60vh;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #595959;
+    font-size: 1.5rem;
+}
+
+.div-pet-empty div{
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+
+.div-pet-empty div img{
+    height: 130px;
+    margin-left: -40px;
+}
+
+.div-pet-empty span{
+    margin: 20px;
+}
+
+.div-pet-empty button{
+    width: 250px;
+    height: 50px;
+    margin: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #7E2C61;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

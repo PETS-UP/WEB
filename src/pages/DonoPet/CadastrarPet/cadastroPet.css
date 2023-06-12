@@ -128,8 +128,8 @@
 }
 
 .foto-perfil-cadastro-pet{
-    width: 18%;
-    height: 30vh;
+    width: 30%;
+    height: 25vh;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -139,7 +139,7 @@
 
 .foto-perfil-cadastro-pet img{
     width: 150px;
-    height: 150px;
+    height: 130px;
 }
 
 .input-cadastro-pet {
@@ -148,6 +148,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .input-cadastro-pet input {
