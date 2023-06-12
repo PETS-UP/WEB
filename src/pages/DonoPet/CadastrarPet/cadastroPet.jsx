@@ -1,5 +1,6 @@
 import '../CadastrarPet/cadastroPet.css'
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/Base/Menu/menu'
 import DOG from '../../../assets/icons/DOG-ICON.png'
 import CAT from '../../../assets/icons/CAT-ICON.png'
@@ -11,6 +12,12 @@ import PERFIL from '../../../assets/icons/PERFILPET-ICON.png'
 
 
 const CadastrarPet = () => {
+    const [selectTypeOfPet, setSelectTypeOfPet] = useState();
+    const [selectTypeOfGender, setSelectTypeOfGender] = useState();
+
+    
+
+    const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -38,22 +45,27 @@ const CadastrarPet = () => {
 
                         <div className='cards-cadastro-pet'>
 
-                            <div className='card1-cadastro-pet'>
+                            <div style={{ border: selectTypeOfPet === 'Cachorro' ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet('Cachorro')}
+                                className='card1-cadastro-pet'>
                                 <img src={DOG} alt="" />
                                 <p>Cachorro</p>
                             </div>
 
-                            <div className='card2-cadastro-pet'>
+                            <div className='card2-cadastro-pet' style={{ border: selectTypeOfPet === 'Gato' ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet('Gato')}>
                                 <img src={CAT} alt="" />
                                 <p>Gato</p>
                             </div>
 
-                            <div className='card3-cadastro-pet'>
+                            <div className='card3-cadastro-pet' style={{ border: selectTypeOfPet === 'Coelho' ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet('Coelho')}>
                                 <img src={BUNNY} alt="" />
                                 <p>Coelho</p>
                             </div>
 
-                            <div className='card4-cadastro-pet'>
+                            <div className='card4-cadastro-pet' style={{ border: selectTypeOfPet === 'Roedor' ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet('Roedor')}>
                                 <img src={ROEDOR} alt="" />
                                 <p>Roedor</p>
                             </div>
@@ -85,12 +97,15 @@ const CadastrarPet = () => {
 
                         <div className='cards-cadastro-pet-genero'>
 
-                            <div className='card1-cadastro-pet'>
+                            <div className='card1-cadastro-pet' style={{ border: selectTypeOfGender === 'Male' ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfGender('Male')}>
+
                                 <img src={MALE} alt="" />
                                 <p>Macho</p>
                             </div>
 
-                            <div className='card2-cadastro-pet'>
+                            <div className='card2-cadastro-pet' style={{ border: selectTypeOfGender === 'Female' ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfGender('Female')}>
                                 <img src={FEMALE} alt="" />
                                 <p>Fêmea</p>
                             </div>
@@ -122,50 +137,17 @@ const CadastrarPet = () => {
 
                         <div className='input-cadastro-pet'>
 
+                            <div className='foto-perfil-cadastro-pet'>
+                                <img src={PERFIL} alt="" />
+                            </div>
+
                             <label htmlFor="">Nome:</label>
                             <input type="text" />
 
-                        </div>
-
-                        <div className='btn-navegacao-cadastro-pet'>
-                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
-                                Anterior
-                            </button>
-                            <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
-                                Próximo
-                            </button>
-                        </div>
-
-                    </div>
-                );
-            case 3:
-                return (
-
-                    <div className='content-cadastro-pet-especie'>
-
-                        <div className='titulo-cadastro-pet'>
-                            <h2>
-                                Foto do pet
-                            </h2>
-                        </div>
-
-                        <div className='borda-cadastro-pet'></div>
-
-                        <div className='content-foto-cadastro-pet'>
-
-                            <div className='fotinha-cadastro-pet'>
-
-                                <div className='foto-perfil-cadastro-pet'>
-                                    <img src={PERFIL} alt="" />
-                                </div>
-
-                                <button className='adc-foto-cadastro-pet' >Adicionar foto</button>
-
-                            </div>
-
                             <div className='btn-finalizar-cadastro-pet'>
-                                <button className='btn-finalizar-cadastro-pet'>Finalizar</button>
+                                <button onClick={() => navigate('/meus-pets')} className='btn-finalizar-cadastro-pet'>Finalizar</button>
                             </div>
+
 
                         </div>
 
@@ -173,13 +155,10 @@ const CadastrarPet = () => {
                             <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
                                 Anterior
                             </button>
-                            {/* <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
-                                Próximo
-                            </button> */}
+
                         </div>
 
                     </div>
-
                 );
             default:
                 return null;
@@ -200,4 +179,4 @@ const CadastrarPet = () => {
     );
 };
 
-export default CadastrarPet;
+export default CadastrarPet; 

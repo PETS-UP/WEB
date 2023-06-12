@@ -14,10 +14,11 @@ import LoginEmpresa from "./pages/Petshop/Login/Login";
 import CadastroEmpresa from "./pages/Petshop/Cadastro/CadastroEmpresa";
 import MeusPets from "./pages/DonoPet/MeusPets/meusPets";
 import CadastrarPet from "./pages/DonoPet/CadastrarPet/cadastroPet"
-import MeusPedidos from "./pages/Petshop/MeusPedidos/meusPedidos";
+import MeusAgendamentos from "./pages/Petshop/MeusAgendamentos/meusAgendamentos";
 import Perfil from "./pages/DonoPet/Perfil/perfil";
 import InfoPetshop from "./pages/DonoPet/InfoPetshop/infoPetshop";
 import PerfilPetshop from "./pages/Petshop/PerfilPetshop/perfilPetshop";
+import MeusPedidos from "./pages/DonoPet/Pedidos/meusPedidos";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastrar-pet",
     element: <CadastrarPet />
+  },
+  {
+    path: "/agendamentos",
+    element: <MeusAgendamentos />
   },
   {
     path: "/meus-pedidos",
