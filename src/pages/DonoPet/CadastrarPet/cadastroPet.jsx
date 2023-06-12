@@ -1,5 +1,6 @@
 import '../CadastrarPet/cadastroPet.css'
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/Base/Menu/menu'
 import DOG from '../../../assets/icons/DOG-ICON.png'
 import CAT from '../../../assets/icons/CAT-ICON.png'
@@ -11,6 +12,8 @@ import PERFIL from '../../../assets/icons/PERFILPET-ICON.png'
 
 
 const CadastrarPet = () => {
+
+    const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -164,7 +167,7 @@ const CadastrarPet = () => {
                             </div>
 
                             <div className='btn-finalizar-cadastro-pet'>
-                                <button className='btn-finalizar-cadastro-pet'>Finalizar</button>
+                                <button onClick={() => navigate('/meus-pets')} className='btn-finalizar-cadastro-pet'>Finalizar</button>
                             </div>
 
                         </div>
@@ -200,4 +203,4 @@ const CadastrarPet = () => {
     );
 };
 
-export default CadastrarPet;
+export default CadastrarPet; 

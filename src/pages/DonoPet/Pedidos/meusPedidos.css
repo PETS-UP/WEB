@@ -1,0 +1,45 @@
+.content-main-meus-agendamentos{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.container-main-pedidos-cliente{
+    background-color: aqua;
+    width: 85%;
+    height: 98vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo-pedidos-cliente{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: blue;
+}
+
+.titulo-pedidos-cliente h2{
+    margin: 0%;
+    color: black;
+    font-size: 35px;
+    font-family: 'Signika', sans-serif;
+}
+
+.borda-pedidos-cliente{
+    width: 100%;
+    border-bottom: 1.5px solid black;
+}
+
+.itens-pedidos-cliente{
+    width: 100%;
+    height: 75vh;
+    background-color: brown;
+}

@@ -1,9 +1,15 @@
 import Menu from "../../../components/Base/Menu/menu";
 import '../MeusPets/meusPets.css'
+import api from '../../../api';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function meusPets() {
 
+    const navigate = useNavigate();
+
     return (
+
         <div className="container-main-meus-pets">
             <Menu />
             <div className="content-meus-pets">
@@ -22,9 +28,16 @@ export default function meusPets() {
                         </select>
 
                     </div>
-                    <input type="text" />
 
-                    <button>ADICIONAR PET +</button>
+                    <div className="buscar-meus-pets">
+                        <input type="search" name="busca" placeholder="Buscar..." />
+                        <button>
+                            <img className="image-button" src="/src/assets/icons/ICON-BUSCA.png" />
+                        </button>
+                    </div>
+
+                    <button onClick={() => navigate('/cadastrar-pet')} >ADICIONAR PET +</button>
+                    
                 </div>
 
                 <div className="tabela-meus-pets">
@@ -33,7 +46,6 @@ export default function meusPets() {
                             <tr>
                                 <th>Nome</th>
                                 <th>Tipo</th>
-                                <th>Editar</th>
                                 <th>Excluir</th>
                             </tr>
                         </thead>
@@ -42,18 +54,6 @@ export default function meusPets() {
                                 <td>Fluffy</td>
                                 <td>Cachorro</td>
                                 <td>Data 3</td>
-                                <td>Data 4</td>
-                            </tr>
-                            <tr>
-                                <td>Data 4</td>
-                                <td>Data 5</td>
-                                <td>Data 6</td>
-                                <td>Data 6</td>
-                            </tr> <tr>
-                                <td>Data 7</td>
-                                <td>Data 8</td>
-                                <td>Data 9</td>
-                                <td>Data 9</td>
                             </tr>
                         </tbody>
                     </table>
