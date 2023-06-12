@@ -28,12 +28,15 @@ export default function Inicio() {
       }
     
       function successCallback(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
         const local = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        }
+          latitude: latitude,
+          longitude: longitude,
+        };
     
-        api.patch(`/clientes/latitude-longitude/${id}`, local)
+        api.patch(`/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}`, local)
             .then((response) => {
                 console.log(response)
             }).catch((erro) => {
