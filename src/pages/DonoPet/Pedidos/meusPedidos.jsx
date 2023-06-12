@@ -21,9 +21,24 @@ const MeusPedidos = () => {
                 </div>
 
                 <div className='itens-pedidos-cliente'>
-
+                    <table className="table-container">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fluffy</td>
+                                <td>Cachorro</td>
+                                <td>Data 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
+
             </div>
         </div>
 

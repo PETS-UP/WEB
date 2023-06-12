@@ -3,6 +3,7 @@ import '../MeusPets/meusPets.css'
 import api from '../../../api';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LIXEIRA from '../../../assets/icons/LIXEIRA-ICON.png';
 
 export default function meusPets() {
 
@@ -37,7 +38,7 @@ export default function meusPets() {
                     </div>
 
                     <button onClick={() => navigate('/cadastrar-pet')} >ADICIONAR PET +</button>
-                    
+
                 </div>
 
                 <div className="tabela-meus-pets">
@@ -53,7 +54,13 @@ export default function meusPets() {
                             <tr>
                                 <td>Fluffy</td>
                                 <td>Cachorro</td>
-                                <td>Data 3</td>
+                                <td>
+                                    <div className="content-lixeira-icon">
+                                        <div className="lixeira-icon-meus-pets">
+                                            <img src={LIXEIRA} alt="" />
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
