@@ -1,9 +1,22 @@
 import './meusPedidos.css'
 import Menu from '../../../components/Base/Menu/menu';
+import { useEffect, useState } from 'react';
+import api from '../../../api';
 
 
 
 const MeusPedidos = () => {
+    const [cliente, setCliente] = useState();
+
+
+    useEffect(() => {
+        api.get("/agendamentos/cliente").then(({data}) => {
+            console.log(data);
+            setCliente(data);
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, [])
 
     return (
         <div className="content-main-meus-agendamentos">
@@ -24,16 +37,18 @@ const MeusPedidos = () => {
                     <table className="table-container">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Tipo</th>
-                                <th>Excluir</th>
+                                <th>Pet</th>
+                                <th>Serviço</th>
+                                <th>Data Hora</th>
+                                <th>Preço</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Fluffy</td>
-                                <td>Cachorro</td>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
                                 <td>Data 3</td>
+                                <td>Data 4</td>
                             </tr>
                         </tbody>
                     </table>
