@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import '../../stylepadrao.css';
 import { useState } from "react";
 import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
+import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
 
 export default function Inicio() {
     useEffect(() => {
@@ -63,6 +64,8 @@ export default function Inicio() {
     
 
     const [petshops, setPetshops] = useState([]);
+    const servicos = "Banho & Tosa";
+    const status = "Aberto agora";
 
     return (
         <div className="container-main">
@@ -86,12 +89,9 @@ export default function Inicio() {
                         <CardPetshop 
                             id={petshop.id}
                             nome={petshop.nome}
-                            servicos={petshop.servicos}
-                            preco={petshop.preco}
-                            distancia={petshop.distancia}
-                            tempo={petshop.tempo}
-                            status={petshop.status}
-                            imagem={petshop.imagem}
+                            servicos={servicos}
+                            status={status}
+                            imagem={imgPetshop}
                         />  
                         </React.Fragment>
                     ))}
