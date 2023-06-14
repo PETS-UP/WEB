@@ -12,11 +12,13 @@
   "dependencies": {
     "@djpfs/react-vlibras": "github:djpfs/react-vlibras",
     "axios": "^1.4.0",
+    "chart.js": "^4.3.0",
     "date-fns": "^2.30.0",
     "primeicons": "^6.0.1",
     "primereact": "^9.5.0",
     "react": "^18.2.0",
     "react-calendar": "^4.2.1",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.11.0",
