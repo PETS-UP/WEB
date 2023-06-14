@@ -85,6 +85,7 @@
     border: 1px solid #ddd;
     padding: 8px;
     color: black;
+    align-items: center;
 }
 
 .filtro-pets {
@@ -150,7 +151,7 @@
 }
 
 .lixeira-icon-meus-pets {
-    background-color: red;
+    background-color: rgb(216, 10, 10);
     width: 20%;
     height: 7vh;
     display: flex;

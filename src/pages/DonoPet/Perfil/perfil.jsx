@@ -22,7 +22,11 @@ export default function Inicio() {
     const [rua, setRua] = useState("");
 
     useEffect(() => {
-        api.get(`/clientes/${id}`)
+        api.get(`/clientes/${sessionStorage.ID_CLIENTE}`, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
@@ -34,7 +38,7 @@ export default function Inicio() {
             .catch((erro) => {
                 console.log(erro);
             });
-    }, [id]);
+    }, []);
 
     const buscarCep = async () => {
         if (cep.length === 8) {
@@ -65,7 +69,12 @@ export default function Inicio() {
             rua: rua
         }
 
-        api.patch(`/clientes/${id}`, cliente)
+        api.patch(`/clientes/${id}`, cliente,
+        {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
             .then((response) => {
                 console.log(response)
             }).catch((erro) => {

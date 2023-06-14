@@ -1,6 +1,7 @@
 import '../CadastrarPet/cadastroPet.css'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../../../api';
 import Menu from '../../../components/Base/Menu/menu'
 import DOG from '../../../assets/icons/DOG-ICON.png'
 import CAT from '../../../assets/icons/CAT-ICON.png'
@@ -14,12 +15,10 @@ import PERFIL from '../../../assets/icons/PERFILPET-ICON.png'
 const CadastrarPet = () => {
     const [selectTypeOfPet, setSelectTypeOfPet] = useState();
     const [selectTypeOfGender, setSelectTypeOfGender] = useState();
-
-    
+    const [name, setName] = useState();
+    const [currentPage, setCurrentPage] = useState(0);
 
     const navigate = useNavigate();
-
-    const [currentPage, setCurrentPage] = useState(0);
 
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);
@@ -28,6 +27,57 @@ const CadastrarPet = () => {
     const handlePrevPage = () => {
         setCurrentPage((prevPage) => prevPage - 1);
     };
+
+    useEffect(() => {
+        api.post("/pets/limpa-pilha", {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }, []);
+
+    function salvarNaPilha(objeto) {
+        api.post("/pets/adicionar-pilha", objeto, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+
+    function removerDaPilha() {
+        api.get("/pets/pop-pilha", {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+
+    function cadastrarPet() {
+        api.post("/pets", {
+            params: { idCliente: sessionStorage.ID_CLIENTE },
+            headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
 
     const renderPageContent = () => {
         switch (currentPage) {
@@ -76,7 +126,7 @@ const CadastrarPet = () => {
                             {/* <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
                                 Anterior
                             </button> */}
-                            <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
+                            <button className='proximo' onClick={() => { salvarNaPilha(selectTypeOfPet), handleNextPage(), console.log(selectTypeOfPet) }} disabled={currentPage === 3}>
                                 Próximo
                             </button>
                         </div>
@@ -113,10 +163,10 @@ const CadastrarPet = () => {
                         </div>
 
                         <div className='btn-navegacao-cadastro-pet'>
-                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                            <button className='anterior' onClick={() => { removerDaPilha(), handlePrevPage() }} disabled={currentPage === 0}>
                                 Anterior
                             </button>
-                            <button className='proximo' onClick={handleNextPage} disabled={currentPage === 3}>
+                            <button className='proximo' onClick={() => { salvarNaPilha(selectTypeOfGender), handleNextPage() }} disabled={currentPage === 3}>
                                 Próximo
                             </button>
                         </div>
@@ -145,7 +195,7 @@ const CadastrarPet = () => {
                             <input type="text" />
 
                             <div className='btn-finalizar-cadastro-pet'>
-                                <button onClick={() => navigate('/meus-pets')} className='btn-finalizar-cadastro-pet'>Finalizar</button>
+                                <button onClick={() => { salvarNaPilha(name),  navigate('/meus-pets') }} className='btn-finalizar-cadastro-pet'>Finalizar</button>
                             </div>
 
 
