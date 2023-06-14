@@ -15,9 +15,9 @@ const MenuPetshop = () => {
         <div className='menu-lateral'>
             <div className='img-user' />
             <div className='container-icons'>
-                <div className='div-menu-lateral-edit' onClick={() => navigate('/inicio')}>
+                {/* <div className='div-menu-lateral-edit' onClick={() => navigate('/inicio')}>
                     <LabelMenu img={inicio} item="Inicio" />
-                </div>
+                </div> */}
 
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/perfil-petshop')}>
                     <LabelMenu img={perfil} item="Meu Petshop" />
@@ -27,8 +27,8 @@ const MenuPetshop = () => {
                     <LabelMenu img={gerenciamento} item="Gerenciamento" />
                 </div>
 
-                <div className='div-menu-lateral-edit' onClick={() => navigate('/meus-pedidos')}>
-                    <LabelMenu img={pedidos} item="Meus pedidos" />
+                <div className='div-menu-lateral-edit' onClick={() => navigate('/agendamentos')}>
+                    <LabelMenu img={pedidos} item="Agendamentos" />
                 </div>
             </div>
 

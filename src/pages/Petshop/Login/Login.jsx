@@ -10,6 +10,7 @@ const LoginEmpresa = () => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+  var autenticado = false
 
   function logar(e) {
     e.preventDefault();
@@ -18,13 +19,27 @@ const LoginEmpresa = () => {
       senha: senha
     }
 
-    api.post('/petshops/login', petshop) 
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((erro) => {
-      console.log(erro)
-    })
+    api.get(`/petshops/busca-email/${email}`)
+      .then((response) => {
+        autenticado = true
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+
+    if (autenticado) {
+      api.post('/petshops/login', petshop)
+      .then((response) => {
+        sessionStorage.ID_PETSHOP = response.data.userId
+        sessionStorage.JWT = response.data.token
+        setTimeout(() => {
+          navigate("/perfil-petshop");
+        }, "500")
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+    }
   }
 
   return (

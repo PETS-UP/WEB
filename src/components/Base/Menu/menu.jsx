@@ -28,10 +28,6 @@ const Menu = () => {
                     <LabelMenu img={pets} item="Meus Pets" />
                 </div>
 
-                <div className='div-menu-lateral-edit'>
-                    <LabelMenu img={enderecos} item="Endereços" />
-                </div>
-
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/meus-pedidos')}>
                     <LabelMenu img={pedidos} item="Meus pedidos" />
                 </div>

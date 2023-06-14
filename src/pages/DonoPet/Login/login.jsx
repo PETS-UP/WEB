@@ -11,21 +11,36 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+  var autenticado = false;
 
   function logar(e) {
     e.preventDefault();
     const cliente = {
-     email: email,
+      email: email,
       senha: senha
     }
 
-    api.post('/clientes/login', cliente) 
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((erro) => {
-      console.log(erro)
-    })
+    api.get(`/clientes/busca-email/${email}`)
+      .then((response) => {
+        autenticado = true;
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+
+    if (autenticado) {
+      api.post('/clientes/login', cliente)
+      .then((response) => {
+        sessionStorage.ID_CLIENTE = response.data.clienteId
+        sessionStorage.JWT = response.data.token
+        setTimeout(() => {
+          navigate("/inicio");
+        }, "500")
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+    }
   }
 
   return (

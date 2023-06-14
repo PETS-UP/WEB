@@ -1,67 +1,118 @@
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
-import '../MeusPets/meusPets.css'
+import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets"
+
+import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
+
+import "../MeusPets/meusPets.css";
 
 export default function meusPets() {
 
-    return (
-        <div className="container-main-meus-pets">
-            <Menu />
-            <div className="content-meus-pets">
+  const [listaPets, setListaPets] = useState([]);
 
-                <div className="titulo-meus-pets">
-                    <h2>PETS CADASTRADOS</h2>
-                </div>
+  useEffect(() => {
+    api.get("/pets", {
+        params: { 
+          idCliente: sessionStorage.ID_CLIENTE
+        },
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`
+        }
+      })
+      .then(({ data }) => {
+        console.log(data);
+        setListaPets(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-                <div className="selecionaveis-meus-pets">
-                    <div className="filtro-pets">
+  const navigate = useNavigate();
 
-                        <label htmlFor="">Filtrar:</label>
-                        <select className="filtro-meus-pets" name="Filtrar" id="">
-                            <option value="nome">Nome</option>
-                            <option value="tipo">Tipo</option>
-                        </select>
+  function deletarPet(id) {
+    api.delete("/pets")
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-                    </div>
-                    <input type="text" />
+  return (
+    <div className="container-main-meus-pets">
+      <Menu />
 
-                    <button>ADICIONAR PET +</button>
-                </div>
-
-                <div className="tabela-meus-pets">
-                    <table className="table-container">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Tipo</th>
-                                <th>Editar</th>
-                                <th>Excluir</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Fluffy</td>
-                                <td>Cachorro</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
-                            </tr>
-                            <tr>
-                                <td>Data 4</td>
-                                <td>Data 5</td>
-                                <td>Data 6</td>
-                                <td>Data 6</td>
-                            </tr> <tr>
-                                <td>Data 7</td>
-                                <td>Data 8</td>
-                                <td>Data 9</td>
-                                <td>Data 9</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-
+      {listaPets.length != 0 ? (
+        <div className="content-meus-pets">
+          <div className="titulo-meus-pets">
+            <h2>PETS CADASTRADOS</h2>
+          </div>
+          <div className="selecionaveis-meus-pets">
+            <div className="filtro-pets">
+              <label htmlFor="">Filtrar:</label>
+              <select className="filtro-meus-pets" name="Filtrar" id="">
+                <option value="nome">Nome</option>
+                <option value="especie">Espécie</option>
+                <option value="sexo">Sexo</option>
+              </select>
             </div>
-
-        </div >
-    )
+            <div className="buscar-meus-pets">
+              <input type="search" name="busca" placeholder="Buscar..." />
+              <button>
+                <img
+                  className="image-button"
+                  src="/src/assets/icons/ICON-BUSCA.png"
+                />
+              </button>
+            </div>
+            <button onClick={() => navigate("/cadastrar-pet")}>
+              ADICIONAR PET +
+            </button>
+          </div>
+          <div className="tabela-meus-pets">
+            <table className="table-container">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Espécie</th>
+                  <th>Sexo</th>
+                  <th>Excluir</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  listaPets.map((pet) => (
+                    <React.Fragment key={pet.id}>
+                      <LinhaTabelaPets
+                        id={pet.id}
+                        nome={pet.nome}
+                        especie={pet.especie}
+                        sexo={pet.sexo}
+                        deletarPet={deletarPet}
+                      />
+                    </React.Fragment>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <div className="div-pet-empty">
+          <div>
+            <img src={DOGGO} alt="" />
+          </div>
+          <span>Parece que você ainda não cadastrou nenhum pet :c</span>
+          <Link to="/cadastrar-pet">
+            <button>Adicionar Pet +</button>
+          </Link>
+        </div>
+      )}
+    </div>
+  );
 }
