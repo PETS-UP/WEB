@@ -8,8 +8,6 @@ const CardPetshop = () => {
     const [nome, setNome] = useState("");
     const [servicos, setServicos] = useState("");
     const [preco, setPreco] = useState("");
-    const [distancia, setDistancia] = useState("");
-    const [tempo, setTempo] = useState("");
     const [status, setStatus] = useState("");
     const [imagem, setImagem] = useState("");
 
@@ -33,12 +31,6 @@ const CardPetshop = () => {
                             </div>
                         </div>
                         <div className="petshop-content-subtitle">
-                            <div className="petshop-content-distancia">
-                                <p>{distancia}</p>
-                            </div>
-                            <div className="petshop-content-tempo">
-                                <p>{tempo}</p>
-                            </div>
                             <div className="petshop-content-status">
                                 <p>{status}</p>
                             </div>

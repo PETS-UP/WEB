@@ -11,6 +11,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+  var autenticado = false;
 
   function logar(e) {
     e.preventDefault();
@@ -21,16 +22,17 @@ const Login = () => {
 
     api.get(`/clientes/busca-email/${email}`)
       .then((response) => {
-        sessionStorage.ID_CLIENTE = response.data.id
+        autenticado = true;
       })
       .catch((erro) => {
         console.log(erro)
       })
 
-    if (sessionStorage.ID_CLIENTE != null) {
+    if (autenticado) {
       api.post('/clientes/login', cliente)
       .then((response) => {
-        console.log(response)
+        sessionStorage.ID_CLIENTE = response.data.clienteId
+        sessionStorage.JWT = response.data.token
         setTimeout(() => {
           navigate("/inicio");
         }, "500")
