@@ -1,16 +1,14 @@
 import React from "react";
 
-function LinhaTabela({ data }) {
+function LinhaTabela({ pet, servico, dataHora, preco }) {
   return (
     <>
-      {data?.map((pedido, index) => (
-        <tr key={index}>
-          <td>{pedido.pet}</td>
-          <td>{pedido.servico}</td>
-          <td>{pedido.dataHora}</td>
-          <td>{pedido.preco}</td>
-        </tr>
-      ))}
+      <tr key={index}>
+        <td>{pet}</td>
+        <td>{servico}</td>
+        <td>{dataHora}</td>
+        <td>{preco}</td>
+      </tr>
     </>
   );
 }
