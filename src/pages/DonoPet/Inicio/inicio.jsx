@@ -71,8 +71,7 @@ export default function Inicio() {
   }
 
   function getPetshopsProximos() {
-    api
-      .get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`)
+    api.get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`)
       .then((response) => {
         setPetshops(response.data);
       })
@@ -104,9 +103,9 @@ export default function Inicio() {
             />
           </div>
           <div className="filter-buttons">
+            <button onClick={getPetshopsProximos()}>Próximos de mim</button>
             <button>Melhores preços</button>
             <button>Melhores avaliações</button>
-            <button onClick={getPetshopsProximos()}>Próximos de mim</button>
             <button>Meus favoritos</button>
           </div>
         </div>
