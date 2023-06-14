@@ -39,14 +39,7 @@ const MeusPedidos = () => {
               </tr>
             </thead>
             <tbody>
-              {cliente.map((pedido, index) => (
-                <tr key={index}>
-                  <td>{pedido.pet}</td>
-                  <td>{pedido.servico}</td>
-                  <td>{pedido.dataHora}</td>
-                  <td>{pedido.preco}</td>
-                </tr>
-              ))}
+              <LinhaTabela data={agendamentos}/>
             </tbody>
           </table>
         </div>
