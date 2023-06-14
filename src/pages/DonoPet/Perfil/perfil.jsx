@@ -2,7 +2,7 @@ import api from '../../../api';
 import Menu from "../../../components/Base/Menu/menu";
 import './styleperfil.css';
 import '../../stylepadrao.css';
-import imgUser from '../../../assets/icons/ICON-BACHIRA-USER.jpg';
+import imgUser from '../../../assets/icons/ICON-PROFILE.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { InputMask } from 'primereact/inputmask';

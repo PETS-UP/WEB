@@ -10,4 +10,4 @@ export default function LabelMenu(props){
             </label>
         </div>
     );
-} 
+}
