@@ -1,17 +1,27 @@
-import Menu from "../../../components/Base/Menu/menu";
-import "../MeusPets/meusPets.css";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import api from "../../../api";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import LIXEIRA from "../../../assets/icons/LIXEIRA-ICON.png";
+import Menu from "../../../components/Base/Menu/menu";
+import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets"
+
 import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
-import { Link } from "react-router-dom";
+
+import "../MeusPets/meusPets.css";
+
 export default function meusPets() {
+
   const [listaPets, setListaPets] = useState([]);
 
   useEffect(() => {
-    api
-      .get("/pets")
+    api.get("/pets", {
+        params: { 
+          idCliente: sessionStorage.ID_CLIENTE
+        },
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`
+        }
+      })
       .then(({ data }) => {
         console.log(data);
         setListaPets(data);
@@ -24,10 +34,15 @@ export default function meusPets() {
   const navigate = useNavigate();
 
   function deletarPet(id) {
+    console.log(id);
     api
-      .delete("/")
+      .delete(`/pets/${id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then(({ data }) => {
-        console.log(data);
+        setListaPets(listaPets.filter((pet) => pet.id !== id));
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +53,7 @@ export default function meusPets() {
     <div className="container-main-meus-pets">
       <Menu />
 
-      {!listaPets ? (
+      {listaPets.length != 0 ? (
         <div className="content-meus-pets">
           <div className="titulo-meus-pets">
             <h2>PETS CADASTRADOS</h2>
@@ -48,7 +63,8 @@ export default function meusPets() {
               <label htmlFor="">Filtrar:</label>
               <select className="filtro-meus-pets" name="Filtrar" id="">
                 <option value="nome">Nome</option>
-                <option value="tipo">Tipo</option>
+                <option value="especie">Espécie</option>
+                <option value="sexo">Sexo</option>
               </select>
             </div>
             <div className="buscar-meus-pets">
@@ -69,12 +85,25 @@ export default function meusPets() {
               <thead>
                 <tr>
                   <th>Nome</th>
-                  <th>Tipo</th>
+                  <th>Espécie</th>
+                  <th>Sexo</th>
                   <th>Excluir</th>
                 </tr>
               </thead>
               <tbody>
-                <LinhaTabelaPet data={listaPets} />
+                {
+                  listaPets.map((pet) => (
+                    <React.Fragment key={pet.id}>
+                      <LinhaTabelaPets
+                        id={pet.id}
+                        nome={pet.nome}
+                        especie={pet.especie}
+                        sexo={pet.sexo}
+                        deletarPet={deletarPet}
+                      />
+                    </React.Fragment>
+                  ))
+                }
               </tbody>
             </table>
           </div>

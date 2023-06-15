@@ -12,7 +12,11 @@ export default function Inicio() {
     getLocation();
 
     api
-      .get("/petshops")
+      .get("/petshops", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then((resposta) => {
         setPetshops(resposta.data);
       })
@@ -38,9 +42,10 @@ export default function Inicio() {
       longitude: longitude,
     };
 
-    api.patch(`/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}`, local,
-        {
-          headers: { "Authorization": `Bearer ${sessionStorage.JWT}` },
+    api.patch(
+        `/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}/${latitude}/${longitude}`,
+        {}, {
+          headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
         }
       )
       .then((response) => {
@@ -71,8 +76,9 @@ export default function Inicio() {
   }
 
   function getPetshopsProximos() {
-    api
-      .get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`)
+    api.get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`, {
+        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+      })
       .then((response) => {
         setPetshops(response.data);
       })
@@ -104,9 +110,9 @@ export default function Inicio() {
             />
           </div>
           <div className="filter-buttons">
+            <button onClick={getPetshopsProximos}>Próximos de mim</button>
             <button>Melhores preços</button>
             <button>Melhores avaliações</button>
-            <button onClick={getPetshopsProximos()}>Próximos de mim</button>
             <button>Meus favoritos</button>
           </div>
         </div>
@@ -114,7 +120,9 @@ export default function Inicio() {
         <div className="cards-petshop">
           {petshops.map((petshop) => (
             <React.Fragment key={petshop.id}>
+              {console.log(petshop.id)}
               <CardPetshop
+                id={petshop.id}
                 nome={petshop.nome}
                 servicos={servicos}
                 status={status}

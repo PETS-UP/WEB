@@ -1,6 +1,7 @@
 import './styleLoginEmpresa.css';
 import Background from '../../../assets/images/PETSUP-BACKGROUND-COPIA.png'
 import Image from '../../../assets/icons/PETSUP-LOGIN-ICON.png'
+import api from "../../../api"
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,15 +20,6 @@ const LoginEmpresa = () => {
       senha: senha
     }
 
-    api.get(`/petshops/busca-email/${email}`)
-      .then((response) => {
-        autenticado = true
-      })
-      .catch((erro) => {
-        console.log(erro)
-      })
-
-    if (autenticado) {
       api.post('/petshops/login', petshop)
       .then((response) => {
         sessionStorage.ID_PETSHOP = response.data.userId
@@ -39,7 +31,6 @@ const LoginEmpresa = () => {
       .catch((erro) => {
         console.log(erro)
       })
-    }
   }
 
   return (

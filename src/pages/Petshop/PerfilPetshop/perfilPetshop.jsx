@@ -21,7 +21,14 @@ const PerfilPetshop = () => {
     const [rua, setRua] = useState("");
 
     useEffect(() => {
-        api.get(`/petshops/${id}`)
+        api.get(`/petshops/${id}`, {
+            params: {
+                idPetshop: sessionStorage.ID_PETSHOP
+            },
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
@@ -64,7 +71,11 @@ const PerfilPetshop = () => {
             rua: rua
         }
 
-        api.patch(`/petshops/${id}`, petshop)
+        api.patch(`/petshops/${id}`, petshop, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
             .then((response) => {
                 console.log(response)
             }).catch((erro) => {
