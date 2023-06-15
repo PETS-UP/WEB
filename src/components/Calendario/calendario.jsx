@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../Calendario/calendario.css";
+import { useEffect } from "react";
 
 function formatDate(date) {
     const day = date.getDate();
@@ -12,6 +13,7 @@ function formatDate(date) {
 }
 
 function Calendario() {
+    const [hour, setHour] = useState();
     const [date, setDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -22,12 +24,18 @@ function Calendario() {
 
     const handleDayClick = (value) => {
         setSelectedDate(value);
+        console.log(value.toISOString())
         setShowModal(true);
     };
 
     const closeModal = () => {
         setShowModal(false);
     };
+
+    const acceptSchedule = () => {
+        date.setHours(13, 10)
+        console.log(date.toISOString())
+    }
 
     return (
         <div className="content-calendar-main">
@@ -65,7 +73,7 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Horário</label>
-                                            <input type="text" disabled/>
+                                            <input type="time" onChange={(e) => setHour(e.target.value)}/>
                                         </div>
                                     </div>
 
@@ -95,7 +103,7 @@ function Calendario() {
                         <div className="buttons-agendamento-calendario">
 
                             <button className="btn-cancelar-agendamento-calendario" onClick={closeModal}>Cancelar agendamento</button>
-                            <button className="btn-aceitar-agendamento-calendario" onClick={closeModal}>Aceitar agendamento</button>
+                            <button className="btn-aceitar-agendamento-calendario" onClick={acceptSchedule}>Aceitar agendamento</button>
 
                         </div>
                     </div>

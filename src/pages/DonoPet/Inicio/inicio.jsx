@@ -42,11 +42,9 @@ export default function Inicio() {
       longitude: longitude,
     };
 
-    api
-      .patch(
+    api.patch(
         `/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}/${latitude}/${longitude}`,
-        {},
-        {
+        {}, {
           headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
         }
       )
@@ -78,8 +76,7 @@ export default function Inicio() {
   }
 
   function getPetshopsProximos() {
-    api
-      .get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`, {
+    api.get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`, {
         headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
       })
       .then((response) => {
