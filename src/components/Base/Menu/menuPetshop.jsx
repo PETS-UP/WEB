@@ -32,7 +32,7 @@ const MenuPetshop = () => {
                 </div>
             </div>
 
-            <div className='div-menu-lateral-edit' onClick={() => navigate('/')}>
+            <div className='div-menu-lateral-edit' onClick={() => { sessionStorage.clear(), navigate('/') } }>
                 <LabelMenu img={sair} item="Sair" />
             </div>
 
