@@ -3,6 +3,7 @@ import Menu from "../../../components/Base/Menu/menuPetshop";
 import "../../stylepadrao.css";
 import React, { useState, useEffect } from "react";
 import api from "../../../api";
+import {useRef} from "react";
 
 const Servicos = () => {
   const [listaServicos, setListaServicos] = useState([]);
@@ -52,8 +53,11 @@ const Servicos = () => {
       });
   }
 
-  function abrirModalServico(){
-    modalService.style.display = "flex"
+  const ref = useRef(null);
+
+  const abrirModalServico = () => {
+    const element = document.getElementById('modalService');
+    element.style.display = "flex";
   }
 
   return (
@@ -65,10 +69,26 @@ const Servicos = () => {
         </div>
 
         <div className="selecionaveis-meus-pets">
-          <button onClick = {abrirModalServico()}>ADICIONAR SERVIÇO +</button>
+          <button onClick = {abrirModalServico}>ADICIONAR SERVIÇO +</button>
         </div>
 
-        <div className="modalService" id="modalService">asdasdsad</div>
+        <div className="modalService" id="modalService">
+          <div className="campos-modal">
+          <label htmlFor="text">Nome</label>
+                  <input type="text" placeholder="Nome do produto" />
+          </div>
+          <div className="campos-modal">
+          <label htmlFor="Number">Preço</label>
+                  <input type="Number" placeholder="Valor" />
+          </div>
+          <div className="campos-modal">
+          <label htmlFor="text">Descrição</label>
+                  <input type="text" placeholder="Descrição" />
+          </div>
+          <div className="campos-modal">
+          <button>Adicionar</button>
+          </div>
+        </div>
 
         <div className="tabela-meus-pets">
           <table className="table-container">
