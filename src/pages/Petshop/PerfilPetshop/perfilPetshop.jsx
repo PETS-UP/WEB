@@ -22,6 +22,9 @@ const PerfilPetshop = () => {
 
     useEffect(() => {
         api.get(`/petshops/${id}`, {
+            params: {
+                idPetshop: sessionStorage.ID_PETSHOP
+            },
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }

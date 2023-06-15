@@ -2,12 +2,19 @@ import api from '../../../api';
 import React from "react";
 import './styleCardPetshop.css';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
-const CardPetshop = ({imagem, nome, servicos, preco, status}) => {
+const CardPetshop = ({id, imagem, nome, servicos, preco, status}) => {
+
+    const navigate = useNavigate()
+
+    function acessPetshop(){
+        navigate(`/info-petshop-cliente/${id}`)
+    }
 
     return (
         <>
-            <div className="card-items-petshop">
+            <div className="card-items-petshop" onClick={acessPetshop}>
                 <div className="card-image-petshop"><img src={imagem} /></div>
                 <div className="card-info-petshop">
                     <div className="card-info-petshop-title">

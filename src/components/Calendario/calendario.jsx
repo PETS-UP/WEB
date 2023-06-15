@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
+import api from "../../api"
 import "react-calendar/dist/Calendar.css";
 import "../Calendario/calendario.css";
 import { useEffect } from "react";
@@ -17,6 +18,7 @@ function Calendario() {
     const [date, setDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [pedido, setPedido] = useState({});
 
     const onChange = (newDate) => {
         setDate(newDate);
@@ -24,7 +26,8 @@ function Calendario() {
 
     const handleDayClick = (value) => {
         setSelectedDate(value);
-        console.log(value.toISOString())
+        console.log(value.toISOString());
+        getInformacoesPedido(selectedDate);
         setShowModal(true);
     };
 
@@ -35,6 +38,25 @@ function Calendario() {
     const acceptSchedule = () => {
         date.setHours(13, 10)
         console.log(date.toISOString())
+    }
+
+    function getInformacoesPedido(date){
+        api
+      .get(`/report/agendamento/${id}`, {
+        params: {
+            dataHora: date
+        },
+        headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`
+        }
+    })
+      .then(({ data }) => {
+        console.log(data);
+        setPedido(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }
 
     return (
@@ -68,12 +90,12 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Cliente</label>
-                                            <input type="text" disabled/>
+                                            <input type="text" value={pedido.nomeCliente} disabled/>
                                         </div>
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Horário</label>
-                                            <input type="time" onChange={(e) => setHour(e.target.value)}/>
+                                            <input type="time" value={pedido.dataHora} onChange={(e) => setHour(e.target.value)}/>
                                         </div>
                                     </div>
 
@@ -85,12 +107,12 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Serviço</label>
-                                            <input type="text" disabled />
+                                            <input type="text" value={pedido.servico} disabled />
                                         </div>
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Data</label>
-                                            <input type="text" disabled/>
+                                            <input type="text" value={() => formatDate(pedido.dataHora)} disabled/>
                                         </div>
 
                                     </div>

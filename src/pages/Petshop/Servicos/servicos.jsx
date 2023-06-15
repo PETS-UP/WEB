@@ -52,6 +52,10 @@ const Servicos = () => {
       });
   }
 
+  function abrirModalServico(){
+    modalService.style.display = "flex"
+  }
+
   return (
     <div className="container-main-meus-pets">
       <Menu />
@@ -61,8 +65,10 @@ const Servicos = () => {
         </div>
 
         <div className="selecionaveis-meus-pets">
-          <button>ADICIONAR SERVIÇO +</button>
+          <button onClick = {abrirModalServico()}>ADICIONAR SERVIÇO +</button>
         </div>
+
+        <div className="modalService" id="modalService">asdasdsad</div>
 
         <div className="tabela-meus-pets">
           <table className="table-container">
