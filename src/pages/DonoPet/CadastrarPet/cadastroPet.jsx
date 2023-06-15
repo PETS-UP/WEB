@@ -29,6 +29,57 @@ const CadastrarPet = () => {
         setCurrentPage((prevPage) => prevPage - 1);
     };
 
+    useEffect(() => {
+        api.post("/pets/limpa-pilha", {}, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }, []);
+
+    function salvarNaPilha(objeto) {
+        api.post("/pets/adicionar-pilha", objeto, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+
+    function removerDaPilha() {
+        api.get("/pets/pop-pilha", {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+
+    function cadastrarPet() {
+        api.post("/pets", {}, {
+            params: { idCliente: sessionStorage.ID_CLIENTE },
+            headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+
     const renderPageContent = () => {
         switch (currentPage) {
             case 0:
@@ -152,7 +203,7 @@ const CadastrarPet = () => {
                         </div>
 
                         <div className='btn-navegacao-cadastro-pet'>
-                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                            <button className='anterior' onClick={() => { removerDaPilha(), handlePrevPage() }} disabled={currentPage === 0}>
                                 Anterior
                             </button>
 

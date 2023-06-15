@@ -1,4 +1,10 @@
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
+import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets";
+import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
+
 import "../MeusPets/meusPets.css";
 import api from "../../../api";
 import React, { useState } from "react";
@@ -11,7 +17,14 @@ export default function meusPets() {
 
   useEffect(() => {
     api
-      .get("/pets")
+      .get("/pets", {
+        params: {
+          idCliente: sessionStorage.ID_CLIENTE,
+        },
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then(({ data }) => {
         console.log(data);
         setListaPets(data);
@@ -25,7 +38,11 @@ export default function meusPets() {
 
   function deletarPet(id) {
     api
-      .delete("/")
+      .delete("/pets", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then(({ data }) => {
         console.log(data);
       })
@@ -74,7 +91,17 @@ export default function meusPets() {
                 </tr>
               </thead>
               <tbody>
-                <LinhaTabelaPet data={listaPets} />
+                {listaPets.map((pet) => (
+                  <React.Fragment key={pet.id}>
+                    <LinhaTabelaPets
+                      id={pet.id}
+                      nome={pet.nome}
+                      especie={pet.especie}
+                      sexo={pet.sexo}
+                      deletarPet={deletarPet}
+                    />
+                  </React.Fragment>
+                ))}
               </tbody>
             </table>
           </div>
