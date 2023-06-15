@@ -1,59 +1,87 @@
 import "../Servicos/servicos.css";
 import Menu from "../../../components/Base/Menu/menuPetshop";
-import '../../stylepadrao.css';
+import "../../stylepadrao.css";
+import React, { useState, useEffect } from "react";
+import api from "../../../api";
 
 const Servicos = () => {
+  const [listaServicos, setListaServicos] = useState([]);
 
-    return (
-        <div className="container-main-meus-pets">
-        <Menu />
-        <div className="content-meus-pets">
+  function adicionarServico() {
+    useEffect(() => {
+      api
+        .post(
+          "/servicos",
+          {},
+          {
+            params: {
+              idPetshop: sessionStorage.ID_PETSHOP,
+            },
+            headers: {
+              Authorization: `Bearer ${sessionStorage.JWT}`,
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          setListaServicos(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
+  }
 
-            <div className="titulo-meus-pets">
-                <h2>Meus Serviços</h2>
-            </div>
+  function editarServico(id) {
+    api
+      .patch(
+        "/servicos",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setListaServicos(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-            <div className="selecionaveis-meus-pets">
-                <button>ADICIONAR SERVIÇO +</button>
-            </div>
-
-            <div className="tabela-meus-pets">
-                <table className="table-container">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Valor</th>
-                            <th>Editar</th>
-                            <th>Excluir</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Banho</td>
-                            <td>R$ 15,00</td>
-                            <td>Editar</td>
-                            <td>Excluir</td>
-                        </tr>
-                        <tr>
-                            <td>Tosa</td>
-                            <td>R$ 25,00</td>
-                            <td>Data 6</td>
-                            <td>Data 6</td>
-                        </tr> <tr>
-                            <td>Banho & Tosa</td>
-                            <td>R$ 40,00</td>
-                            <td>Data 9</td>
-                            <td>Data 9</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
+  return (
+    <div className="container-main-meus-pets">
+      <Menu />
+      <div className="content-meus-pets">
+        <div className="titulo-meus-pets">
+          <h2>Meus Serviços</h2>
         </div>
 
-    </div >
-    );
-}
+        <div className="selecionaveis-meus-pets">
+          <button>ADICIONAR SERVIÇO +</button>
+        </div>
+
+        <div className="tabela-meus-pets">
+          <table className="table-container">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Servicos;
