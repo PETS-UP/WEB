@@ -34,6 +34,7 @@ export default function meusPets() {
   const navigate = useNavigate();
 
   function deletarPet(id) {
+    console.log(id);
     api
       .delete(`/pets/${id}`, {
         headers: {
@@ -41,7 +42,7 @@ export default function meusPets() {
         },
       })
       .then(({ data }) => {
-        console.log(data);
+        setListaPets(listaPets.filter((pet) => pet.id !== id));
       })
       .catch((error) => {
         console.log(error);
