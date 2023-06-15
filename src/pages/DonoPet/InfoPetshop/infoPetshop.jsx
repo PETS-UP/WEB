@@ -4,8 +4,35 @@ import React, { useEffect } from "react";
 import '../../stylepadrao.css';
 import '../InfoPetshop/styleinfopetshop.css';
 import { useState } from "react";
+import { useParams } from 'react-router-dom'
 
 export default function infoPetshop() {
+    
+    const { id } = useParams();
+
+    function agendarServico() {
+        api
+        .post(
+          "/servicos",
+          {},
+          {
+            params: {
+              idCliente: sessionStorage.ID_CLIENTE,
+            },
+            headers: {
+              Authorization: `Bearer ${sessionStorage.JWT}`,
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          setListaServicos(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
     return(
         <div className="container-main">
         <Menu/>

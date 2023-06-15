@@ -68,7 +68,7 @@ const router = createBrowserRouter([
     element: <Perfil />
   },
   {
-    path: "/info-petshop-cliente",
+    path: "/info-petshop-cliente/:id",
     element: <InfoPetshop />
   },
   {
