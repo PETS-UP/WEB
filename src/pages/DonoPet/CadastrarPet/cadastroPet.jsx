@@ -29,7 +29,7 @@ const CadastrarPet = () => {
     };
 
     useEffect(() => {
-        api.post("/pets/limpa-pilha", {
+        api.post("/pets/limpa-pilha", {}, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }
@@ -68,7 +68,7 @@ const CadastrarPet = () => {
     }
 
     function cadastrarPet() {
-        api.post("/pets", {
+        api.post("/pets", {}, {
             params: { idCliente: sessionStorage.ID_CLIENTE },
             headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
         })
@@ -202,7 +202,7 @@ const CadastrarPet = () => {
                         </div>
 
                         <div className='btn-navegacao-cadastro-pet'>
-                            <button className='anterior' onClick={handlePrevPage} disabled={currentPage === 0}>
+                            <button className='anterior' onClick={() => { removerDaPilha(), handlePrevPage() }} disabled={currentPage === 0}>
                                 Anterior
                             </button>
 

@@ -12,7 +12,11 @@ export default function Inicio() {
     getLocation();
 
     api
-      .get("/petshops")
+      .get("/petshops", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then((resposta) => {
         setPetshops(resposta.data);
       })
@@ -38,9 +42,10 @@ export default function Inicio() {
       longitude: longitude,
     };
 
-    api.patch(`/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}/${latitude}/${longitude}`,
-        {
-          headers: { "Authorization": `Bearer ${sessionStorage.JWT}` },
+    api.patch(
+        `/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}/${latitude}/${longitude}`,
+        {}, {
+          headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
         }
       )
       .then((response) => {
@@ -71,11 +76,9 @@ export default function Inicio() {
   }
 
   function getPetshopsProximos() {
-    api.get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`,
-      {
-        headers: { "Authorization": `Bearer ${sessionStorage.JWT}` },
-      }
-    )
+    api.get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`, {
+        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+      })
       .then((response) => {
         setPetshops(response.data);
       })

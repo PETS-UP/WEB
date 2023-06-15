@@ -34,7 +34,12 @@ export default function meusPets() {
   const navigate = useNavigate();
 
   function deletarPet(id) {
-    api.delete("/pets")
+    api
+      .delete("/pets", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then(({ data }) => {
         console.log(data);
       })
