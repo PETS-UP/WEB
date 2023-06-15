@@ -1,4 +1,3 @@
-
 import "../Servicos/servicos.css";
 import Menu from "../../../components/Base/Menu/menuPetshop";
 import "../../stylepadrao.css";
@@ -33,6 +32,26 @@ const Servicos = () => {
     }, []);
   }
 
+  function editarServico(id) {
+    api
+      .patch(
+        "/servicos",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setListaServicos(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div className="container-main-meus-pets">
       <Menu />
@@ -51,14 +70,12 @@ const Servicos = () => {
               <tr>
                 <th>Nome</th>
                 <th>Valor</th>
+                <th>Descrição</th>
                 <th>Editar</th>
-                <th>Excluir</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                
-              </tr>
+              <tr></tr>
             </tbody>
           </table>
         </div>

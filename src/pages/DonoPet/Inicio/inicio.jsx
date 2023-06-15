@@ -113,7 +113,7 @@ export default function Inicio() {
             />
           </div>
           <div className="filter-buttons">
-            <button onClick={getPetshopsProximos()}>Próximos de mim</button>
+            <button onClick={getPetshopsProximos}>Próximos de mim</button>
             <button>Melhores preços</button>
             <button>Melhores avaliações</button>
             <button>Meus favoritos</button>

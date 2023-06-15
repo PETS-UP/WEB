@@ -1,17 +1,17 @@
 import React from "react";
-import LIXEIRA from "../../assets/icons/LIXEIRA-ICON.png";
+import LAPIS from "../../assets/icons/LAPIS.png";
 
 function LinhaTabelaServico({ id, nome, preco, descricao }) {
   return (
     <>
       <tr>
-        <td>Banho</td>
-        <td>R$ 15,00</td>
-        <td>Editar</td>
+        <td>{nome}</td>
+        <td>{preco}</td>
+        <td>{descricao}</td>
         <td>
           <div className="content-lixeira-icon">
             <div className="lixeira-icon-meus-pets">
-              <img onClick={() => deletarPet(id)} src={LIXEIRA} alt="" />
+              <img onClick={() => editarServico(id)} src={LAPIS} alt="" />
             </div>
           </div>
         </td>

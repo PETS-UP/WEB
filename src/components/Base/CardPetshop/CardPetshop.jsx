@@ -3,13 +3,7 @@ import React from "react";
 import './styleCardPetshop.css';
 import { useState } from 'react';
 
-const CardPetshop = () => {
-
-    const [nome, setNome] = useState("");
-    const [servicos, setServicos] = useState("");
-    const [preco, setPreco] = useState("");
-    const [status, setStatus] = useState("");
-    const [imagem, setImagem] = useState("");
+const CardPetshop = ({imagem, nome, servicos, preco, status}) => {
 
     return (
         <>

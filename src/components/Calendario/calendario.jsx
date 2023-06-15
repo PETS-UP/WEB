@@ -35,7 +35,7 @@ function Calendario() {
                 <h2>Agendamentos</h2>
                 <div className='borda-cadastro-pet'></div>
             </div>
-            <div className="calendario-pets">
+            <div className="calendario-pets"> 
                 <Calendar onChange={onChange} value={date} onClickDay={handleDayClick} />
             </div>
 

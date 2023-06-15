@@ -35,7 +35,7 @@ export default function meusPets() {
 
   function deletarPet(id) {
     api
-      .delete("/pets", {
+      .delete(`/pets/${id}`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },

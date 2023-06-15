@@ -15,7 +15,7 @@ import PERFIL from '../../../assets/icons/PERFILPET-ICON.png'
 const CadastrarPet = () => {
     const [selectTypeOfPet, setSelectTypeOfPet] = useState();
     const [selectTypeOfGender, setSelectTypeOfGender] = useState();
-    const [name, setName] = useState();
+    const [name, setName] = useState("");
     const [currentPage, setCurrentPage] = useState(0);
 
     const navigate = useNavigate();
@@ -41,8 +41,10 @@ const CadastrarPet = () => {
         })
     }, []);
 
-    function salvarNaPilha(objeto) {
-        api.post("/pets/adicionar-pilha", objeto, {
+    function salvarNaPilha(texto) {
+        console.log(texto)
+
+        api.post(`/pets/adicionar-pilha/${texto}`, {}, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }
@@ -68,7 +70,7 @@ const CadastrarPet = () => {
     }
 
     function cadastrarPet() {
-        api.post("/pets", {}, {
+        api.post("/pets/cadastrar-pilha", {}, {
             params: { idCliente: sessionStorage.ID_CLIENTE },
             headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
         })
@@ -95,27 +97,27 @@ const CadastrarPet = () => {
 
                         <div className='cards-cadastro-pet'>
 
-                            <div style={{ border: selectTypeOfPet === 'Cachorro' ? '5px dashed black' : '' }}
-                                onClick={() => setSelectTypeOfPet('Cachorro')}
+                            <div style={{ border: selectTypeOfPet === "CACHORRO" ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet("CACHORRO")}
                                 className='card1-cadastro-pet'>
                                 <img src={DOG} alt="" />
                                 <p>Cachorro</p>
                             </div>
 
-                            <div className='card2-cadastro-pet' style={{ border: selectTypeOfPet === 'Gato' ? '5px dashed black' : '' }}
-                                onClick={() => setSelectTypeOfPet('Gato')}>
+                            <div className='card2-cadastro-pet' style={{ border: selectTypeOfPet === "GATO" ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet("GATO")}>
                                 <img src={CAT} alt="" />
                                 <p>Gato</p>
                             </div>
 
-                            <div className='card3-cadastro-pet' style={{ border: selectTypeOfPet === 'Coelho' ? '5px dashed black' : '' }}
-                                onClick={() => setSelectTypeOfPet('Coelho')}>
+                            <div className='card3-cadastro-pet' style={{ border: selectTypeOfPet === "COELHO" ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet("COELHO")}>
                                 <img src={BUNNY} alt="" />
                                 <p>Coelho</p>
                             </div>
 
-                            <div className='card4-cadastro-pet' style={{ border: selectTypeOfPet === 'Roedor' ? '5px dashed black' : '' }}
-                                onClick={() => setSelectTypeOfPet('Roedor')}>
+                            <div className='card4-cadastro-pet' style={{ border: selectTypeOfPet === "ROEDOR" ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfPet("ROEDOR")}>
                                 <img src={ROEDOR} alt="" />
                                 <p>Roedor</p>
                             </div>
@@ -147,15 +149,15 @@ const CadastrarPet = () => {
 
                         <div className='cards-cadastro-pet-genero'>
 
-                            <div className='card1-cadastro-pet' style={{ border: selectTypeOfGender === 'Male' ? '5px dashed black' : '' }}
-                                onClick={() => setSelectTypeOfGender('Male')}>
+                            <div className='card1-cadastro-pet' style={{ border: selectTypeOfGender === "M" ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfGender("M")}>
 
                                 <img src={MALE} alt="" />
                                 <p>Macho</p>
                             </div>
 
-                            <div className='card2-cadastro-pet' style={{ border: selectTypeOfGender === 'Female' ? '5px dashed black' : '' }}
-                                onClick={() => setSelectTypeOfGender('Female')}>
+                            <div className='card2-cadastro-pet' style={{ border: selectTypeOfGender === "F" ? '5px dashed black' : '' }}
+                                onClick={() => setSelectTypeOfGender("F")}>
                                 <img src={FEMALE} alt="" />
                                 <p>Fêmea</p>
                             </div>
@@ -192,10 +194,10 @@ const CadastrarPet = () => {
                             </div>
 
                             <label htmlFor="">Nome:</label>
-                            <input type="text" />
+                            <input onChange={(e) => setName(e.target.value)} type="text" />
 
                             <div className='btn-finalizar-cadastro-pet'>
-                                <button onClick={() => { salvarNaPilha(name),  navigate('/meus-pets') }} className='btn-finalizar-cadastro-pet'>Finalizar</button>
+                                <button onClick={() => { salvarNaPilha(name), cadastrarPet(), navigate('/meus-pets')}} className='btn-finalizar-cadastro-pet'>Finalizar</button>
                             </div>
 
 
