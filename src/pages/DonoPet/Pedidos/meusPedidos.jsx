@@ -12,6 +12,9 @@ const MeusPedidos = () => {
   useEffect(() => {
     api
       .get("/agendamentos/cliente", {
+        params: {
+            idCliente: sessionStorage.ID_CLIENTE
+        },
         headers: {
             Authorization: `Bearer ${sessionStorage.JWT}`
         }
@@ -47,13 +50,13 @@ const MeusPedidos = () => {
             </thead>
             <tbody>
               {
-                agendamentos.map((pedido, index) => (
-                  <React.Fragment>
+                agendamentos.map((agendamento) => (
+                  <React.Fragment key={agendamento.id}>
                     <LinhaTabela
-                      pet={pedido.pet}
-                      servico={pedido.servico}
-                      dataHora={pedido.dataHora}
-                      preco={pedido.preco}
+                      pet={agendamento.nomePet}
+                      servico={agendamento.servico}
+                      dataHora={agendamento.dataHora}
+                      preco={agendamento.preco}
                     />
                   </React.Fragment>
                 ))

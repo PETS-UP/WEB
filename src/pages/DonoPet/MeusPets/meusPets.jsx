@@ -34,9 +34,15 @@ export default function meusPets() {
   const navigate = useNavigate();
 
   function deletarPet(id) {
-    api.delete("/pets")
+    console.log(id);
+    api
+      .delete(`/pets/${id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then(({ data }) => {
-        console.log(data);
+        setListaPets(listaPets.filter((pet) => pet.id !== id));
       })
       .catch((error) => {
         console.log(error);

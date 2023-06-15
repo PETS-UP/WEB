@@ -11,7 +11,13 @@ function LinhaTabelaPets({ id, nome, especie, sexo, deletarPet }) {
         <td>
           <div className="content-lixeira-icon">
             <div className="lixeira-icon-meus-pets">
-              <img onClick={() => deletarPet(id)} src={LIXEIRA} alt="" />
+              <img
+                onClick={() => {
+                  deletarPet(id);
+                }}
+                src={LIXEIRA}
+                alt=""
+              />
             </div>
           </div>
         </td>
