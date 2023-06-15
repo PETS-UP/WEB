@@ -1,14 +1,21 @@
-import "./meusPedidos.css";
-import Menu from "../../../components/Base/Menu/menu";
 import { useEffect, useState } from "react";
+
 import api from "../../../api";
+import Menu from "../../../components/Base/Menu/menu";
+import LinhaTabela from "../../../components/LinhaTabela/linhaTabela"
+
+import "./meusPedidos.css";
 
 const MeusPedidos = () => {
   const [agendamentos, setAgendamentos] = useState([]);
 
   useEffect(() => {
     api
-      .get("/agendamentos/cliente")
+      .get("/agendamentos/cliente", {
+        headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`
+        }
+    })
       .then(({ data }) => {
         console.log(data);
         setAgendamentos(data);
@@ -39,7 +46,18 @@ const MeusPedidos = () => {
               </tr>
             </thead>
             <tbody>
-              <LinhaTabela data={agendamentos}/>
+              {
+                agendamentos.map((pedido, index) => (
+                  <React.Fragment>
+                    <LinhaTabela
+                      pet={pedido.pet}
+                      servico={pedido.servico}
+                      dataHora={pedido.dataHora}
+                      preco={pedido.preco}
+                    />
+                  </React.Fragment>
+                ))
+              }
             </tbody>
           </table>
         </div>
