@@ -108,9 +108,6 @@ export default function meusPets() {
               ADICIONAR PET +
             </button>
             <InputArquivo onFileUploaded={setFile} />
-            <button onClick={() => { }}>
-              ADICIONAR PET VIA TXT
-            </button>
           </div>
           <div className="tabela-meus-pets">
             <table className="table-container">
