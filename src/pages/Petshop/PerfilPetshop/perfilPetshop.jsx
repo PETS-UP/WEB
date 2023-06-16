@@ -38,7 +38,7 @@ const PerfilPetshop = () => {
             .catch((erro) => {
                 console.log(erro);
             });
-    }, [id]);
+    }, [sessionStorage.ID_PETSHOP]);
 
     const buscarCep = async () => {
         if (cep.length === 8) {

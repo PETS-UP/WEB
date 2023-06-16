@@ -1,8 +1,30 @@
-import "../Dashboard/dashboard.css";
+import React, {useState, useEffect} from "react";
+
+import api from "../../../api"
 import Menu from "../../../components/Base/Menu/menuPetshop";
+
+import "../Dashboard/dashboard.css";
 import '../../stylepadrao.css';
 
 const Dashboard = () => {
+
+    const [dadosDash, setDadosDash] = useState();
+
+    useEffect(() => {
+
+        api.get(``, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+            .then((resposta) => {
+                setDadosDash(resposta.data);
+            })
+            .catch((erro) => {
+                console.log(erro);
+            });
+
+    }, [])
 
     return (
         <div className="container-main-meus-pets">
