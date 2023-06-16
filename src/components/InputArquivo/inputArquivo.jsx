@@ -1,8 +1,9 @@
 import '../InputArquivo/inputArquivo.css'
-import React, { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineFileText } from "react-icons/ai"
 import { FiUpload } from "react-icons/fi"
+import React from 'react'
 
 export default function InputArquivo({ onFileUploaded }) {
 
