@@ -42,7 +42,7 @@ function Calendario() {
 
     function getInformacoesPedido(date){
         api
-      .get(`/report/agendamento/${id}`, {
+      .get(`/report/agendamento/${sessionStorage.ID_PETSHOP}`, {
         params: {
             dataHora: date
         },

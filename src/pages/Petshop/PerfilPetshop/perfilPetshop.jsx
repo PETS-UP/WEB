@@ -68,7 +68,7 @@ const PerfilPetshop = () => {
             rua: rua
         }
 
-        api.patch(`/petshops/${id}`, petshop, {
+        api.patch(`/petshops/${sessionStorage.ID_PETSHOP}`, petshop, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }
