@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
-import LinhaTabela from "../../../components/LinhaTabela/linhaTabela"
+import LinhaTabela from "../../../components/LinhaTabela/linhaTabela";
 
 import "./meusPedidos.css";
 
@@ -50,6 +50,7 @@ const MeusPedidos = () => {
             </thead>
             <tbody>
               {
+                agendamentos.length > 0 ?
                 agendamentos.map((agendamento) => (
                   <React.Fragment key={agendamento.id}>
                     <LinhaTabela
@@ -59,7 +60,8 @@ const MeusPedidos = () => {
                       preco={agendamento.preco}
                     />
                   </React.Fragment>
-                ))
+                )) :
+                <span>Sem agendamentos por enquanto.</span>
               }
             </tbody>
           </table>

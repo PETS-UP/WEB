@@ -44,8 +44,9 @@ export default function meusPets() {
     const pet = new FormData();
     pet.append('file', file);
 
-    api.post('/pets/upload', pet, {
+    api.post('/pets/upload', {
       params: {
+        arquivo: pet,
         idCliente: sessionStorage.ID_CLIENTE
       },
       headers: {

@@ -16,20 +16,20 @@ const LoginEmpresa = () => {
     e.preventDefault();
     const petshop = {
       email: email,
-      senha: senha
-    }
+      senha: senha,
+    };
 
-    api.post('/petshops/login', petshop)
+    api.post("/petshops/login", petshop)
       .then((response) => {
-        sessionStorage.ID_PETSHOP = response.data.userId
-        sessionStorage.JWT = response.data.token
+        sessionStorage.ID_PETSHOP = response.data.userId;
+        sessionStorage.JWT = response.data.token;
         setTimeout(() => {
-          navigate("/dashboard");
-        }, "500")
+          navigate("/perfil-petshop");
+        }, "500");
       })
       .catch((erro) => {
-        console.log(erro)
-      })
+        console.log(erro);
+      });
   }
 
   return (
@@ -47,12 +47,12 @@ const LoginEmpresa = () => {
               <div className="inputs-cliente">
                 <div className="inputs-email">
                   <label htmlFor="Email">E-mail</label>
-                  <input type="email" placeholder="usuario@exemplo.com" />
+                  <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="usuario@exemplo.com" />
                   <div className="frases-validacao" id="frase-email"></div>
                 </div>
                 <div className="inputs-password">
                   <label htmlFor="Senha">Senha</label>
-                  <input type="password" placeholder="*******" />
+                  <input onChange={(e) => setSenha(e.target.value)} type="password" placeholder="*******" />
                   <div className="frases-validacao" id="frase-senha"></div>
                 </div>
                 <button onClick={logar} className="button-cadastro">ENTRAR</button>
