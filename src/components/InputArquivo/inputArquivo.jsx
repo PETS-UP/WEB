@@ -1,4 +1,4 @@
-import './inputArquivo.css'
+import '../InputArquivo/inputArquivo.css'
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineFileText } from "react-icons/ai"
