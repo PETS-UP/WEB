@@ -10,7 +10,6 @@ const PerfilPetshop = () => {
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
-    const [dataInicio, setDataNasc] = useState("");
     const [cep, setCep] = useState("");
     const [cnpj, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
@@ -21,7 +20,7 @@ const PerfilPetshop = () => {
     const [rua, setRua] = useState("");
 
     useEffect(() => {
-        api.get(`/petshops/${id}`, {
+        api.get(`/petshops/${sessionStorage.ID_PETSHOP}`, {
             params: {
                 idPetshop: sessionStorage.ID_PETSHOP
             },
@@ -32,7 +31,6 @@ const PerfilPetshop = () => {
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
-                setDataNasc(resposta.data.dataInicio);
                 setCep(resposta.data.cep);
                 setCpf(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
@@ -58,10 +56,9 @@ const PerfilPetshop = () => {
 
     function atualizar(e) {
         e.preventDefault();
-        const cliente = {
+        const petshop = {
             nome: nome,
             email: email,
-            dataInicio: dataInicio,
             cep: cep,
             cnpj: cnpj,
             telefone: telefone,
