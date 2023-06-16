@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets"
+import InputArquivo from "../../../components/InputArquivo/inputArquivo"
 
 import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
 
@@ -12,16 +13,17 @@ import "../MeusPets/meusPets.css";
 export default function meusPets() {
 
   const [listaPets, setListaPets] = useState([]);
+  const [file, setFile] = useState();
 
   useEffect(() => {
     api.get("/pets", {
-        params: { 
-          idCliente: sessionStorage.ID_CLIENTE
-        },
-        headers: {
-          Authorization: `Bearer ${sessionStorage.JWT}`
-        }
-      })
+      params: {
+        idCliente: sessionStorage.ID_CLIENTE
+      },
+      headers: {
+        Authorization: `Bearer ${sessionStorage.JWT}`
+      }
+    })
       .then(({ data }) => {
         console.log(data);
         setListaPets(data);
@@ -34,15 +36,29 @@ export default function meusPets() {
   const navigate = useNavigate();
 
   function cadastrarPetPorTxt() {
-    api.post("/pets/upload", {
+    const pet = new FormData();
+    pet.append('file', file);
+
+    api.post('/pets/upload', pet, {
       params: {
-        
+        idCliente: sessionStorage.ID_CLIENTE
       },
       headers: {
         Authorization: `Bearer ${sessionStorage.JWT}`,
       },
     })
-
+      .then((response) => {
+        console.log(response.data);
+        location.reload();
+      }).catch((error) => {
+        console.log(error);
+        MySwal.fire({
+          title: `<h2/>Erro ao enviar arquivo<h2/>`,
+          showConfirmButton: false,
+          icon: 'error',
+          timer: 1000,
+        })
+      });
   }
 
   function deletarPet(id) {
@@ -91,7 +107,8 @@ export default function meusPets() {
             <button onClick={() => navigate("/cadastrar-pet")}>
               ADICIONAR PET +
             </button>
-            <button onClick={() => {}}>
+            <InputArquivo onFileUploaded={setFile} />
+            <button onClick={() => { }}>
               ADICIONAR PET VIA TXT
             </button>
           </div>
