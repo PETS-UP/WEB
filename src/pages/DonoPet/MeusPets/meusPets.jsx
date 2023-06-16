@@ -33,6 +33,18 @@ export default function meusPets() {
 
   const navigate = useNavigate();
 
+  function cadastrarPetPorTxt() {
+    api.post("/pets/upload", {
+      params: {
+        
+      },
+      headers: {
+        Authorization: `Bearer ${sessionStorage.JWT}`,
+      },
+    })
+
+  }
+
   function deletarPet(id) {
     console.log(id);
     api
@@ -78,6 +90,9 @@ export default function meusPets() {
             </div>
             <button onClick={() => navigate("/cadastrar-pet")}>
               ADICIONAR PET +
+            </button>
+            <button onClick={() => {}}>
+              ADICIONAR PET VIA TXT
             </button>
           </div>
           <div className="tabela-meus-pets">

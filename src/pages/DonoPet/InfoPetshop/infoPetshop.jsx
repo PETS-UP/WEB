@@ -9,13 +9,17 @@ import "../../stylepadrao.css";
 import "../InfoPetshop/styleinfopetshop.css";
 
 export default function infoPetshop() {
+
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [idPet, setIdPet] = useState();
   const [idServico, setIdServico] = useState();
-  const [listaServicos, setListaServicos] = useState([]);
+
   const [listaPets, setListaPets] = useState([]);
+  const [listaServicos, setListaServicos] = useState([]);
+
+  const [time, setTime] = useState();
   const [hour, setHour] = useState();
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
@@ -66,6 +70,7 @@ export default function infoPetshop() {
             idPetshop: id,
             idPet: idPet,
             idServico: idServico,
+            dataHora: date + "T" + time
           },
           headers: {
             Authorization: `Bearer ${sessionStorage.JWT}`,
@@ -94,7 +99,7 @@ export default function infoPetshop() {
           <div className="info-petshop-card-servicos">
             {listaPets.length > 0 ? (
               listaPets.map((pet) => (
-                <button onClick={() => setIdPet(pet.id)}>{pet.nome}</button>
+                <button key={pet.id} onClick={() => setIdPet(pet.id)}>{pet.nome}</button>
               ))
             ) : (
               <p>
@@ -110,7 +115,7 @@ export default function infoPetshop() {
           <div className="info-petshop-card-servicos">
             {listaServicos.length > 0 ? (
               listaServicos.map((servico) => (
-                <button onClick={() => setIdServico(servico.id)}>
+                <button key={servico.id} onClick={() => setIdServico(servico.id)}>
                   {servico.nome}
                 </button>
               ))
@@ -126,6 +131,16 @@ export default function infoPetshop() {
             <Calendar
               value={date}
               onClickDay={handleDayClick}
+            />
+            <input
+              type="date" 
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
             />
           </div>
         </div>
