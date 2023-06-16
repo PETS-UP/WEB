@@ -178,7 +178,7 @@
     font-size: 1.5rem;
 }
 
-.div-pet-empty div{
+.img-doggo-meus-pets{
     width: 100px;
     height: 100px;
     padding: 10px;
@@ -203,4 +203,13 @@
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.botoes-cadastro-importacao-meus-pets{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-evenly;
 }

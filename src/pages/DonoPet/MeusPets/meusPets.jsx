@@ -139,14 +139,16 @@ export default function meusPets() {
         </div>
       ) : (
         <div className="div-pet-empty">
-          <div>
+          <div className="img-doggo-meus-pets">
             <img src={DOGGO} alt="" />
           </div>
           <span>Parece que você ainda não cadastrou nenhum pet :c</span>
-          <Link to="/cadastrar-pet">
-            <button>Adicionar Pet +</button>
-          </Link>
-          <InputArquivo onFileUploaded={setFile} />
+          <div className="botoes-cadastro-importacao-meus-pets">
+            <Link to="/cadastrar-pet">
+              <button>Adicionar Pet +</button>
+            </Link>
+            <InputArquivo onFileUploaded={setFile} />
+          </div>
         </div>
       )}
     </div>
