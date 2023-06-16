@@ -30,7 +30,7 @@ export default function InputArquivo({ onFileUploaded }) {
                     :
                     <p>
                         <FiUpload size={30} />
-                        Arquivo da diarista
+                        Adicionar pet por txt
                     </p>
             }
         </div>
