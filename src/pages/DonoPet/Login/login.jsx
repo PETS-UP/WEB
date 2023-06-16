@@ -10,7 +10,6 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  var autenticado = false;
 
   function logar(e) {
     e.preventDefault();
@@ -19,8 +18,7 @@ const Login = () => {
       senha: senha,
     };
 
-    api
-      .post("/clientes/login", cliente)
+    api.post("/clientes/login", cliente)
       .then((response) => {
         sessionStorage.ID_CLIENTE = response.data.clienteId;
         sessionStorage.JWT = response.data.token;

@@ -24,7 +24,7 @@ const Dashboard = () => {
             </div>
             <div className="div-dados-dashboard">
                 <div className="grafico-dashboard">
-                    grafico um
+                        
                 </div>
                 <div className="metricas-dashboard">
                 <p className="title-metrica">Menor movimento</p>
@@ -33,7 +33,7 @@ const Dashboard = () => {
             </div>
             <div className="div-dados-dashboard">
                 <div className="grafico-dashboard-2">
-                    grafico dois
+                
                 </div>
             </div>
         </div>
