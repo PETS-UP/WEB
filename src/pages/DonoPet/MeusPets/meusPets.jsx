@@ -14,6 +14,7 @@ export default function meusPets() {
 
   const [listaPets, setListaPets] = useState([]);
   const [file, setFile] = useState();
+  const [IsButtonDisabled, setIsButtonDisabled] = useState(true);
 
   useEffect(() => {
     api.get("/pets", {
@@ -35,12 +36,17 @@ export default function meusPets() {
 
   const navigate = useNavigate();
 
-  function cadastrarPetPorTxt() {
+  const cadastrarPetPorTxt = useCallback(() => {
+    if (!file) {
+      console.log("Nenhum arquivo selecionado")
+    }
+
     const pet = new FormData();
     pet.append('file', file);
 
-    api.post('/pets/upload', pet, {
+    api.post('/pets/upload', {
       params: {
+        arquivo: pet,
         idCliente: sessionStorage.ID_CLIENTE
       },
       headers: {
@@ -59,7 +65,12 @@ export default function meusPets() {
           timer: 1000,
         })
       });
-  }
+  }, [file]);
+
+  useEffect(() => {
+    setIsButtonDisabled(!file);
+  },
+    [file]);
 
   function deletarPet(id) {
     console.log(id);
@@ -107,7 +118,13 @@ export default function meusPets() {
             <button onClick={() => navigate("/cadastrar-pet")}>
               ADICIONAR PET +
             </button>
-            <InputArquivo onFileUploaded={setFile} />
+            <div className="content-enviar-arquivo-meus-pets">
+              <InputArquivo onFileUploaded={setFile} />
+              <button
+                className="btn-enviar-arquivo"
+                onClick={cadastrarPetPorTxt}
+                disabled={IsButtonDisabled}>Enviar</button>
+            </div>
           </div>
           <div className="tabela-meus-pets">
             <table className="table-container">
@@ -139,14 +156,21 @@ export default function meusPets() {
         </div>
       ) : (
         <div className="div-pet-empty">
-          <div>
+          <div className="img-doggo-meus-pets">
             <img src={DOGGO} alt="" />
           </div>
           <span>Parece que você ainda não cadastrou nenhum pet :c</span>
-          <Link to="/cadastrar-pet">
-            <button>Adicionar Pet +</button>
-          </Link>
-          <InputArquivo onFileUploaded={setFile} />
+          <div className="botoes-cadastro-importacao-meus-pets">
+            <Link to="/cadastrar-pet">
+              <button>Adicionar Pet +</button>
+            </Link>
+            <div className="content-enviar-arquivo-meus-pets">
+              <InputArquivo onFileUploaded={setFile} />
+              <button className="btn-enviar-arquivo"
+                onClick={cadastrarPetPorTxt}
+                disabled={IsButtonDisabled}>Enviar</button>
+            </div>
+          </div>
         </div>
       )}
     </div>

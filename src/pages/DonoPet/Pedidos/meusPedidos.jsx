@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
-import LinhaTabela from "../../../components/LinhaTabela/linhaTabela"
+import LinhaTabela from "../../../components/LinhaTabela/linhaTabela";
 
 import "./meusPedidos.css";
 

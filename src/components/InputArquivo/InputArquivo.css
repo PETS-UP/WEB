@@ -1,16 +1,18 @@
-div{
-    width: 100%;
-    height: 20vh;
+.div-input-arquivo {
+    width: 250px;
+    height: 50px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px dashed black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-p{
+p {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     row-gap: 10px;
@@ -19,4 +21,7 @@ p{
     flex-wrap: wrap;
     width: 100%;
     text-align: center;
+    margin: 0%;
+    justify-content: space-evenly;
+    cursor: pointer;
 }

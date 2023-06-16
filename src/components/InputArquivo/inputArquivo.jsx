@@ -1,3 +1,4 @@
+import '../InputArquivo/inputArquivo.css'
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineFileText } from "react-icons/ai"
@@ -18,7 +19,7 @@ export default function InputArquivo({ onFileUploaded }) {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     return (
-        <div {...getRootProps()}>
+        <div className='div-input-arquivo' {...getRootProps()}>
             <input {...getInputProps()} />
             {
                 file

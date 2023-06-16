@@ -23,7 +23,7 @@ const MenuPetshop = () => {
                     <LabelMenu img={perfil} item="Meu Petshop" />
                 </div>
 
-                <div className='div-menu-lateral-edit' onClick={() => navigate('/meus-pets')}>
+                <div className='div-menu-lateral-edit' onClick={() => navigate('/dashboard')}>
                     <LabelMenu img={gerenciamento} item="Gerenciamento" />
                 </div>
 
