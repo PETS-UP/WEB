@@ -146,6 +146,7 @@ export default function meusPets() {
           <Link to="/cadastrar-pet">
             <button>Adicionar Pet +</button>
           </Link>
+          <InputArquivo onFileUploaded={setFile} />
         </div>
       )}
     </div>
