@@ -11,11 +11,11 @@ const MeusAgendamentos = () => {
                 Authorization: `Bearer ${sessionStorage.JWT}`,
             },
         })
-        .then((response) => {
-            console.log(response)
-        }).catch((erro) => {
-            console.log(erro)
-        })
+            .then((response) => {
+                console.log(response)
+            }).catch((erro) => {
+                console.log(erro)
+            })
     }
 
     function downloadCsv() {
@@ -24,20 +24,18 @@ const MeusAgendamentos = () => {
                 Authorization: `Bearer ${sessionStorage.JWT}`,
             },
         })
-        .then((response) => {
-            console.log(response)
-        }).catch((erro) => {
-            console.log(erro)
-        })
+            .then((response) => {
+                console.log(response)
+            }).catch((erro) => {
+                console.log(erro)
+            })
     }
 
     return (
         <div className="content-main-meus-pedidos">
             <MenuPetshop />
             <Calendario />
-            <button onClick={() => downloadTxt()} id='btn-txt'>Baixar TXT</button>
-            <button onClick={() => downloadCsv()} id='btn-csv'>Baixar CSV</button>
-        </div>
+        </div >
 
     );
 }

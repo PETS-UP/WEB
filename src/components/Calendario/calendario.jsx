@@ -40,7 +40,7 @@ function Calendario() {
         console.log(date.toISOString())
     }
 
-    function getInformacoesPedido(date){
+    function getInformacoesPedido(date) {
         api
       .get(`/report/agendamento/${sessionStorage.ID_PETSHOP}`, {
         params: {
@@ -65,13 +65,18 @@ function Calendario() {
                 <h2>Agendamentos</h2>
                 <div className='borda-cadastro-pet'></div>
             </div>
-            <div className="calendario-pets"> 
+            <div className="calendario-pets">
                 <Calendar onChange={onChange} value={date} onClickDay={handleDayClick} />
+            </div>
+
+            <div className="btn-importacao-meus-agendamentos">
+                <button onClick={() => downloadCsv()} id='btn-csv'>Baixar CSV</button>
+                <button onClick={() => downloadTxt()} id='btn-txt'>Baixar TXT</button>
             </div>
 
             {showModal && (
                 <div className="modal-overlay">
-                    
+
                     <div className="modal">
 
                         <div className="content-fechar-modal-calendario">
@@ -90,12 +95,12 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Cliente</label>
-                                            <input type="text" value={pedido.nomeCliente} disabled/>
+                                            <input type="text" value={pedido.nomeCliente} disabled />
                                         </div>
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Horário</label>
-                                            <input type="time" value={pedido.dataHora} onChange={(e) => setHour(e.target.value)}/>
+                                            <input type="time" value={pedido.dataHora} onChange={(e) => setHour(e.target.value)} />
                                         </div>
                                     </div>
 
@@ -112,7 +117,7 @@ function Calendario() {
 
                                         <div className="ajuste-espacamento-calendario">
                                             <label htmlFor="">Data</label>
-                                            <input type="text" value={() => formatDate(pedido.dataHora)} disabled/>
+                                            <input type="text" value={() => formatDate(pedido.dataHora)} disabled />
                                         </div>
 
                                     </div>
