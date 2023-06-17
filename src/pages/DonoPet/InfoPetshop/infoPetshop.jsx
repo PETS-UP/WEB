@@ -7,6 +7,8 @@ import Menu from "../../../components/Base/Menu/menu";
 
 import "../../stylepadrao.css";
 import "../InfoPetshop/styleinfopetshop.css";
+import CardPetshopPerfil from "../../../components/Base/CardPetshop/cardPetshopPerfil";
+import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
 
 export default function infoPetshop() {
 
@@ -18,11 +20,27 @@ export default function infoPetshop() {
 
   const [listaPets, setListaPets] = useState([]);
   const [listaServicos, setListaServicos] = useState([]);
+  const [petshop, usePetshop] = useState({});
 
   const [time, setTime] = useState();
   const [hour, setHour] = useState();
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
+
+  useEffect(() => {
+    api
+      .get(`/petshops/${id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((resposta) => {
+        setPetshop(resposta.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  }, []);
 
   useEffect(() => {
     api
@@ -41,6 +59,7 @@ export default function infoPetshop() {
       .catch((error) => {
         console.log(error);
       });
+      
     api
       .get("/pets", {
         params: {
@@ -94,20 +113,14 @@ export default function infoPetshop() {
     <div className="container-main">
       <Menu />
       <div className="content">
-        <div className="info-petshop-servicos">
-          <p>Selecione o Pet</p>
-          <div className="info-petshop-card-servicos">
-            {listaPets.length > 0 ? (
-              listaPets.map((pet) => (
-                <button key={pet.id} onClick={() => setIdPet(pet.id)}>{pet.nome}</button>
-              ))
-            ) : (
-              <p>
-                Você ainda não possui pets adicione pets clicando
-                <span onClick={() => navigate(`/meus-pets`)}> aqui</span>
-              </p>
-            )}
-          </div>
+        <div className="card-petshop-info-petshop">
+          <CardPetshopPerfil
+            id={petshop.id}
+            nome={petshop.nome}
+            servicos={listaServicos}
+            status={"Aberto agora"}
+            imagem={imgPetshop}
+          />
         </div>
 
         <div className="info-petshop-servicos">
@@ -121,6 +134,22 @@ export default function infoPetshop() {
               ))
             ) : (
               <p>O petshop selecionado não possui serviços</p>
+            )}
+          </div>
+        </div>
+
+        <div className="info-petshop-servicos">
+          <p>Selecione o Pet</p>
+          <div className="info-petshop-card-servicos">
+            {listaPets.length > 0 ? (
+              listaPets.map((pet) => (
+                <button key={pet.id} onClick={() => setIdPet(pet.id)}>{pet.nome}</button>
+              ))
+            ) : (
+              <p>
+                Você ainda não possui pets adicione pets clicando
+                <span onClick={() => navigate(`/meus-pets`)}> aqui</span>
+              </p>
             )}
           </div>
         </div>

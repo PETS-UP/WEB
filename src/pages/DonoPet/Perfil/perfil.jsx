@@ -70,11 +70,11 @@ export default function Inicio() {
         }
 
         api.patch(`/clientes/${id}`, cliente,
-        {
-            headers: {
-                Authorization: `Bearer ${sessionStorage.JWT}`
-            }
-        })
+            {
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.JWT}`
+                }
+            })
             .then((response) => {
                 console.log(response)
             }).catch((erro) => {
@@ -119,6 +119,10 @@ export default function Inicio() {
                                 <label htmlFor="Nome">Telefone</label>
                                 <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
                             </div>
+                        </div>
+
+                        <div className="btn-atualizar-perfil-petshop">
+                            <button onClick={atualizar}>Atualizar informações</button>
                         </div>
                     </div>
 

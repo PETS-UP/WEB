@@ -191,3 +191,10 @@ body {
    font-family: 'Signika', sans-serif;
    cursor: pointer;
 }
+
+.card-petshop-info-petshop {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

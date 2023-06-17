@@ -46,9 +46,13 @@ const Servicos = () => {
   }, []);
 
   return (
+
     <div className="container-main-meus-pets">
+
       <Menu />
+
       <div className="content-meus-pets">
+
         <div className="titulo-meus-pets">
           <h2>Meus Serviços</h2>
         </div>
@@ -67,6 +71,7 @@ const Servicos = () => {
           }}
         >
           <table className="table-container">
+
             <thead>
               <tr>
                 <th>Nome</th>
@@ -75,6 +80,7 @@ const Servicos = () => {
                 <th>Editar</th>
               </tr>
             </thead>
+
             <tbody>
               {listaServicos.length > 0 &&
                 listaServicos.map((dados, index) => (
@@ -88,7 +94,9 @@ const Servicos = () => {
                   />
                 ))}
             </tbody>
+
           </table>
+
         </div>
       </div>
       <ModalServico show={show} handleClose={handleClose} isEdit={isEdit} dados={dadosEdit}/>
