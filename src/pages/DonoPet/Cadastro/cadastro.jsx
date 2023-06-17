@@ -28,7 +28,12 @@ const Cadastro = () => {
     api.post('/clientes', cliente)
     .then((response) => {
       console.log(response);
-      alert('Cadastro realizado com sucesso!');
+      MySwal.fire({
+        title: `<h2/>Cadastro realizado com sucesso!<h2/>`,
+        showConfirmButton: false,
+        icon: "success",
+        timer: 1000,
+      });
       setTimeout(() => {
         navigate("/login-cliente");
     }, "1000")
