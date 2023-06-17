@@ -8,18 +8,24 @@
     align-items: center;
 }
 
-.container-main-perfil-petshop {
-    width: 84%;
-    height: 95vh;
+.content-card-perfil-petshop {
+    width: 85%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.perfil-content-petshop {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 95%;
+    height: 100%;
 }
 
 .items-perfil-petshop {
     width: 100%;
-    height: 98%;
+    height: 95%;
     box-shadow: 0px 3px 10px 0px rgb(138, 138, 138);
     border-radius: 3px;
     border: 1px solid rgb(167, 167, 167);
@@ -38,16 +44,22 @@
     flex-direction: row;
 }
 
+.img-user-perfil-petshop {
+    width: 22%;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+}
+
 .img-user-perfil-petshop img {
     width: 100%;
     height: 100%;
-    border-radius: 60%;
+    border-radius: 0%;
 }
 
 .text-user-perfil-petshop {
     width: 65%;
 }
-
 
 .text-user-perfil-petshop p {
     font-size: 50px;
@@ -62,6 +74,22 @@
     justify-content: space-evenly;
 }
 
+.img-user-perfil-petshop img {
+    width: 100%;
+    height: 40vh;
+    border-radius: 60%;
+}
+
+.text-user-perfil-petshop {
+    width: 65%;
+}
+
+
+.text-user-perfil-petshop p {
+    font-size: 50px;
+    margin-left: 3%;
+}
+
 .inputs-user-perfil-petshop {
     width: 45%;
     height: 100%;
@@ -71,31 +99,33 @@
     justify-content: center;
 }
 
-.inputs-user-perfil-petshop input{
+.inputs-user-perfil-petshop input {
     outline: none;
     border: 1px solid rgb(175, 175, 175);
     background-color: rgb(204, 204, 204);
     width: 80%;
 }
 
-.inputs-user-perfil-petshop input::placeholder{
+.inputs-user-perfil-petshop input::placeholder {
     color: black;
 }
 
-.inputs-user-perfil-petshop label{
+.inputs-user-perfil-petshop label {
     align-self: flex-start;
     margin-left: 10%;
     margin-top: 3%;
 }
 
-.btn-atualizar-perfil-petshop{
+
+.btn-atualizar-perfil-petshop {
     width: 100%;
     height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.btn-atualizar-perfil-petshop button{
+
+.btn-atualizar-perfil-petshop button {
     height: 5vh;
     cursor: pointer;
     font-family: 'Signika', sans-serif;

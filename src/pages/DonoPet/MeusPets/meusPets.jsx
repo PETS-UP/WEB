@@ -3,28 +3,28 @@ import { Link, useNavigate } from "react-router-dom";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
-import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets"
-import InputArquivo from "../../../components/InputArquivo/inputArquivo"
+import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets";
+import InputArquivo from "../../../components/InputArquivo/inputArquivo";
 
 import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
 
 import "../MeusPets/meusPets.css";
 
 export default function meusPets() {
-
   const [listaPets, setListaPets] = useState([]);
   const [file, setFile] = useState();
   const [IsButtonDisabled, setIsButtonDisabled] = useState(true);
 
-  useEffect(() => {
-    api.get("/pets", {
-      params: {
-        idCliente: sessionStorage.ID_CLIENTE
-      },
-      headers: {
-        Authorization: `Bearer ${sessionStorage.JWT}`
-      }
-    })
+  const fetchMyPets = () => {
+    api
+      .get("/pets", {
+        params: {
+          idCliente: sessionStorage.ID_CLIENTE,
+        },
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then(({ data }) => {
         console.log(data);
         setListaPets(data);
@@ -32,45 +32,52 @@ export default function meusPets() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    fetchMyPets();
   }, []);
+
+
 
   const navigate = useNavigate();
 
   const cadastrarPetPorTxt = useCallback(() => {
     if (!file) {
-      console.log("Nenhum arquivo selecionado")
+      console.log("Nenhum arquivo selecionado");
     }
 
     const pet = new FormData();
-    pet.append('file', file);
+    pet.append("file", file);
 
-    api.post('/pets/upload', {
-      params: {
-        arquivo: pet,
-        idCliente: sessionStorage.ID_CLIENTE
-      },
-      headers: {
-        Authorization: `Bearer ${sessionStorage.JWT}`,
-      },
-    })
+    api
+      .post("/pets/upload", {
+        params: {
+          arquivo: pet,
+          idCliente: sessionStorage.ID_CLIENTE,
+        },
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
         location.reload();
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
         MySwal.fire({
           title: `<h2/>Erro ao enviar arquivo<h2/>`,
           showConfirmButton: false,
-          icon: 'error',
+          icon: "error",
           timer: 1000,
-        })
+        });
       });
   }, [file]);
 
   useEffect(() => {
     setIsButtonDisabled(!file);
-  },
-    [file]);
+  }, [file]);
 
   function deletarPet(id) {
     console.log(id);
@@ -115,17 +122,29 @@ export default function meusPets() {
                 />
               </button>
             </div>
-            <button onClick={() => navigate("/cadastrar-pet")}>
-              ADICIONAR PET +
-            </button>
-            <div className="content-enviar-arquivo-meus-pets">
+
+          </div>
+
+          <div className="content-enviar-arquivo-meus-pets-cheio">
+
+            <div className="btn-adc-pet">
+              <button onClick={() => navigate("/cadastrar-pet")}>
+                ADICIONAR PET +
+              </button>
+            </div>
+
+            <div className="btn-import-meus-pets-cheio">
               <InputArquivo onFileUploaded={setFile} />
               <button
                 className="btn-enviar-arquivo"
                 onClick={cadastrarPetPorTxt}
-                disabled={IsButtonDisabled}>Enviar</button>
+                disabled={IsButtonDisabled}
+              >
+                Enviar
+              </button>
             </div>
           </div>
+
           <div className="tabela-meus-pets">
             <table className="table-container">
               <thead>
@@ -137,19 +156,17 @@ export default function meusPets() {
                 </tr>
               </thead>
               <tbody>
-                {
-                  listaPets.map((pet) => (
-                    <React.Fragment key={pet.id}>
-                      <LinhaTabelaPets
-                        id={pet.id}
-                        nome={pet.nome}
-                        especie={pet.especie}
-                        sexo={pet.sexo}
-                        deletarPet={deletarPet}
-                      />
-                    </React.Fragment>
-                  ))
-                }
+                {listaPets.map((pet) => (
+                  <React.Fragment key={pet.id}>
+                    <LinhaTabelaPets
+                      id={pet.id}
+                      nome={pet.nome}
+                      especie={pet.especie}
+                      sexo={pet.sexo}
+                      deletarPet={deletarPet}
+                    />
+                  </React.Fragment>
+                ))}
               </tbody>
             </table>
           </div>
@@ -166,13 +183,18 @@ export default function meusPets() {
             </Link>
             <div className="content-enviar-arquivo-meus-pets">
               <InputArquivo onFileUploaded={setFile} />
-              <button className="btn-enviar-arquivo"
+              <button
+                className="btn-enviar-arquivo"
                 onClick={cadastrarPetPorTxt}
-                disabled={IsButtonDisabled}>Enviar</button>
+                disabled={IsButtonDisabled}
+              >
+                Enviar
+              </button>
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }

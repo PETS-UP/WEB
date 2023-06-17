@@ -132,16 +132,27 @@ export default function infoPetshop() {
               value={date}
               onClickDay={handleDayClick}
             />
-            <input
+            {/* <input
               type="date" 
               value={date}
               onChange={(e) => setDate(e.target.value)}
-            />
-            <input
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-            />
+            /> */}
+          </div>
+
+
+          <div className="div-horario-info-petshop">
+            <p>Insira o horário</p>
+            <div className="info-petshop-card-servicos-horario">
+              <input
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="btn-finalizar-servico">
+            <button onClick={agendarServico}>Finalizar pedido</button>
           </div>
         </div>
       </div>

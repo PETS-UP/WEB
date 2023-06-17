@@ -42,21 +42,21 @@ function Calendario() {
 
     function getInformacoesPedido(date) {
         api
-      .get(`/report/agendamento/${sessionStorage.ID_PETSHOP}`, {
-        params: {
-            dataHora: date
-        },
-        headers: {
-            Authorization: `Bearer ${sessionStorage.JWT}`
-        }
-    })
-      .then(({ data }) => {
-        console.log(data);
-        setPedido(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+            .get(`/report/agendamento/${sessionStorage.ID_PETSHOP}`, {
+                params: {
+                    dataHora: date
+                },
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.JWT}`
+                }
+            })
+            .then(({ data }) => {
+                console.log(data);
+                setPedido(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     return (
