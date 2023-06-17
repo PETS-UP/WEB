@@ -10,9 +10,8 @@ const Dashboard = () => {
 
     const [dadosDash, setDadosDash] = useState();
 
-    useEffect(() => {
-
-        api.get(``, {
+    const handleDashboard = async () => {
+        api.get(`/dashboard/ultima-semana`, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }
@@ -24,7 +23,17 @@ const Dashboard = () => {
                 console.log(erro);
             });
 
+    }
+
+
+    useEffect(() => {
+        handleDashboard();
     }, [])
+
+
+    useEffect(() => {
+        console.log(dadosDash);
+    }, [dadosDash])
 
     return (
         <div className="container-main-meus-pets">
@@ -46,7 +55,7 @@ const Dashboard = () => {
             </div>
             <div className="div-dados-dashboard">
                 <div className="grafico-dashboard">
-                        
+                    
                 </div>
                 <div className="metricas-dashboard">
                 <p className="title-metrica">Menor movimento</p>
