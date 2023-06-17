@@ -21,6 +21,7 @@ import PerfilPetshop from "./pages/Petshop/PerfilPetshop/perfilPetshop";
 import ServicosPetshop from "./pages/Petshop/Servicos/servicos";
 import MeusPedidos from "./pages/DonoPet/Pedidos/meusPedidos";
 import DashboardPetshop from "./pages/Petshop/Dashboard/dashboard";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {

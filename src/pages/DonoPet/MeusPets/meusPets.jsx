@@ -38,8 +38,6 @@ export default function meusPets() {
     fetchMyPets();
   }, []);
 
-
-
   const navigate = useNavigate();
 
   const cadastrarPetPorTxt = useCallback(() => {
@@ -122,18 +120,10 @@ export default function meusPets() {
                 />
               </button>
             </div>
-
-          </div>
-
-          <div className="content-enviar-arquivo-meus-pets-cheio">
-
-            <div className="btn-adc-pet">
-              <button onClick={() => navigate("/cadastrar-pet")}>
-                ADICIONAR PET +
-              </button>
-            </div>
-
-            <div className="btn-import-meus-pets-cheio">
+            <button onClick={() => navigate("/cadastrar-pet")}>
+              ADICIONAR PET +
+            </button>
+            <div className="content-enviar-arquivo-meus-pets">
               <InputArquivo onFileUploaded={setFile} />
               <button
                 className="btn-enviar-arquivo"
@@ -144,7 +134,6 @@ export default function meusPets() {
               </button>
             </div>
           </div>
-
           <div className="tabela-meus-pets">
             <table className="table-container">
               <thead>
@@ -193,8 +182,7 @@ export default function meusPets() {
             </div>
           </div>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }
