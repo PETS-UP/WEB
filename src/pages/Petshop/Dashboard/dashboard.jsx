@@ -14,6 +14,7 @@ import {
 import { Bar } from "react-chartjs-2";
 import "../Dashboard/dashboard.css";
 import "../../stylepadrao.css";
+import { getMonth } from "date-fns";
 
 ChartJS.register(
   CategoryScale,
@@ -28,6 +29,8 @@ const Dashboard = () => {
   const [dadosDash, setDadosDash] = useState([]);
   const [diaMovimentado, setDiaMovimentado] = useState();
   const [diaNaoMovimentado, setDiaNaoMovimentado] = useState();
+  const [date, setDate] = useState(new Date());
+  let contador = 6;
 
   const handleDashboard = async () => {
     api
@@ -91,15 +94,7 @@ const Dashboard = () => {
     handleMenorMovimento();
   }, [diaNaoMovimentado]);
 
-  const labels = [
-    "domingo",
-    "segunda",
-    "terça",
-    "quarta",
-    "quinta",
-    "sexta",
-    "sábado",
-  ];
+  const labels = [];
 
   const chartData = {
     labels,
@@ -132,6 +127,17 @@ const Dashboard = () => {
       },
     },
   };
+
+  let aux = 0;
+  dadosDash.map(() => {
+    labels[aux++] =
+      date.getDate() -
+      contador-- +
+      "/" +
+      date.getMonth() +
+      "/" +
+      date.getFullYear();
+  });
 
   return (
     <div className="container-main-meus-pets">
