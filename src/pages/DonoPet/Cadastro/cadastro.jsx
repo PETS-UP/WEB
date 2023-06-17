@@ -7,6 +7,7 @@ import { redirect, useNavigate } from 'react-router-dom';
 import '../../Global/styleTooltip.css';
 import '../Cadastro/styleCadastro.css';
 import { Tooltip } from 'react-tooltip';
+import { ToastComponent } from '../../../components/Toast/Toast';
 
 const Cadastro = () => {
 
@@ -28,12 +29,7 @@ const Cadastro = () => {
     api.post('/clientes', cliente)
     .then((response) => {
       console.log(response);
-      MySwal.fire({
-        title: `<h2/>Cadastro realizado com sucesso!<h2/>`,
-        showConfirmButton: false,
-        icon: "success",
-        timer: 1000,
-      });
+      ToastComponent("Cadastro realizado com sucesso!", "", true)
       setTimeout(() => {
         navigate("/login-cliente");
     }, "1000")

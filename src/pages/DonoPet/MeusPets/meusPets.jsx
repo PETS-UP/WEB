@@ -5,6 +5,7 @@ import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets";
 import InputArquivo from "../../../components/InputArquivo/inputArquivo";
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
 
@@ -64,12 +65,7 @@ export default function meusPets() {
       })
       .catch((error) => {
         console.log(error);
-        MySwal.fire({
-          title: `<h2/>Erro ao enviar arquivo<h2/>`,
-          showConfirmButton: false,
-          icon: "error",
-          timer: 1000,
-        });
+        ToastComponent("Erro ao enviar arquivo", "", false);
       });
   }, [file]);
 
