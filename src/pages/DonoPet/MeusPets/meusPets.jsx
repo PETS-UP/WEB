@@ -5,6 +5,7 @@ import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import LinhaTabelaPets from "../../../components/LinhaTabela/linhaTabelaPets";
 import InputArquivo from "../../../components/InputArquivo/inputArquivo";
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
 
@@ -38,8 +39,6 @@ export default function meusPets() {
     fetchMyPets();
   }, []);
 
-
-
   const navigate = useNavigate();
 
   const cadastrarPetPorTxt = useCallback(() => {
@@ -66,12 +65,7 @@ export default function meusPets() {
       })
       .catch((error) => {
         console.log(error);
-        MySwal.fire({
-          title: `<h2/>Erro ao enviar arquivo<h2/>`,
-          showConfirmButton: false,
-          icon: "error",
-          timer: 1000,
-        });
+        ToastComponent("Erro ao enviar arquivo", "", false);
       });
   }, [file]);
 
@@ -122,18 +116,10 @@ export default function meusPets() {
                 />
               </button>
             </div>
-
-          </div>
-
-          <div className="content-enviar-arquivo-meus-pets-cheio">
-
-            <div className="btn-adc-pet">
-              <button onClick={() => navigate("/cadastrar-pet")}>
-                ADICIONAR PET +
-              </button>
-            </div>
-
-            <div className="btn-import-meus-pets-cheio">
+            <button onClick={() => navigate("/cadastrar-pet")}>
+              ADICIONAR PET +
+            </button>
+            <div className="content-enviar-arquivo-meus-pets">
               <InputArquivo onFileUploaded={setFile} />
               <button
                 className="btn-enviar-arquivo"
@@ -144,7 +130,6 @@ export default function meusPets() {
               </button>
             </div>
           </div>
-
           <div className="tabela-meus-pets">
             <table className="table-container">
               <thead>
@@ -193,8 +178,7 @@ export default function meusPets() {
             </div>
           </div>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }

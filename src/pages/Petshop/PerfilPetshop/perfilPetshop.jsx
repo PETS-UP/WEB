@@ -17,13 +17,11 @@ const PerfilPetshop = () => {
     const [cidade, setCidade] = useState("");
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
+    const [numero, setNumero] = useState("");
 
     useEffect(() => {
         api
             .get(`/petshops/${sessionStorage.ID_PETSHOP}`, {
-                params: {
-                    idPetshop: sessionStorage.ID_PETSHOP,
-                },
                 headers: {
                     Authorization: `Bearer ${sessionStorage.JWT}`,
                 },
@@ -31,6 +29,7 @@ const PerfilPetshop = () => {
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
+                setNumero(resposta.data.numero);
                 setCep(resposta.data.cep);
                 setCpf(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
@@ -38,7 +37,7 @@ const PerfilPetshop = () => {
             .catch((erro) => {
                 console.log(erro);
             });
-    }, [sessionStorage.ID_PETSHOP]);
+    }, []);
 
     const buscarCep = async () => {
         if (cep.length === 8) {
@@ -66,6 +65,7 @@ const PerfilPetshop = () => {
             cidade: cidade,
             bairro: bairro,
             rua: rua,
+            numero: numero,
         };
         api
             .patch(`/petshops/${sessionStorage.ID_PETSHOP}`, petshop, {
@@ -110,7 +110,7 @@ const PerfilPetshop = () => {
                                 <label htmlFor="Nome">E-mail</label>
                                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
                                 <label htmlFor="Nome">N° de endereço</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="email" />
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
