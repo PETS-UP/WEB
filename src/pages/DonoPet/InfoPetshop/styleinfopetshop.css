@@ -1,67 +1,69 @@
 body {
-  color: black;
+   color: black;
 }
 
 .header-content-info-petshop {
-  background-color: #f8f8f8;
-  width: 100%;
-  height: 350px;
-  box-shadow: 0px 3px 15px 0px rgb(187, 187, 187);
+   background-color: #f8f8f8;
+   width: 100%;
+   height: 350px;
+   box-shadow: 0px 3px 15px 0px rgb(187, 187, 187);
 }
 
 .info-petshop-servicos {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
 }
 
 .info-petshop-servicos p {
-  margin: 0;
-  margin-top: 4%;
-  font-size: 25px;
+   margin: 0;
+   margin-top: 4%;
+   font-size: 25px;
+   color: black;
 }
 
 .info-petshop-card-servicos {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  width: 90%;
-  border: 1px solid #777777;
-  height: 100px;
-  border-radius: 2px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+   width: 80%;
+   border: 1px solid #777777;
+   height: 100px;
+   border-radius: 2px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   justify-content: space-evenly;
 }
 
 .info-petshop-card-servicos button {
-  width: 20%;
-  height: 40%;
-  font-size: 20px;
-  background-color: #7e2c61;
-  border: none;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
+   width: 20%;
+   height: 40%;
+   font-size: 20px;
+   background-color: #7e2c61;
+   color: white;
+   border: none;
+   border-radius: 2px;
+   outline: none;
+   cursor: pointer;
+   border-radius: 5px;
 }
 
 .info-petshop-agenda {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
 }
 
 .info-petshop-agenda p {
-  margin: 0;
-  margin-top: 2%;
-  font-size: 25px;
+   margin: 0;
+   margin-top: 2%;
+   font-size: 25px;
 }
 
 .info-petshop-card-servicos span {
-  color: blue;
+   color: blue;
 }
 
 .react-calendar {
@@ -136,4 +138,56 @@ body {
 .react-calendar__month-view__weekdays__weekday {
    border: 1px solid #ccc;
    padding: 0.5rem;
+}
+
+.info-petshop-card-agenda {
+   height: 60vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+.div-horario-info-petshop {
+   width: 100%;
+   height: 30vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.div-horario-info-petshop input {
+   width: 20%;
+   border: 1px solid;
+}
+
+.info-petshop-card-servicos-horario {
+   width: 80%;
+   height: 13vh;
+   border: 1px solid #777777;
+   border-radius: 2px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btn-finalizar-servico {
+   width: 100%;
+   height: 15vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.btn-finalizar-servico button {
+   width: 20%;
+   height: 8vh;
+   color: white;
+   background-color: #7E2C61;
+   border: none;
+   border-radius: 10px;
+   font-size: 20px;
+   font-family: 'Signika', sans-serif;
+   cursor: pointer;
 }
