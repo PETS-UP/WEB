@@ -122,10 +122,18 @@ export default function meusPets() {
                 />
               </button>
             </div>
-            <button onClick={() => navigate("/cadastrar-pet")}>
-              ADICIONAR PET +
-            </button>
-            <div className="content-enviar-arquivo-meus-pets">
+
+          </div>
+
+          <div className="content-enviar-arquivo-meus-pets-cheio">
+
+            <div className="btn-adc-pet">
+              <button onClick={() => navigate("/cadastrar-pet")}>
+                ADICIONAR PET +
+              </button>
+            </div>
+
+            <div className="btn-import-meus-pets-cheio">
               <InputArquivo onFileUploaded={setFile} />
               <button
                 className="btn-enviar-arquivo"
@@ -136,6 +144,7 @@ export default function meusPets() {
               </button>
             </div>
           </div>
+
           <div className="tabela-meus-pets">
             <table className="table-container">
               <thead>
@@ -184,7 +193,8 @@ export default function meusPets() {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
