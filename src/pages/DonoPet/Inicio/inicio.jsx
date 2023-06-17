@@ -118,7 +118,7 @@ export default function Inicio() {
         </div>
 
         <div className="cards-petshop">
-          {petshops.map((petshop) => (
+        {petshops.length > 0 && petshops.map((petshop) => (
             <React.Fragment key={petshop.id}>
               {console.log(petshop.id)}
               <CardPetshop
