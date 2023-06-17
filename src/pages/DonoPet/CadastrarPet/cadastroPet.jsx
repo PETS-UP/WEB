@@ -1,6 +1,7 @@
 import "../CadastrarPet/cadastroPet.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastComponent } from "../../../components/Toast/Toast";
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import DOG from "../../../assets/icons/DOG-ICON.png";
@@ -93,10 +94,14 @@ const CadastrarPet = () => {
         }
       )
       .then((response) => {
-        navigate("/meus-pets");
+        ToastComponent("Pet cadastrado com sucesso!", "", 1500, true, true);
+        setTimeout(() => {
+          navigate("/meus-pets");
+      }, "1500")
       })
       .catch((erro) => {
         console.log(erro);
+        ToastComponent("Não foi possível cadastrar o pet.", "Por favor, tente novamente.", 2000, true, false);
       });
   }
 

@@ -4,6 +4,7 @@ import Background from "../../../assets/images/PETSUP-BACKGROUND-COPIA.png";
 import Image from "../../../assets/icons/PETSUP-LOGIN-ICON.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastComponent } from "../../../components/Toast/Toast";
 import React from "react";
 
 const Login = () => {
@@ -23,12 +24,14 @@ const Login = () => {
       .then((response) => {
         sessionStorage.ID_CLIENTE = response.data.clienteId;
         sessionStorage.JWT = response.data.token;
+        ToastComponent("Login realizado com sucesso!", "", 1500, true, true);
         setTimeout(() => {
           navigate("/inicio");
-        }, "500");
+        }, "1500");
       })
       .catch((erro) => {
         console.log(erro);
+        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", 2000, true, false);
       });
   }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
@@ -96,11 +97,13 @@ export default function infoPetshop() {
           },
         }
       )
-      .then(({ data }) => {
-        console.log("funcionou");
+      .then((response) => {
+        console.log(response);
+        ToastComponent("Agendamento realizado com sucesso!", "", 1500, true, true);
       })
       .catch((error) => {
         console.log(error);
+        ToastComponent("Não foi possível realizar o agendamento.", "Por favor, tente novamente.", 2000, true, false);
       });
   }
 

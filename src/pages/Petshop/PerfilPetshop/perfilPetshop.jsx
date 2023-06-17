@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { InputMask } from "primereact/inputmask";
 import api from "../../../api";
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 const PerfilPetshop = () => {
     const [nome, setNome] = useState("");
@@ -75,9 +76,11 @@ const PerfilPetshop = () => {
             })
             .then((response) => {
                 console.log(response);
+                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
             })
             .catch((erro) => {
                 console.log(erro);
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
     }
 
