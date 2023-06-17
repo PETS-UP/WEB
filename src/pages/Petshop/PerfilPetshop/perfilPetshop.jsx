@@ -109,6 +109,8 @@ const PerfilPetshop = () => {
                                 <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                                 <label htmlFor="Nome">E-mail</label>
                                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                                <label htmlFor="Nome">N° de endereço</label>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
@@ -119,9 +121,10 @@ const PerfilPetshop = () => {
                                 <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
                             </div>
                         </div>
-                    </div>
-                    <div className="btn-atualizar-perfil-petshop">
-                        <button onClick={atualizar}>Atualizar informações</button>
+
+                        <div className="btn-atualizar-perfil-petshop">
+                            <button onClick={atualizar}>Atualizar informações</button>
+                        </div>
                     </div>
                 </div>
             </div>

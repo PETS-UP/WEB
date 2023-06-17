@@ -3,7 +3,7 @@ import Menu from "../../../components/Base/Menu/menuPetshop";
 import "../../stylepadrao.css";
 import React, { useState, useEffect } from "react";
 import api from "../../../api";
-import {useRef} from "react";
+import { useRef } from "react";
 
 const Servicos = () => {
   const [listaServicos, setListaServicos] = useState([]);
@@ -61,37 +61,48 @@ const Servicos = () => {
   }
 
   return (
+
     <div className="container-main-meus-pets">
+
       <Menu />
+
       <div className="content-meus-pets">
+
         <div className="titulo-meus-pets">
           <h2>Meus Serviços</h2>
         </div>
 
         <div className="selecionaveis-meus-pets">
-          <button onClick = {abrirModalServico}>ADICIONAR SERVIÇO +</button>
+          <button onClick={abrirModalServico}>ADICIONAR SERVIÇO +</button>
         </div>
 
         <div className="modalService" id="modalService">
+
           <div className="campos-modal">
-          <label htmlFor="text">Nome</label>
-                  <input type="text" placeholder="Nome do produto" />
+            <label htmlFor="text">Nome</label>
+            <input type="text" placeholder="Nome do produto" />
           </div>
+
           <div className="campos-modal">
-          <label htmlFor="Number">Preço</label>
-                  <input type="Number" placeholder="Valor" />
+            <label htmlFor="Number">Preço</label>
+            <input type="Number" placeholder="Valor" />
           </div>
+
           <div className="campos-modal">
-          <label htmlFor="text">Descrição</label>
-                  <input type="text" placeholder="Descrição" />
+            <label htmlFor="text">Descrição</label>
+            <input type="text" placeholder="Descrição" />
           </div>
+
           <div className="campos-modal">
-          <button>Adicionar</button>
+            <button>Adicionar</button>
           </div>
+
         </div>
 
         <div className="tabela-meus-pets">
+
           <table className="table-container">
+
             <thead>
               <tr>
                 <th>Nome</th>
@@ -100,10 +111,13 @@ const Servicos = () => {
                 <th>Editar</th>
               </tr>
             </thead>
+
             <tbody>
               <tr></tr>
             </tbody>
+
           </table>
+
         </div>
       </div>
     </div>
