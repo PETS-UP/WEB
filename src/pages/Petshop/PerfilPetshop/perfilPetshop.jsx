@@ -127,7 +127,7 @@ const PerfilPetshop = () => {
                                 <label htmlFor="Nome">E-mail</label>
                                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
                                 <label htmlFor="Nome">N° de endereço</label>
-                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="email" />
+                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" />
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
@@ -141,7 +141,7 @@ const PerfilPetshop = () => {
 
                         <div className="btn-atualizar-perfil-petshop">
                             <button onClick={habilitarEdicao}>Habilitar edição</button>
-                            <button disabled={IsButtonDisabled} onClick={atualizar}>Atualizar informações</button>
+                            <button disabled={IsButtonDisabled} onClick={atualizar}>Salvar</button>
                         </div>
                     </div>
                 </div>
