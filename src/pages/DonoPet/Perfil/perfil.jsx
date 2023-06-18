@@ -12,7 +12,6 @@ export default function Inicio() {
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
-    const [dataNasc, setDataNasc] = useState();
     const [cep, setCep] = useState("");
     const [cpf, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
@@ -21,6 +20,7 @@ export default function Inicio() {
     const [cidade, setCidade] = useState("");
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
+    const [numero, setNumero] = useState("");
 
     const [IsButtonDisabled, setIsButtonDisabled] = useState(true);
 
@@ -33,10 +33,10 @@ export default function Inicio() {
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
-                setDataNasc(String(resposta.data.dataNasc));
                 setCep(resposta.data.cep);
                 setCpf(resposta.data.cpf);
                 setTelefone(resposta.data.telefone);
+                setNumero(resposta.data.numero);
             })
             .catch((erro) => {
                 console.log(erro);
@@ -60,10 +60,10 @@ export default function Inicio() {
     function habilitarEdicao() {
         setNome(nome)
         setEmail(email)
-        setDataNasc(dataNasc)
         setCep(cep)
         setCpf(cpf)
         setTelefone(telefone)
+        setNumero(numero)
         buscarCep()
         setIsButtonDisabled(false)
     }
@@ -125,8 +125,8 @@ export default function Inicio() {
                                 <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                                 <label htmlFor="Nome">E-mail</label>
                                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
-                                <label htmlFor="Nome">Data de nascimento</label>
-                                <InputMask value={dataNasc} onChange={(e) => setDataNasc(e.target.value)} type="text" mask="9999-99-99" unmask="false" />
+                                <label htmlFor="Nome">N° de endereço</label>
+                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" />
                             </div>
                             <div className="inputs-user-perfil">
                                 <label htmlFor="Nome">CEP</label>
@@ -140,7 +140,7 @@ export default function Inicio() {
 
                         <div className="btn-atualizar-perfil-petshop">
                             <button onClick={habilitarEdicao}>Habilitar edição</button>
-                            <button disabled={IsButtonDisabled} onClick={atualizar}>Atualizar informações</button>
+                            <button disabled={IsButtonDisabled} onClick={atualizar}>Salvar</button>
                         </div>
                     </div>
 
