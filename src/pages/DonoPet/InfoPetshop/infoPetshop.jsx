@@ -26,6 +26,7 @@ export default function infoPetshop() {
   const [time, setTime] = useState();
   const [hour, setHour] = useState();
   const [date, setDate] = useState(new Date());
+  const [formatedDate, setFormatedDate] = useState();
 
   useEffect(() => {
     api
@@ -89,7 +90,7 @@ export default function infoPetshop() {
             idPetshop: id,
             idPet: idPet,
             idServico: idServico,
-            dataHora: date + "T" + time
+            dataHora: formatedDate + "T" + time + ":00"
           },
           headers: {
             Authorization: `Bearer ${sessionStorage.JWT}`,
@@ -106,10 +107,18 @@ export default function infoPetshop() {
       });
   }
 
-  const handleDayClick = (value) => {
-    setDate(value);
-    console.log(value.toISOString());
+  function handleDayClick(value) {
+    setDate(value)
+    setFormatedDate(formatDate(value))
   };
+
+  function formatDate(date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${year}-${month < 10 ? "0" + month : month}-${day < 10 ? "0" + day : day}`;
+  }
 
   return (
     <div className="container-main">
@@ -129,7 +138,9 @@ export default function infoPetshop() {
           <div className="info-petshop-card-servicos">
             {listaServicos.length > 0 ? (
               listaServicos.map((servico) => (
-                <button key={servico.id} onClick={() => setIdServico(servico.id)}>
+                <button key={servico.id} onClick={() => setIdServico(servico.id)} style={{
+                  backgroundColor: idServico === servico.id ? "#451935" : ""
+                }}>
                   {servico.nome}
                 </button>
               ))
@@ -144,7 +155,11 @@ export default function infoPetshop() {
           <div className="info-petshop-card-servicos">
             {listaPets.length > 0 ? (
               listaPets.map((pet) => (
-                <button key={pet.id} onClick={() => setIdPet(pet.id)}>{pet.nome}</button>
+                <button key={pet.id} onClick={() => setIdPet(pet.id)} style={{
+                  backgroundColor: idPet === pet.id ? "#451935" : ""
+                }}>
+                  {pet.nome}
+                </button>
               ))
             ) : (
               <p>
@@ -164,7 +179,7 @@ export default function infoPetshop() {
             />
             {/* <input
               type="date" 
-              value={date}
+              value={formatedDate}
               onChange={(e) => setDate(e.target.value)}
             /> */}
           </div>
