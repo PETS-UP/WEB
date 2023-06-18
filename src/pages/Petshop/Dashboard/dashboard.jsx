@@ -29,12 +29,13 @@ const Dashboard = () => {
   const [dadosDash, setDadosDash] = useState([]);
   const [diaMovimentado, setDiaMovimentado] = useState();
   const [diaNaoMovimentado, setDiaNaoMovimentado] = useState();
+  const [rendaMesAtual, setRendaMesAtual] = useState();
   const [date, setDate] = useState(new Date());
   let contador = 6;
 
   const handleDashboard = async () => {
     api
-      .get(`/dashboard/ultima-semana`, {
+      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/ultima-semana`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },
@@ -50,7 +51,7 @@ const Dashboard = () => {
 
   const handleMaiorMovimento = async () => {
     api
-      .get(`/dashboard/dia-mais-movimentado`, {
+      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/dia-mais-movimentado`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },
@@ -65,7 +66,7 @@ const Dashboard = () => {
 
   const handleMenorMovimento = async () => {
     api
-      .get(`/dashboard/dia-menos-movimentado`, {
+      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/dia-menos-movimentado`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },
@@ -77,6 +78,18 @@ const Dashboard = () => {
         console.log(erro);
       });
   };
+
+  const handleRendaMesAtual = async () => {
+    api
+      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/renda-este-mes`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((response) => {
+
+      })
+  }
 
   useEffect(() => {
     handleDashboard();
@@ -93,6 +106,10 @@ const Dashboard = () => {
   useEffect(() => {
     handleMenorMovimento();
   }, [diaNaoMovimentado]);
+
+  useEffect(() => {
+    handleRendaMesAtual();
+  }, [rendaMesAtual]);
 
   const labels = [];
 
@@ -149,8 +166,8 @@ const Dashboard = () => {
             <p className="value-dashboard">Banho</p>
           </div>
           <div className="metricas-dashboard">
-            <p className="title-metrica">Quantidade de serviços solicitados</p>
-            <p className="value-dashboard">21</p>
+            <p className="title-metrica">Ganhos deste mês</p>
+            <p className="value-dashboard">{rendaMesAtual}</p>
           </div>
           <div className="metricas-dashboard">
             <p className="title-metrica">Maior movimento</p>
