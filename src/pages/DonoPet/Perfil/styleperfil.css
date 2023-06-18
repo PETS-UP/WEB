@@ -99,6 +99,11 @@
     margin-top: 3%;
 }
 
+.inputs-user-perfil input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
 .inputs-user-perfil-petshop input:disabled {
     background-color: #f0f0f0;
     cursor: not-allowed;
