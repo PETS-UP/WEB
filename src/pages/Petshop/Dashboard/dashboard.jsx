@@ -86,8 +86,10 @@ const Dashboard = () => {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },
       })
-      .then((response) => {
-
+      .then((resposta) => {
+        setRendaMesAtual(resposta.data);
+      }).catch((erro) => {
+        console.log(erro);
       })
   }
 
