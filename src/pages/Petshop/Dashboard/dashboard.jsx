@@ -27,9 +27,11 @@ ChartJS.register(
 
 const Dashboard = () => {
   const [dadosDash, setDadosDash] = useState([]);
+  const [dadosDashLine, setDadosDashLine] = useState([]);
   const [diaMovimentado, setDiaMovimentado] = useState();
   const [diaNaoMovimentado, setDiaNaoMovimentado] = useState();
   const [rendaMesAtual, setRendaMesAtual] = useState();
+  const [servicoMaisAgendado, setServicoMaisAgendado] = useState();
   const [date, setDate] = useState(new Date());
   let contador = 6;
 
@@ -48,6 +50,22 @@ const Dashboard = () => {
         console.log(erro);
       });
   };
+
+  const handleDashboardLine = async () => {
+    api
+      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/renda-ultimos-meses`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((resposta) => {
+        setDadosDashLine(resposta.data);
+        console.log(resposta.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      })
+  }
 
   const handleMaiorMovimento = async () => {
     api
@@ -93,13 +111,27 @@ const Dashboard = () => {
       })
   }
 
-  useEffect(() => {
-    handleDashboard();
-  }, []);
+  const handleServicoMaisAgendado = async () => {
+    api
+      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/servico-mais-agendado`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((resposta) => {
+        setServicoMaisAgendado(resposta.data);
+      }).catch((erro) => {
+        console.log(erro);
+      })
+  }
 
   useEffect(() => {
-    console.log(dadosDash);
+    handleDashboard();
   }, [dadosDash]);
+
+  useEffect(() => {
+    handleDashboardLine();
+  }, [dadosDashLine]);
 
   useEffect(() => {
     handleMaiorMovimento();
@@ -112,6 +144,10 @@ const Dashboard = () => {
   useEffect(() => {
     handleRendaMesAtual();
   }, [rendaMesAtual]);
+
+  useEffect(() => {
+    handleServicoMaisAgendado();
+  }, [servicoMaisAgendado]);
 
   const labels = [];
 
@@ -164,20 +200,20 @@ const Dashboard = () => {
       <div className="main-content-dashboard">
         <div className="div-dados-dashboard">
           <div className="metricas-dashboard">
-            <p className="title-metrica">Serviço mais solicitado</p>
-            <p className="value-dashboard">Banho</p>
-          </div>
-          <div className="metricas-dashboard">
-            <p className="title-metrica">Ganhos deste mês</p>
-            <p className="value-dashboard">{rendaMesAtual}</p>
-          </div>
-          <div className="metricas-dashboard">
             <p className="title-metrica">Maior movimento</p>
             <p className="value-dashboard">{diaMovimentado}</p>
           </div>
           <div className="metricas-dashboard">
             <p className="title-metrica">Menor movimento</p>
             <p className="value-dashboard">{diaNaoMovimentado}</p>
+          </div>
+          <div className="metricas-dashboard">
+            <p className="title-metrica">Serviço mais solicitado</p>
+            <p className="value-dashboard">{servicoMaisAgendado}</p>
+          </div>
+          <div className="metricas-dashboard">
+            <p className="title-metrica">Ganhos deste mês</p>
+            <p className="value-dashboard">{rendaMesAtual}</p>
           </div>
         </div>
         <div className="div-dados-dashboard">
