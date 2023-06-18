@@ -87,6 +87,30 @@ export default function Inicio() {
       });
   }
 
+  function getPetshopsMediaAvaliacao() {
+    api.get(`/clientes/ordenar-media-avaliacao`, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
+    .then((response) => {
+      setPetshops(response.data);
+    })
+    .catch((erro) => {
+      console.log(erro);
+    });
+  }
+
+  function getPetshopsMediaPreco() {
+    api.get(`/clientes/ordenar-media-preco`, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
+    .then((response) => {
+      setPetshops(response.data);
+    })
+    .catch((erro) => {
+      console.log(erro);
+    });
+  }
+
   const [petshops, setPetshops] = useState([]);
   const servicos = "Banho & Tosa";
   const status = "Aberto agora";
@@ -111,8 +135,8 @@ export default function Inicio() {
           </div>
           <div className="filter-buttons">
             <button onClick={getPetshopsProximos}>Próximos de mim</button>
-            <button>Melhores preços</button>
-            <button>Melhores avaliações</button>
+            <button onClick={getPetshopsMediaAvaliacao}>Melhores preços</button>
+            <button onClick={getPetshopsMediaPreco}>Melhores avaliações</button>
             <button>Meus favoritos</button>
           </div>
         </div>
