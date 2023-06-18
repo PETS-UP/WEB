@@ -85,7 +85,7 @@
 .inputs-user-perfil input {
     outline: none;
     border: 1px solid rgb(175, 175, 175);
-    background-color: rgb(204, 204, 204);
+    background-color: #f0f0f0;
     width: 80%;
 }
 
@@ -100,12 +100,12 @@
 }
 
 .inputs-user-perfil input:disabled {
-    background-color: #f0f0f0;
+    background-color: rgb(204, 204, 204);
     cursor: not-allowed;
 }
 
 .inputs-user-perfil-petshop input:disabled {
-    background-color: #f0f0f0;
+    background-color: rgb(204, 204, 204);
     cursor: not-allowed;
 }
 
