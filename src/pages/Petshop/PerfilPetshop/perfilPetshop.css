@@ -118,11 +118,12 @@
 
 
 .btn-atualizar-perfil-petshop {
-    width: 100%;
+    width: 50%;
     height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .btn-atualizar-perfil-petshop button {

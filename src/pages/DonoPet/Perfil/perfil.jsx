@@ -12,7 +12,7 @@ export default function Inicio() {
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
-    const [dataNasc, setDataNasc] = useState("");
+    const [dataNasc, setDataNasc] = useState();
     const [cep, setCep] = useState("");
     const [cpf, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
