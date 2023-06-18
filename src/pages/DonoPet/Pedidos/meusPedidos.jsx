@@ -19,9 +19,8 @@ const MeusPedidos = () => {
             Authorization: `Bearer ${sessionStorage.JWT}`
         }
     })
-      .then(({ data }) => {
-        console.log(data);
-        setAgendamentos(data);
+      .then((response) => {
+        setAgendamentos(response.data);
       })
       .catch((error) => {
         console.log(error);

@@ -70,7 +70,7 @@ export default function Inicio() {
             rua: rua
         }
 
-        api.patch(`/clientes/${id}`, cliente,
+        api.patch(`/clientes/${sessionStorage.ID_CLIENTE}`, cliente,
             {
                 headers: {
                     Authorization: `Bearer ${sessionStorage.JWT}`

@@ -47,7 +47,7 @@
     height: 100%;
   }
   
-  p {
+  .metricas-dashboard p {
     color: #7e2c61;
     font-size: 1.5rem;
     font-style: bold;
