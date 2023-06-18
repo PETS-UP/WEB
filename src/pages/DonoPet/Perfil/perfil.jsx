@@ -22,7 +22,7 @@ export default function Inicio() {
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
 
-    const [IsButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
 
     useEffect(() => {
         api.get(`/clientes/${sessionStorage.ID_CLIENTE}`, {
@@ -65,7 +65,7 @@ export default function Inicio() {
         setTelefone(telefone)
         setNumero(numero)
         buscarCep()
-        setIsButtonDisabled(false)
+        setisEdicaoHabiliata(true)
     }
 
     function atualizar(e) {
@@ -96,7 +96,7 @@ export default function Inicio() {
                 console.log(erro)
                 ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
-            setIsButtonDisabled(true);
+            setisEdicaoHabiliata(true);
     }
 
     return (
@@ -122,25 +122,25 @@ export default function Inicio() {
                         <div className="inputs-items-perfil">
                             <div className="inputs-user-perfil">
                                 <label htmlFor="Nome">Nome</label>
-                                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
+                                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">E-mail</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">N° de endereço</label>
-                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" />
+                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" disabled={!isEdicaoHabiliata} />
                             </div>
                             <div className="inputs-user-perfil">
                                 <label htmlFor="Nome">CEP</label>
-                                <InputMask value={cep} onChange={(e) => setCep(e.target.value)} type="text" onBlur={buscarCep} mask="99999-999" unmask="true" />
+                                <InputMask value={cep} onChange={(e) => setCep(e.target.value)} type="text" onBlur={buscarCep} mask="99999-999" unmask="true" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">CPF</label>
-                                <InputMask value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" />
+                                <InputMask value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Telefone</label>
-                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
+                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" disabled={!isEdicaoHabiliata} />
                             </div>
                         </div>
 
                         <div className="btn-atualizar-perfil-petshop">
                             <button onClick={habilitarEdicao}>Habilitar edição</button>
-                            <button disabled={IsButtonDisabled} onClick={atualizar}>Salvar</button>
+                            <button disabled={!isEdicaoHabiliata} onClick={atualizar}>Salvar</button>
                         </div>
                     </div>
 
