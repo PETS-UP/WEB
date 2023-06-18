@@ -14,29 +14,45 @@ function formatDate(date) {
 }
 
 function downloadTxt() {
-    api.get(`/petshops/download/txt/${sessionStorage.ID_PETSHOP}`, {
-        headers: {
-            Authorization: `Bearer ${sessionStorage.JWT}`,
-        },
+    fetch(`http://localhost:8080/petshops/download/txt/${sessionStorage.ID_PETSHOP}`)
+    .then(response => {
+      if (response.ok) {
+        return response.blob();
+      }
+      throw new Error('Erro ao realizar o download');
     })
-        .then((response) => {
-            console.log(response)
-        }).catch((erro) => {
-            console.log(erro)
-        })
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'arquivo.txt';
+      link.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 function downloadCsv() {
-    api.get(`/petshops/download/csv/${sessionStorage.ID_PETSHOP}`, {
-        headers: {
-            Authorization: `Bearer ${sessionStorage.JWT}`,
-        },
+    fetch(`http://localhost:8080/petshops/download/csv/${sessionStorage.ID_PETSHOP}`)
+    .then(response => {
+      if (response.ok) {
+        return response.blob();
+      }
+      throw new Error('Erro ao realizar o download');
     })
-        .then((response) => {
-            console.log(response)
-        }).catch((erro) => {
-            console.log(erro)
-        })
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'arquivo.txt';
+      link.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 function Calendario() {
