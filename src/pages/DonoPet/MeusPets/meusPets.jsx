@@ -61,11 +61,14 @@ export default function meusPets() {
       })
       .then((response) => {
         console.log(response.data);
-        location.reload();
+        ToastComponent("Pet cadastrado com sucesso!", "", 1500, true, true);
+        setTimeout(() => {
+          location.reload();
+      }, "1500")
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Erro ao enviar arquivo", "", false);
+        ToastComponent("Erro ao enviar arquivo.", "", 1500, true, false);
       });
   }, [file]);
 
@@ -83,9 +86,11 @@ export default function meusPets() {
       })
       .then(({ data }) => {
         setListaPets(listaPets.filter((pet) => pet.id !== id));
+        ToastComponent("Pet deletado com sucesso!", "", 1500, true, true);
       })
       .catch((error) => {
         console.log(error);
+        ToastComponent("Não foi possível deletar o pet.", "Por favor, tente novamente.", 2000, true, false);
       });
   }
 

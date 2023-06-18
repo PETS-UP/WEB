@@ -7,6 +7,7 @@ import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import { useNavigate } from 'react-router-dom';
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 const Cadastro = () => {
 
@@ -63,12 +64,13 @@ const Cadastro = () => {
     api.post('/petshops', petshop)
     .then((response) => {
       console.log(response);
-      alert('Cadastro realizado com sucesso!');
+      ToastComponent("Cadastro realizado com sucesso!", "", 1500, true, true)
       setTimeout(() => {
         navigate("/login-empresa");
-    }, "1000")
+    }, "1500")
     }).catch((erro) => {
       console.log(erro)
+      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, verifique seus dados.", 2000, true, false)
     })
   }
 

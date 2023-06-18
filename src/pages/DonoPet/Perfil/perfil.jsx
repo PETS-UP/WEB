@@ -6,6 +6,7 @@ import imgUser from '../../../assets/icons/ICON-PROFILE.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { InputMask } from 'primereact/inputmask';
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 export default function Inicio() {
 
@@ -77,8 +78,10 @@ export default function Inicio() {
             })
             .then((response) => {
                 console.log(response)
+                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
             }).catch((erro) => {
                 console.log(erro)
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
     }
 
