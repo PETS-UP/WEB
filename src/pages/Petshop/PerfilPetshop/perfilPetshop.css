@@ -102,7 +102,7 @@
 .inputs-user-perfil-petshop input {
     outline: none;
     border: 1px solid rgb(175, 175, 175);
-    background-color: rgb(204, 204, 204);
+    background-color: #f0f0f0;
     width: 80%;
 }
 
@@ -118,11 +118,12 @@
 
 
 .btn-atualizar-perfil-petshop {
-    width: 100%;
+    width: 50%;
     height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .btn-atualizar-perfil-petshop button {

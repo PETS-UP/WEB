@@ -2,6 +2,7 @@ import React from "react";
 import LAPIS from "../../assets/icons/LAPIS.png";
 
 function LinhaTabelaServico({ id, nome, preco, descricao, handleEdit }) {
+
   return (
     <>
       <tr>

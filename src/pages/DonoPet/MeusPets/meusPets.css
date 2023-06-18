@@ -138,6 +138,7 @@
     width: 80%;
     height: 5vh;
     color: black;
+    border: 1px solid;
 }
 
 .buscar-meus-pets button {
@@ -239,11 +240,14 @@
 }
 
 .btn-enviar-arquivo {
+    height: 6vh;
     background-color: #7E2C61;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .content-enviar-arquivo-meus-pets {
@@ -258,6 +262,9 @@
 .btn-enviar-arquivo:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content-enviar-arquivo-meus-pets-cheio {
@@ -280,7 +287,7 @@
 .btn-adc-pet button {
     margin: 0;
     width: 50%;
-    height: 5vh;
+    height: 7vh;
     background-color: #7E2C61;
     font-family: 'Signika', sans-serif;
     cursor: pointer;
