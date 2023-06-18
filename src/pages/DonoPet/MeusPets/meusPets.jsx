@@ -64,7 +64,7 @@ export default function meusPets() {
         ToastComponent("Pet cadastrado com sucesso!", "", 1500, true, true);
         setTimeout(() => {
           location.reload();
-      }, "1500")
+        }, "1500")
       })
       .catch((error) => {
         console.log(error);
@@ -113,18 +113,29 @@ export default function meusPets() {
               </select>
             </div>
             <div className="buscar-meus-pets">
+
               <input type="search" name="busca" placeholder="Buscar..." />
+
               <button>
                 <img
                   className="image-button"
                   src="/src/assets/icons/ICON-BUSCA.png"
                 />
               </button>
+
             </div>
-            <button onClick={() => navigate("/cadastrar-pet")}>
-              ADICIONAR PET +
-            </button>
-            <div className="content-enviar-arquivo-meus-pets">
+
+          </div>
+
+          <div className="content-enviar-arquivo-meus-pets-cheio">
+            <div className="btn-adc-pet">
+
+              <button onClick={() => navigate("/cadastrar-pet")}>
+                ADICIONAR PET +
+              </button>
+
+            </div>
+            <div className="btn-import-meus-pets-cheio">
               <InputArquivo onFileUploaded={setFile} />
               <button
                 className="btn-enviar-arquivo"
@@ -134,7 +145,9 @@ export default function meusPets() {
                 Enviar
               </button>
             </div>
+
           </div>
+
           <div className="tabela-meus-pets">
             <table className="table-container">
               <thead>
