@@ -75,17 +75,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     handleMaiorMovimento();
-  }, []);
-
-  useEffect(() => {
     handleMenorMovimento();
-  }, []);
-
-  useEffect(() => {
     handleRendaMesAtual();
-  }, []);
-
-  useEffect(() => {
     handleServicoMaisAgendado();
   }, []);
 
