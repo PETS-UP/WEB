@@ -11,7 +11,7 @@ const PerfilPetshop = () => {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [cep, setCep] = useState("");
-    const [cnpj, setCpf] = useState("");
+    const [cnpj, setCnpj] = useState("");
     const [telefone, setTelefone] = useState("");
     const [imagem, setImagem] = useState("");
     const [estado, setEstado] = useState("");
@@ -19,6 +19,8 @@ const PerfilPetshop = () => {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
+
+    const [IsButtonDisabled, setIsButtonDisabled] = useState(true);
 
     useEffect(() => {
         api
@@ -32,7 +34,7 @@ const PerfilPetshop = () => {
                 setEmail(resposta.data.email);
                 setNumero(resposta.data.numero);
                 setCep(resposta.data.cep);
-                setCpf(resposta.data.cnpj);
+                setCnpj(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
             })
             .catch((erro) => {
@@ -53,6 +55,17 @@ const PerfilPetshop = () => {
             }
         }
     };
+
+    function habilitarEdicao() {
+        setNome(nome)
+        setEmail(email)
+        setNumero(numero)
+        setCep(cep)
+        setCnpj(cnpj)
+        setTelefone(telefone)
+        buscarCep()
+        setIsButtonDisabled(false)
+    }
 
     function atualizar(e) {
         e.preventDefault();
@@ -82,6 +95,7 @@ const PerfilPetshop = () => {
                 console.log(erro);
                 ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
+            setIsButtonDisabled(true)
     }
 
     return (
@@ -126,7 +140,8 @@ const PerfilPetshop = () => {
                         </div>
 
                         <div className="btn-atualizar-perfil-petshop">
-                            <button onClick={atualizar}>Atualizar informações</button>
+                            <button onClick={habilitarEdicao}>Habilitar edição</button>
+                            <button disabled={IsButtonDisabled} onClick={atualizar}>Atualizar informações</button>
                         </div>
                     </div>
                 </div>
