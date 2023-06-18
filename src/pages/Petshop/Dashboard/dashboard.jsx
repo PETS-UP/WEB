@@ -2,70 +2,18 @@ import React, { useState, useEffect } from "react";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menuPetshop";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
+
 import "../Dashboard/dashboard.css";
 import "../../stylepadrao.css";
-import { getMonth } from "date-fns";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import LineChart from "./components/LineChart";
+import BarChart from "./components/BarChart";
+import Card from "./components/Card";
 
 const Dashboard = () => {
-  const [dadosDash, setDadosDash] = useState([]);
-  const [dadosDashLine, setDadosDashLine] = useState([]);
   const [diaMovimentado, setDiaMovimentado] = useState();
   const [diaNaoMovimentado, setDiaNaoMovimentado] = useState();
   const [rendaMesAtual, setRendaMesAtual] = useState();
   const [servicoMaisAgendado, setServicoMaisAgendado] = useState();
-  const [date, setDate] = useState(new Date());
-  let contador = 6;
-
-  const handleDashboard = async () => {
-    api
-      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/ultima-semana`, {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.JWT}`,
-        },
-      })
-      .then((resposta) => {
-        setDadosDash(resposta.data);
-        console.log(resposta.data);
-      })
-      .catch((erro) => {
-        console.log(erro);
-      });
-  };
-
-  const handleDashboardLine = async () => {
-    api
-      .get(`/dashboard/${sessionStorage.ID_PETSHOP}/renda-ultimos-meses`, {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.JWT}`,
-        },
-      })
-      .then((resposta) => {
-        setDadosDashLine(resposta.data);
-        console.log(resposta.data);
-      })
-      .catch((erro) => {
-        console.log(erro);
-      })
-  }
 
   const handleMaiorMovimento = async () => {
     api
@@ -126,103 +74,50 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    handleDashboard();
-  }, [dadosDash]);
-
-  useEffect(() => {
-    handleDashboardLine();
-  }, [dadosDashLine]);
-
-  useEffect(() => {
     handleMaiorMovimento();
-  }, [diaMovimentado]);
+  }, []);
 
   useEffect(() => {
     handleMenorMovimento();
-  }, [diaNaoMovimentado]);
+  }, []);
 
   useEffect(() => {
     handleRendaMesAtual();
-  }, [rendaMesAtual]);
+  }, []);
 
   useEffect(() => {
     handleServicoMaisAgendado();
-  }, [servicoMaisAgendado]);
-
-  const labels = [];
-
-  const chartData = {
-    labels,
-    datasets: [
-      {
-        label: "Agendamento semanal",
-        backgroundColor: "#7e2c61",
-        data: dadosDash.map((dados) => {
-          return dados;
-        }),
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          font: {
-            family: "Signika",
-            size: 16,
-            weight: "bold",
-          },
-        },
-      },
-      title: {
-        display: true,
-      },
-    },
-  };
-
-  let aux = 0;
-  dadosDash.map(() => {
-    labels[aux++] =
-      date.getDate() -
-      contador-- +
-      "/" +
-      date.getMonth() +
-      "/" +
-      date.getFullYear();
-  });
+  }, []);
 
   return (
     <div className="container-main-meus-pets">
       <Menu />
       <div className="main-content-dashboard">
         <div className="div-dados-dashboard">
-          <div className="metricas-dashboard">
-            <p className="title-metrica">Maior movimento</p>
-            <p className="value-dashboard">{diaMovimentado}</p>
-          </div>
-          <div className="metricas-dashboard">
-            <p className="title-metrica">Menor movimento</p>
-            <p className="value-dashboard">{diaNaoMovimentado}</p>
-          </div>
-          <div className="metricas-dashboard">
-            <p className="title-metrica">Serviço mais solicitado</p>
-            <p className="value-dashboard">{servicoMaisAgendado}</p>
-          </div>
-          <div className="metricas-dashboard">
-            <p className="title-metrica">Ganhos deste mês</p>
-            <p className="value-dashboard">{rendaMesAtual}</p>
-          </div>
+          <Card
+            title={"Maior movimento"}
+            value={diaMovimentado}
+          />
+          <Card
+            title={"Menor movimento"}
+            value={diaNaoMovimentado}
+          />
+          <Card
+            title={"Serviço mais solicitado"}
+            value={servicoMaisAgendado}
+          />
+          <Card
+            title={"Ganhos deste mês"}
+            value={typeof rendaMesAtual === 'number' && `R$${rendaMesAtual.toFixed(2)}`}
+          />
         </div>
         <div className="div-dados-dashboard">
           <div className="grafico-dashboard-2">
             <div className="div-container-grafico">
-              <Bar className="line-chart" options={options} data={chartData} />
+              <BarChart />
             </div>
             <div className="div-container-grafico">
-              <Bar className="line-chart" options={options} data={chartData} />
+              <LineChart />
             </div>
           </div>
         </div>
