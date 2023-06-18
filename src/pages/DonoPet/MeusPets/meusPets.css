@@ -167,6 +167,28 @@
     cursor: pointer;
 }
 
+.content-edit-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-icon-servicos {
+    background-color: #ff7b00;
+    width: 20%;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-icon-servicos img {
+    height: 5vh;
+    cursor: pointer;
+}
+
 .div-pet-empty {
     width: 70%;
     height: 60vh;
@@ -222,7 +244,6 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
 }
 
 .content-enviar-arquivo-meus-pets {
@@ -246,6 +267,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .btn-adc-pet {
@@ -273,4 +295,5 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
 }

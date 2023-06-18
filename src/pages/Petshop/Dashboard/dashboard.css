@@ -1,40 +1,55 @@
-.main-content-dashboard{
+.main-content-dashboard {
     width: 85%;
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    font-family: Signika;
     flex-direction: column;
-}
-
-.div-dados-dashboard{
-    width: 95%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+  .div-dados-dashboard {
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: space-around;
-}
-
-.metricas-dashboard{
+    justify-content: space-between;
+  }
+  
+  .metricas-dashboard {
     width: 23%;
     border-radius: 2px;
     box-shadow: 0px 3px 10px 0px rgb(138, 138, 138);
-    height: 150px;
+    height: 120px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-}
-
-.grafico-dashboard{
-    width: 60%;
-    height: 200px;
+  }
+  
+  .grafico-dashboard-2 {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
     box-shadow: 0px 3px 10px 0px rgb(138, 138, 138);
-}
-
-.grafico-dashboard-2{
-    width: 90%;
-    height: 210px;
-    box-shadow: 0px 3px 10px 0px rgb(138, 138, 138);
-}
-
+  }
+  
+  .div-container-grafico {
+    height: 100%;
+    width: 50%;
+  }
+  
+  .line-chart {
+    height: 100%;
+  }
+  
+  p {
+    color: #7e2c61;
+    font-size: 1.5rem;
+    font-style: bold;
+  }
+  

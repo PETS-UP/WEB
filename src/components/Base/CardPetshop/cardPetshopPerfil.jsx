@@ -3,8 +3,17 @@ import React from "react";
 import './styleCardPetshop.css';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import Avaliacao from '../../Avaliacao/avaliacao';
 
-const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
+const CardPetshopPerfil = ({ id, imagem, nome, servicos, preco, status }) => {
+
+    const [estrelas, setEstrelas] = useState(
+        parseInt(localStorage.getItem('estrelas')) || 0
+    );
+
+    const handleStarClick = (stars) => {
+        setEstrelas(stars);
+    };
 
     const navigate = useNavigate()
 
@@ -31,9 +40,16 @@ const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
                                 <p>{preco}</p>
                             </div>
                         </div>
-                        <div className="petshop-content-subtitle">
+                        <div className="petshop-content-subtitle-perfil">
                             <div className="petshop-content-status">
                                 <p>{status}</p>
+                            </div>
+                            <div>
+                                <Avaliacao
+                                    totalStars={5}
+                                    estrelas={estrelas}
+                                    onStarClick={handleStarClick}
+                                />
                             </div>
                         </div>
                     </div>
@@ -43,4 +59,4 @@ const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
     );
 }
 
-export default CardPetshop;
+export default CardPetshopPerfil;

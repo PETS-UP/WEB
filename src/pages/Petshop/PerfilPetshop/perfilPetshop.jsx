@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { InputMask } from "primereact/inputmask";
 import api from "../../../api";
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 const PerfilPetshop = () => {
     const [nome, setNome] = useState("");
@@ -17,13 +18,11 @@ const PerfilPetshop = () => {
     const [cidade, setCidade] = useState("");
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
+    const [numero, setNumero] = useState("");
 
     useEffect(() => {
         api
             .get(`/petshops/${sessionStorage.ID_PETSHOP}`, {
-                params: {
-                    idPetshop: sessionStorage.ID_PETSHOP,
-                },
                 headers: {
                     Authorization: `Bearer ${sessionStorage.JWT}`,
                 },
@@ -31,6 +30,7 @@ const PerfilPetshop = () => {
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
+                setNumero(resposta.data.numero);
                 setCep(resposta.data.cep);
                 setCpf(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
@@ -38,7 +38,7 @@ const PerfilPetshop = () => {
             .catch((erro) => {
                 console.log(erro);
             });
-    }, [sessionStorage.ID_PETSHOP]);
+    }, []);
 
     const buscarCep = async () => {
         if (cep.length === 8) {
@@ -66,6 +66,7 @@ const PerfilPetshop = () => {
             cidade: cidade,
             bairro: bairro,
             rua: rua,
+            numero: numero,
         };
         api
             .patch(`/petshops/${sessionStorage.ID_PETSHOP}`, petshop, {
@@ -75,9 +76,11 @@ const PerfilPetshop = () => {
             })
             .then((response) => {
                 console.log(response);
+                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
             })
             .catch((erro) => {
                 console.log(erro);
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
     }
 
@@ -109,6 +112,8 @@ const PerfilPetshop = () => {
                                 <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                                 <label htmlFor="Nome">E-mail</label>
                                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                                <label htmlFor="Nome">N° de endereço</label>
+                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="email" />
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
@@ -119,9 +124,10 @@ const PerfilPetshop = () => {
                                 <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
                             </div>
                         </div>
-                    </div>
-                    <div className="btn-atualizar-perfil-petshop">
-                        <button onClick={atualizar}>Atualizar informações</button>
+
+                        <div className="btn-atualizar-perfil-petshop">
+                            <button onClick={atualizar}>Atualizar informações</button>
+                        </div>
                     </div>
                 </div>
             </div>

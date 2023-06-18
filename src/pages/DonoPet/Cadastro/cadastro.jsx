@@ -7,6 +7,7 @@ import { redirect, useNavigate } from 'react-router-dom';
 import '../../Global/styleTooltip.css';
 import '../Cadastro/styleCadastro.css';
 import { Tooltip } from 'react-tooltip';
+import { ToastComponent } from '../../../components/Toast/Toast';
 
 const Cadastro = () => {
 
@@ -28,13 +29,14 @@ const Cadastro = () => {
     api.post('/clientes', cliente)
     .then((response) => {
       console.log(response);
-      alert('Cadastro realizado com sucesso!');
+      ToastComponent("Cadastro realizado com sucesso!", "", 1500, true, true)
       setTimeout(() => {
         navigate("/login-cliente");
-    }, "1000")
+    }, "1500")
 
     }).catch((erro) => {
       console.log(erro)
+      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, tente novamente.", 2000, true, false)
     })
     
   }

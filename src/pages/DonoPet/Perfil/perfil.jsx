@@ -6,6 +6,7 @@ import imgUser from '../../../assets/icons/ICON-PROFILE.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { InputMask } from 'primereact/inputmask';
+import { ToastComponent } from "../../../components/Toast/Toast";
 
 export default function Inicio() {
 
@@ -70,15 +71,17 @@ export default function Inicio() {
         }
 
         api.patch(`/clientes/${id}`, cliente,
-        {
-            headers: {
-                Authorization: `Bearer ${sessionStorage.JWT}`
-            }
-        })
+            {
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.JWT}`
+                }
+            })
             .then((response) => {
                 console.log(response)
+                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
             }).catch((erro) => {
                 console.log(erro)
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
     }
 
@@ -119,6 +122,10 @@ export default function Inicio() {
                                 <label htmlFor="Nome">Telefone</label>
                                 <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
                             </div>
+                        </div>
+
+                        <div className="btn-atualizar-perfil-petshop">
+                            <button onClick={atualizar}>Atualizar informações</button>
                         </div>
                     </div>
 
