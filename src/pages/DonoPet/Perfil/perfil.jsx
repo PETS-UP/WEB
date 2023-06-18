@@ -22,6 +22,8 @@ export default function Inicio() {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
 
+    const [IsButtonDisabled, setIsButtonDisabled] = useState(true);
+
     useEffect(() => {
         api.get(`/clientes/${sessionStorage.ID_CLIENTE}`, {
             headers: {
@@ -31,7 +33,7 @@ export default function Inicio() {
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
-                setDataNasc(resposta.data.dataNasc);
+                setDataNasc(String(resposta.data.dataNasc));
                 setCep(resposta.data.cep);
                 setCpf(resposta.data.cpf);
                 setTelefone(resposta.data.telefone);
@@ -54,6 +56,17 @@ export default function Inicio() {
             }
         }
     };
+
+    function habilitarEdicao() {
+        setNome(nome)
+        setEmail(email)
+        setDataNasc(dataNasc)
+        setCep(cep)
+        setCpf(cpf)
+        setTelefone(telefone)
+        buscarCep()
+        setIsButtonDisabled(false)
+    }
 
     function atualizar(e) {
         e.preventDefault();
@@ -83,6 +96,7 @@ export default function Inicio() {
                 console.log(erro)
                 ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
+            setIsButtonDisabled(true);
     }
 
     return (
@@ -125,7 +139,8 @@ export default function Inicio() {
                         </div>
 
                         <div className="btn-atualizar-perfil-petshop">
-                            <button onClick={atualizar}>Atualizar informações</button>
+                            <button onClick={habilitarEdicao}>Habilitar edição</button>
+                            <button disabled={IsButtonDisabled} onClick={atualizar}>Atualizar informações</button>
                         </div>
                     </div>
 
