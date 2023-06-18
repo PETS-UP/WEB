@@ -73,14 +73,14 @@ export default function Inicio() {
         const cliente = {
             nome: nome,
             email: email,
-            dataNasc: dataNasc,
             cep: cep,
             cpf: cpf,
             telefone: telefone,
             estado: estado,
             cidade: cidade,
             bairro: bairro,
-            rua: rua
+            rua: rua,
+            numero: numero,
         }
 
         api.patch(`/clientes/${sessionStorage.ID_CLIENTE}`, cliente,
