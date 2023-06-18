@@ -13,6 +13,33 @@ function formatDate(date) {
     return `${day < 10 ? "0" + day : day}/${month < 10 ? "0" + month : month}/${year}`;
 }
 
+function downloadTxt() {
+    api.get(`/petshops/download/txt/${sessionStorage.ID_PETSHOP}`, {
+        headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+    })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+}
+
+function downloadCsv() {
+    api.get(`/petshops/download/csv/${sessionStorage.ID_PETSHOP}`, {
+        headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+    })
+        .then((response) => {
+            console.log(response)
+        }).catch((erro) => {
+            console.log(erro)
+        })
+}
+
+
 function Calendario() {
     const [hour, setHour] = useState();
     const [date, setDate] = useState(new Date());
