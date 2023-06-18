@@ -25,12 +25,12 @@ export default function InputArquivo({ onFileUploaded }) {
             {
                 file
                     ?
-                    <p>
+                    <p className='p-input-arquivo'>
                         <AiOutlineFileText size={30} />
                         {file.path}
                     </p>
                     :
-                    <p>
+                    <p className='p-input-arquivo'>
                         <FiUpload size={30} />
                         Adicionar pet por txt
                     </p>

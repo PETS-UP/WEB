@@ -12,7 +12,6 @@ export default function Inicio() {
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
-    const [dataNasc, setDataNasc] = useState("");
     const [cep, setCep] = useState("");
     const [cpf, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
@@ -21,6 +20,9 @@ export default function Inicio() {
     const [cidade, setCidade] = useState("");
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
+    const [numero, setNumero] = useState("");
+
+    const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
 
     useEffect(() => {
         api.get(`/clientes/${sessionStorage.ID_CLIENTE}`, {
@@ -31,10 +33,10 @@ export default function Inicio() {
             .then((resposta) => {
                 setNome(resposta.data.nome);
                 setEmail(resposta.data.email);
-                setDataNasc(resposta.data.dataNasc);
                 setCep(resposta.data.cep);
                 setCpf(resposta.data.cpf);
                 setTelefone(resposta.data.telefone);
+                setNumero(resposta.data.numero);
             })
             .catch((erro) => {
                 console.log(erro);
@@ -55,22 +57,33 @@ export default function Inicio() {
         }
     };
 
+    function habilitarEdicao() {
+        setNome(nome)
+        setEmail(email)
+        setCep(cep)
+        setCpf(cpf)
+        setTelefone(telefone)
+        setNumero(numero)
+        buscarCep()
+        setisEdicaoHabiliata(true)
+    }
+
     function atualizar(e) {
         e.preventDefault();
         const cliente = {
             nome: nome,
             email: email,
-            dataNasc: dataNasc,
             cep: cep,
             cpf: cpf,
             telefone: telefone,
             estado: estado,
             cidade: cidade,
             bairro: bairro,
-            rua: rua
+            rua: rua,
+            numero: numero,
         }
 
-        api.patch(`/clientes/${id}`, cliente,
+        api.patch(`/clientes/${sessionStorage.ID_CLIENTE}`, cliente,
             {
                 headers: {
                     Authorization: `Bearer ${sessionStorage.JWT}`
@@ -83,6 +96,7 @@ export default function Inicio() {
                 console.log(erro)
                 ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
+            setisEdicaoHabiliata(true);
     }
 
     return (
@@ -108,24 +122,25 @@ export default function Inicio() {
                         <div className="inputs-items-perfil">
                             <div className="inputs-user-perfil">
                                 <label htmlFor="Nome">Nome</label>
-                                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
+                                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">E-mail</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
-                                <label htmlFor="Nome">Data de nascimento</label>
-                                <InputMask value={dataNasc} onChange={(e) => setDataNasc(e.target.value)} type="text" mask="9999-99-99" unmask="false" />
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" disabled={!isEdicaoHabiliata} />
+                                <label htmlFor="Nome">N° de endereço</label>
+                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" disabled={!isEdicaoHabiliata} />
                             </div>
                             <div className="inputs-user-perfil">
                                 <label htmlFor="Nome">CEP</label>
-                                <InputMask value={cep} onChange={(e) => setCep(e.target.value)} type="text" onBlur={buscarCep} mask="99999-999" unmask="true" />
+                                <InputMask value={cep} onChange={(e) => setCep(e.target.value)} type="text" onBlur={buscarCep} mask="99999-999" unmask="true" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">CPF</label>
-                                <InputMask value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" />
+                                <InputMask value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Telefone</label>
-                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
+                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" disabled={!isEdicaoHabiliata ? "" : "disabled"} />
                             </div>
                         </div>
 
                         <div className="btn-atualizar-perfil-petshop">
-                            <button onClick={atualizar}>Atualizar informações</button>
+                            <button onClick={habilitarEdicao}>Habilitar edição</button>
+                            <button disabled={!isEdicaoHabiliata ? "" : "disabled"} onClick={atualizar}>Salvar</button>
                         </div>
                     </div>
 

@@ -1,5 +1,4 @@
-
-.container-main-perfil{
+.container-main-perfil {
     margin: 0;
     padding: 0;
     display: flex;
@@ -7,14 +6,14 @@
     background-color: white;
 }
 
-.content-card-perfil{
+.content-card-perfil {
     width: 85%;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
     justify-content: center;
 }
 
-.perfil-content{
+.perfil-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +21,7 @@
     height: 100%;
 }
 
-.items-perfil{
+.items-perfil {
     width: 100%;
     height: 95%;
     box-shadow: 0px 3px 10px 0px rgb(138, 138, 138);
@@ -34,7 +33,7 @@
     align-items: center;
 }
 
-.header-items-perfil{
+.header-items-perfil {
     width: 100%;
     height: 40%;
     display: flex;
@@ -43,7 +42,7 @@
     flex-direction: row;
 }
 
-.inputs-items-perfil{
+.inputs-items-perfil {
     width: 100%;
     height: 45%;
     display: flex;
@@ -51,30 +50,30 @@
     justify-content: space-evenly;
 }
 
-.img-user-perfil{
+.img-user-perfil {
     width: 22%;
     height: 90%;
     background-size: cover;
     background-position: center;
 }
 
-.img-user-perfil img{
+.img-user-perfil img {
     width: 100%;
     height: 100%;
     border-radius: 0%;
 }
 
-.text-user-perfil{
+.text-user-perfil {
     width: 65%;
 }
 
 
-.text-user-perfil p{
+.text-user-perfil p {
     font-size: 50px;
     margin-left: 3%;
 }
 
-.inputs-user-perfil{
+.inputs-user-perfil {
     width: 45%;
     height: 100%;
     display: flex;
@@ -83,19 +82,34 @@
     justify-content: center;
 }
 
-.inputs-user-perfil input{
+.inputs-user-perfil input {
     outline: none;
     border: 1px solid rgb(175, 175, 175);
-    background-color: rgb(204, 204, 204);
+    background-color: #f0f0f0;
     width: 80%;
 }
 
-.inputs-user-perfil input::placeholder{
+.inputs-user-perfil input::placeholder {
     color: black;
 }
 
-.inputs-user-perfil label{
+.inputs-user-perfil label {
     align-self: flex-start;
     margin-left: 10%;
     margin-top: 3%;
+}
+
+.inputs-user-perfil input:disabled {
+    background-color: rgb(204, 204, 204);
+    cursor: not-allowed;
+}
+
+.inputs-user-perfil-petshop input:disabled {
+    background-color: rgb(204, 204, 204);
+    cursor: not-allowed;
+}
+
+.btn-atualizar-perfil-petshop button:disabled {
+    background-color: #7e2c6193;
+    cursor: not-allowed;
 }

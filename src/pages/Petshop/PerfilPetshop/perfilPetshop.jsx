@@ -1,6 +1,9 @@
 import "../PerfilPetshop/perfilPetshop.css";
+
 import Menu from "../../../components/Base/Menu/menuPetshop";
+
 import imgUser from "../../../assets/icons/ICON-PROFILE.png";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import { InputMask } from "primereact/inputmask";
@@ -11,7 +14,7 @@ const PerfilPetshop = () => {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [cep, setCep] = useState("");
-    const [cnpj, setCpf] = useState("");
+    const [cnpj, setCnpj] = useState("");
     const [telefone, setTelefone] = useState("");
     const [imagem, setImagem] = useState("");
     const [estado, setEstado] = useState("");
@@ -19,6 +22,8 @@ const PerfilPetshop = () => {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
+
+    const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
 
     useEffect(() => {
         api
@@ -32,7 +37,7 @@ const PerfilPetshop = () => {
                 setEmail(resposta.data.email);
                 setNumero(resposta.data.numero);
                 setCep(resposta.data.cep);
-                setCpf(resposta.data.cnpj);
+                setCnpj(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
             })
             .catch((erro) => {
@@ -53,6 +58,17 @@ const PerfilPetshop = () => {
             }
         }
     };
+
+    function habilitarEdicao() {
+        setNome(nome)
+        setEmail(email)
+        setNumero(numero)
+        setCep(cep)
+        setCnpj(cnpj)
+        setTelefone(telefone)
+        buscarCep()
+        setisEdicaoHabiliata(true)
+    }
 
     function atualizar(e) {
         e.preventDefault();
@@ -82,7 +98,8 @@ const PerfilPetshop = () => {
                 console.log(erro);
                 ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
             });
-    }
+        setisEdicaoHabiliata(true)
+    };
 
     return (
 
@@ -109,24 +126,65 @@ const PerfilPetshop = () => {
                         <div className="inputs-items-perfil-petshop">
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">Nome</label>
-                                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
+                                <input
+                                    value={nome}
+                                    onChange={(e) => setNome(e.target.value)}
+                                    type="text"
+                                    disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">E-mail</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                                <input
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    type="email"
+                                    disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">N° de endereço</label>
-                                <input value={numero} onChange={(e) => setNumero(e.target.value)} type="email" />
+                                <input
+                                    value={numero}
+                                    onChange={(e) => setNumero(e.target.value)}
+                                    type="text"
+                                    disabled={!isEdicaoHabiliata} />
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
-                                <InputMask value={cep} onChange={(e) => setCep(e.target.value)} type="text" onBlur={buscarCep} mask="99999-999" unmask="true" />
+                                <InputMask
+                                    value={cep}
+                                    onChange={(e) => setCep(e.target.value)}
+                                    type="text"
+                                    onBlur={buscarCep}
+                                    mask="99999-999"
+                                    unmask="true"
+                                    disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">CNPJ</label>
-                                <InputMask value={cnpj} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" />
+                                <InputMask
+                                    value={cnpj}
+                                    onChange={(e) => setCnpj(e.target.value)}
+                                    type="text"
+                                    mask="999.999.999-99"
+                                    unmask="true"
+                                    disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Telefone</label>
-                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" />
+                                <InputMask
+                                    value={telefone}
+                                    onChange={(e) => setTelefone(e.target.value)}
+                                    type="text"
+                                    mask="(99) 99999-9999"
+                                    unmask="true"
+                                    disabled={!isEdicaoHabiliata} />
                             </div>
                         </div>
 
                         <div className="btn-atualizar-perfil-petshop">
-                            <button onClick={atualizar}>Atualizar informações</button>
+                            <button
+                                onClick={habilitarEdicao}
+                            >Habilitar edição
+                            </button>
+
+                            <button
+                                disabled={!isEdicaoHabiliata}
+                                onClick={atualizar}
+                            >Salvar
+                            </button>
+
                         </div>
                     </div>
                 </div>
