@@ -21,12 +21,11 @@ export default function infoPetshop() {
 
   const [listaPets, setListaPets] = useState([]);
   const [listaServicos, setListaServicos] = useState([]);
-  const [petshop, usePetshop] = useState({});
+  const [petshop, setPetshop] = useState({});
 
   const [time, setTime] = useState();
   const [hour, setHour] = useState();
   const [date, setDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     api
@@ -60,7 +59,7 @@ export default function infoPetshop() {
       .catch((error) => {
         console.log(error);
       });
-      
+
     api
       .get("/pets", {
         params: {
@@ -108,7 +107,7 @@ export default function infoPetshop() {
   }
 
   const handleDayClick = (value) => {
-    setSelectedDate(value);
+    setDate(value);
     console.log(value.toISOString());
   };
 
@@ -120,7 +119,6 @@ export default function infoPetshop() {
           <CardPetshopPerfil
             id={petshop.id}
             nome={petshop.nome}
-            servicos={listaServicos}
             status={"Aberto agora"}
             imagem={imgPetshop}
           />
