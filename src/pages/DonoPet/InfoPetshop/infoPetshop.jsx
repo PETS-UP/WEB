@@ -103,11 +103,11 @@ export default function infoPetshop() {
       )
       .then((response) => {
         console.log(response);
-        ToastComponent("Agendamento realizado com sucesso!", "", 1500, true, true);
+        ToastComponent("Agendamento realizado com sucesso!", "", 1500, true, "success");
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível realizar o agendamento.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível realizar o agendamento.", "Por favor, tente novamente.", 2000, true, "error");
       });
   }
 
@@ -143,15 +143,15 @@ export default function infoPetshop() {
                 .then((response) => {
                   console.log(response);
                 }).catch((erro) => {
-                  ToastComponent("Não foi possível realizar a inscrição.", "Por favor, tente novamente.", 2000, true, false);
+                  ToastComponent("Não foi possível realizar a inscrição.", "Por favor, tente novamente.", 2000, true, "error");
                   console.log(erro);
                 })
             }
-            ToastComponent("Pet shop favoritado com sucesso!", "", 1500, true, true);
+            ToastComponent("Pet shop favoritado com sucesso!", "", 1500, true, "success");
           })
         console.log(response);
       }).catch((erro) => {
-        ToastComponent("Não foi possível favoritar o pet shop.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível favoritar o pet shop.", "Por favor, tente novamente.", 2000, true, "error");
         console.log(erro);
       })
     }
@@ -170,7 +170,7 @@ export default function infoPetshop() {
       .then((response) => {
         console.log(response);
       }).catch((erro) => {
-        ToastComponent("Não foi possível realizar a avaliação", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível realizar a avaliação", "Por favor, tente novamente.", 2000, true, "error");
         console.log(erro);
       })
   }

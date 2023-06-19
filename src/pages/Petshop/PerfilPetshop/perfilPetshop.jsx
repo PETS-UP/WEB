@@ -92,11 +92,11 @@ const PerfilPetshop = () => {
             })
             .then((response) => {
                 console.log(response);
-                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
+                ToastComponent("Perfil editado com sucesso!", "", 1500, true, "success");
             })
             .catch((erro) => {
                 console.log(erro);
-                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, "error");
             });
         setisEdicaoHabiliata(true)
     };

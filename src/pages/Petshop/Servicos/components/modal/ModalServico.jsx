@@ -34,7 +34,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
       )
       .then((response) => {
         if (response.status === 201) {
-          ToastComponent("Serviço cadastrado com sucesso!", "", 1500, true, true);
+          ToastComponent("Serviço cadastrado com sucesso!", "", 1500, true, "success");
           onCloseModal();
         }
 
@@ -42,7 +42,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", 2000, true, "error");
       });
   }
 
@@ -88,13 +88,13 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
       )
       .then((response) => {
         if (response.status === 200) {
-          ToastComponent("Serviço atualizado com sucesso!", "", 1500, true, true);
+          ToastComponent("Serviço atualizado com sucesso!", "", 1500, true, "success");
           onCloseModal();
         }
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", 2000, true, "error");
       });
   }
 
