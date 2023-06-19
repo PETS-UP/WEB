@@ -8,6 +8,7 @@ import '../../Global/styleTooltip.css';
 import '../Cadastro/styleCadastro.css';
 import { Tooltip } from 'react-tooltip';
 import { ToastComponent } from '../../../components/Toast/Toast';
+import { validarConfirmacaoSenha, validarSenha } from '../../../components/Base/validacao';
 
 const Cadastro = () => {
 
