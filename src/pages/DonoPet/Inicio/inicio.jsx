@@ -147,8 +147,8 @@ export default function Inicio() {
           </div>
           <div className="filter-buttons">
             <button onClick={getPetshopsProximos}>Próximos de mim</button>
-            <button onClick={getPetshopsMediaAvaliacao}>Melhores preços</button>
-            <button onClick={getPetshopsMediaPreco}>Melhores avaliações</button>
+            <button onClick={getPetshopsMediaPreco}>Melhores preços</button>
+            <button onClick={getPetshopsMediaAvaliacao}>Melhores avaliações</button>
             <button onClick={getPetshopsFavoritos}>Meus favoritos</button>
           </div>
         </div>
