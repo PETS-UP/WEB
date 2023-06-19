@@ -140,7 +140,7 @@ export default function Inicio() {
 
                         <div className="btn-atualizar-perfil-petshop">
                             <button onClick={habilitarEdicao}>Habilitar edição</button>
-                            <button disabled={!isEdicaoHabiliata ? "" : "disabled"} onClick={atualizar}>Salvar</button>
+                            <button disabled={!isEdicaoHabiliata} onClick={atualizar}>Salvar</button>
                         </div>
                     </div>
 

@@ -71,6 +71,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border-radius: 10px;
 }
 
 .content-textos1,
