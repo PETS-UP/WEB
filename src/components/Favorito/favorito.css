@@ -1,0 +1,8 @@
+.favorite-button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.favorite {
+    color: #ff0000;
+}
