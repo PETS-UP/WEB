@@ -24,14 +24,14 @@ const LoginEmpresa = () => {
       .then((response) => {
         sessionStorage.ID_PETSHOP = response.data.userId;
         sessionStorage.JWT = response.data.token;
-        ToastComponent("Login realizado com sucesso!", "", 1500, true, "success")
+        ToastComponent("Login realizado com sucesso!", "", "success")
         setTimeout(() => {
           navigate("/perfil-petshop");
         }, "1500");
       })
       .catch((erro) => {
         console.log(erro);
-        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", 2000, true, "error");
+        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", "error");
       });
   }
 

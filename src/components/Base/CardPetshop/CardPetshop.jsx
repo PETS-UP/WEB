@@ -8,16 +8,16 @@ const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
 
     const navigate = useNavigate()
 
-    function acessPetshop() {
+    function accessPetshop() {
         navigate(`/info-petshop-cliente/${id}`)
     }
 
     return (
         <>
             <div className="card-items-petshop">
-                <div onClick={acessPetshop} className="card-image-petshop"><img src={imagem} /></div>
+                <div onClick={accessPetshop} className="card-image-petshop"><img src={imagem} /></div>
                 <div className="card-info-petshop">
-                    <div onClick={acessPetshop} className="card-info-petshop-title">
+                    <div onClick={accessPetshop} className="card-info-petshop-title">
                         <div className="info-petshop-title">
                             <p>{nome}</p>
                         </div>

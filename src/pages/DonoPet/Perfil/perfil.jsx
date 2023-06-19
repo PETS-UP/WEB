@@ -91,10 +91,10 @@ export default function Inicio() {
             })
             .then((response) => {
                 console.log(response)
-                ToastComponent("Perfil editado com sucesso!", "", 1500, true, "success");
+                ToastComponent("Perfil editado com sucesso!", "", "success");
             }).catch((erro) => {
                 console.log(erro)
-                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, "error");
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", "error");
             });
             setisEdicaoHabiliata(true);
     }
