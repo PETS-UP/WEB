@@ -59,7 +59,7 @@ function Calendario() {
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = 'arquivo.txt';
+                link.download = 'agendamento.txt';
                 link.click();
                 URL.revokeObjectURL(url);
             })
@@ -86,7 +86,7 @@ function Calendario() {
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = 'arquivo.txt';
+                link.download = 'agendamento.csv';
                 link.click();
                 URL.revokeObjectURL(url);
             })
