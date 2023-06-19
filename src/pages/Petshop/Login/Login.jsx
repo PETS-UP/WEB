@@ -5,6 +5,7 @@ import api from "../../../api"
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastComponent } from "../../../components/Toast/Toast";
+import Swal from 'sweetalert2';
 
 const LoginEmpresa = () => {
 
@@ -24,10 +25,17 @@ const LoginEmpresa = () => {
       .then((response) => {
         sessionStorage.ID_PETSHOP = response.data.userId;
         sessionStorage.JWT = response.data.token;
-        ToastComponent("Login realizado com sucesso!", "", "success")
+        Swal.fire({
+          title: "Login realizado com sucesso!",
+          subtitle: "Você será redirecionado em breve.",
+          icon: "success",
+          timer: 2000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        })
         setTimeout(() => {
           navigate("/perfil-petshop");
-        }, "1500");
+        }, "2000");
       })
       .catch((erro) => {
         console.log(erro);

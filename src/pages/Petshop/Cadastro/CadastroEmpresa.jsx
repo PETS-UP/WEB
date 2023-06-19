@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import { useNavigate } from 'react-router-dom';
 import { ToastComponent } from "../../../components/Toast/Toast";
+import Swal from 'sweetalert2';
 
 const Cadastro = () => {
 
@@ -65,10 +66,17 @@ const Cadastro = () => {
     api.post('/petshops', petshop)
     .then((response) => {
       console.log(response);
-      ToastComponent("Cadastro realizado com sucesso!", "", "success")
+      Swal.fire({
+        title: "Cadastro realizado com sucesso!",
+        subtitle: "Você será redirecionado em breve.",
+        icon: "success",
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false
+      })
       setTimeout(() => {
         navigate("/login-empresa");
-    }, "1500")
+    }, "2000")
     }).catch((erro) => {
       console.log(erro)
       ToastComponent("Não foi possível realizar o cadastro.", "Por favor, verifique seus dados.", "error")

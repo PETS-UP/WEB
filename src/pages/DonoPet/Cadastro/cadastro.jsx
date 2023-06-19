@@ -8,6 +8,7 @@ import '../../Global/styleTooltip.css';
 import '../Cadastro/styleCadastro.css';
 import { Tooltip } from 'react-tooltip';
 import { ToastComponent } from '../../../components/Toast/Toast';
+import Swal from 'sweetalert2';
 
 const Cadastro = () => {
 
@@ -29,10 +30,17 @@ const Cadastro = () => {
     api.post('/clientes', cliente)
     .then((response) => {
       console.log(response);
-      ToastComponent("Cadastro realizado com sucesso!", "", "success")
+      Swal.fire({
+        title: "Cadastro realizado com sucesso!",
+        subtitle: "Você será redirecionado em breve.",
+        icon: "success",
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false
+      })
       setTimeout(() => {
         navigate("/login-cliente");
-    }, "1500")
+    }, "2000")
 
     }).catch((erro) => {
       console.log(erro)
