@@ -70,7 +70,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
   function handleEditService() {
     api
       .patch(
-        "/petshops/atualizar/preco",
+        "/petshops/atualizar/servico",
         {
           nome: nome,
           preco: preco,
@@ -123,7 +123,6 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
                   aria-label="Default select example"
                   onChange={(e) => setNome(e.target.value)}
                   value={nome}
-                  disabled={isEdit && true}
                 >
                   <option>Selecione a opção de serviço</option>
                   <option value="BANHO">Banho</option>
@@ -150,7 +149,6 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
                   rows={5}
                   className="TextArea"
                   placeholder="Faça uma descrição sobre o serviço"
-                  disabled={isEdit && true}
                 />
               </div>
 

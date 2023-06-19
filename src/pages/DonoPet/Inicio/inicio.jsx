@@ -111,6 +111,18 @@ export default function Inicio() {
     });
   }
 
+  function getPetshopsFavoritos() {
+    api.get(`/favoritos/${sessionStorage.ID_CLIENTE}`, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
+    .then((response) => {
+      setPetshops(response.data);
+    })
+    .catch((erro) => {
+      console.log(erro);
+    })
+  }
+
   const [petshops, setPetshops] = useState([]);
   const servicos = "Banho & Tosa";
   const status = "Aberto agora";
@@ -137,7 +149,7 @@ export default function Inicio() {
             <button onClick={getPetshopsProximos}>Próximos de mim</button>
             <button onClick={getPetshopsMediaAvaliacao}>Melhores preços</button>
             <button onClick={getPetshopsMediaPreco}>Melhores avaliações</button>
-            <button>Meus favoritos</button>
+            <button onClick={getPetshopsFavoritos}>Meus favoritos</button>
           </div>
         </div>
 
