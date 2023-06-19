@@ -25,6 +25,7 @@ export default function infoPetshop() {
   const [listaPets, setListaPets] = useState([]);
   const [listaServicos, setListaServicos] = useState([]);
   const [petshop, setPetshop] = useState({});
+  const [avaliacao, setAvaliacao] = useState();
   const [estrelas, setEstrelas] = useState();
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -74,14 +75,38 @@ export default function infoPetshop() {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },
       })
-      .then(({ data }) => {
-        console.log(data);
-        setListaPets(data);
+      .then((response) => {
+        console.log(response.data);
+        setListaPets(response.data);
+
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    api
+      .get(`/clientes/avaliacao/${sessionStorage.ID_CLIENTE}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data.nota);
+          setAvaliacao(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [])
+
+  //useEffect(() => {
+  //  api
+  //    .get(``)
+  //}, [])
 
   function agendarServico() {
     api
@@ -112,7 +137,7 @@ export default function infoPetshop() {
   }
 
   function favoritar() {
-    if(!isFavorite){
+    if (!isFavorite) {
       api
       .post(`/favoritos/${sessionStorage.ID_CLIENTE}/${id}`, {}, {
         headers: {
@@ -143,15 +168,15 @@ export default function infoPetshop() {
                 .then((response) => {
                   console.log(response);
                 }).catch((erro) => {
-                  ToastComponent("Não foi possível realizar a inscrição.", "Por favor, tente novamente.", "error");
+                  ToastComponent("Não foi possível realizar a inscrição.", "Por favor, tente novamente.", 2000, true, "error");
                   console.log(erro);
                 })
             }
-            ToastComponent("Pet shop favoritado com sucesso!", "", "success");
+            ToastComponent("Pet shop favoritado com sucesso!", "", 1500, true, "success");
           })
         console.log(response);
       }).catch((erro) => {
-        ToastComponent("Não foi possível favoritar o pet shop.", "Por favor, tente novamente.", "error");
+        ToastComponent("Não foi possível favoritar o pet shop.", "Por favor, tente novamente.", 2000, true, "error");
         console.log(erro);
       })
     }
@@ -162,7 +187,10 @@ export default function infoPetshop() {
     setEstrelas(stars);
 
     api
-      .post(`/clientes/avaliar/${sessionStorage.ID_CLIENTE}/${id}`, { nota: stars }, {
+      .post(`/clientes/avaliar/${sessionStorage.ID_CLIENTE}/${id}`, {
+        id: avaliacao !== undefined ? avaliacao.id : null,
+        nota: stars
+      }, {
         headers: {
           Authorization: `Bearer ${sessionStorage.JWT}`,
         },
@@ -194,12 +222,11 @@ export default function infoPetshop() {
       <div className="content">
         <div className="card-petshop-info-petshop">
           <CardPetshopPerfil
-            id={petshop.id}
+            id={id}
             nome={petshop.nome}
             status={"Aberto agora"}
             imagem={imgPetshop}
             handleStarClick={avaliar}
-            estrelas={estrelas}
             isFavorite={isFavorite}
             toggleFavorite={favoritar}
           />
