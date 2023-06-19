@@ -1,8 +1,8 @@
 import './styleMenu.css';
 import LabelMenu from '../../LabelMenu/LabelMenu';
-import inicio from "../../../assets/icons/ICON-HOME.png"
 import perfil from "../../../assets/icons/ICON-USER.png"
 import gerenciamento from "../../../assets/icons/DASH-ICON.png"
+import maleta from "../../../assets/icons/MALETA-ICON.png"
 import pedidos from "../../../assets/icons/ICON-CALENDARIO.png"
 import sair from "../../../assets/icons/ICON-SAIR.png"
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,7 @@ const MenuPetshop = () => {
                 </div>
 
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/servicos-petshop')}>
-                    <LabelMenu img={pedidos} item="Serviços" />
+                    <LabelMenu img={maleta} item="Serviços" />
                 </div>
 
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/agendamentos')}>
@@ -36,7 +36,7 @@ const MenuPetshop = () => {
                 </div>
             </div>
 
-            <div className='div-menu-lateral-edit' onClick={() => { sessionStorage.clear(), navigate('/') } }>
+            <div className='div-menu-lateral-edit' onClick={() => { sessionStorage.clear(), navigate('/') }}>
                 <LabelMenu img={sair} item="Sair" />
             </div>
 
