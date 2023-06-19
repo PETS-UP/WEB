@@ -25,7 +25,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
         },
         {
           params: {
-            id: sessionStorage.ID_PETSHOP,
+            idPetshop: sessionStorage.ID_PETSHOP,
           },
           headers: {
             Authorization: `Bearer ${sessionStorage.JWT}`,

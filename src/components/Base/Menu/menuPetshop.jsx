@@ -1,6 +1,6 @@
 import './styleMenu.css';
 import LabelMenu from '../../LabelMenu/LabelMenu';
-import perfil from "../../../assets/icons/ICON-USER.png"
+import perfil from "../../../assets/icons/ICON-PETSHOP.png"
 import gerenciamento from "../../../assets/icons/DASH-ICON.png"
 import maleta from "../../../assets/icons/MALETA-ICON.png"
 import pedidos from "../../../assets/icons/ICON-CALENDARIO.png"
