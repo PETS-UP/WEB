@@ -120,6 +120,7 @@ export default function infoPetshop() {
         },
       })
       .then((response) => {
+        setIsFavorite(true);
         Swal.fire({
           title: "Deseja receber notificações deste pet shop via e-mail?",
           showConfirmButton: true,
