@@ -1,4 +1,4 @@
-import './styleMenu.css';
+import './styleMenuPetshop.css';
 import LabelMenu from '../../LabelMenu/LabelMenu';
 import perfil from "../../../assets/icons/ICON-USER.png"
 import gerenciamento from "../../../assets/icons/DASH-ICON.png"
@@ -13,7 +13,7 @@ const MenuPetshop = () => {
 
     return (
         <div className='menu-lateral'>
-            <div className='img-user' />
+            <div className='img-user-petshop' />
             <div className='container-icons'>
                 {/* <div className='div-menu-lateral-edit' onClick={() => navigate('/inicio')}>
                     <LabelMenu img={inicio} item="Inicio" />
