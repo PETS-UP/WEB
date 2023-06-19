@@ -139,3 +139,9 @@ function validarConfirmacaoSenha(senha, confirmacaoSenha) {
         divFraseConfirmacaoSenha.innerHTML = "✓";
     }
 }
+
+export {
+    validarCadastroClienteCompleto, validarCadastroInicial, validarCadastroPetshopCompleto, 
+    validarCep, validarCnpj, validarConfirmacaoSenha, validarCpf, validarEmail, validarLogin, 
+    validarNome, validarNumeroEndereco, validarRazaoSocial, validarSenha, validarTelefone, 
+    };

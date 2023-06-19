@@ -3,6 +3,7 @@ import './styleCadastroEmpresa.css';
 import '../../Global/styleTooltip.css';
 import Background from '../../../assets/images/BACKGROUND-WEB-PETSUP.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
+import { validarConfirmacaoSenha, validarSenha } from '../../../components/Base/validacao';
 import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';

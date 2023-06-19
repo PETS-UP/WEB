@@ -2,6 +2,7 @@ import "../CadastrarPet/cadastroPet.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastComponent } from "../../../components/Toast/Toast";
+import { validarConfirmacaoSenha, validarSenha } from '../../../components/Base/validacao';
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
 import DOG from "../../../assets/icons/DOG-ICON.png";
