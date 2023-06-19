@@ -83,7 +83,7 @@ const router = createBrowserRouter([
   {
     path: "/servicos-petshop",
     element: <ServicosPetshop />
-  }
+  },
 
 ]);
 

@@ -4,6 +4,7 @@ import './styleCardPetshop.css';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Avaliacao from '../../Avaliacao/avaliacao';
+import FavoriteButton from '../../Favorito/favorito';
 
 const CardPetshopPerfil = ({ id, imagem, nome, servicos, preco, status }) => {
 
@@ -27,8 +28,11 @@ const CardPetshopPerfil = ({ id, imagem, nome, servicos, preco, status }) => {
                 <div onClick={acessPetshop} className="card-image-petshop"><img src={imagem} /></div>
                 <div className="card-info-petshop">
                     <div onClick={acessPetshop} className="card-info-petshop-title">
-                        <div className="info-petshop-title">
+                        <div className="info-petshop-title-perfil">
                             <p>{nome}</p>
+                            <div className="app">
+                                <FavoriteButton />
+                            </div>
                         </div>
                     </div>
                     <div className="card-info-petshop-content">
