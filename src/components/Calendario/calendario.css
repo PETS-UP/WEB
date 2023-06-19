@@ -92,8 +92,8 @@
     padding: 0.5rem;
 }
 
-.modal h3,
-.modal p {
+.modal-calendario h3,
+.modal-calendario p {
     margin: 0%;
 }
 
@@ -179,7 +179,7 @@
     color-scheme: none;
 }
 
-.modal {
+.modal-calendario {
     background-color: white;
     display: flex !important;
     justify-content: center;
@@ -193,7 +193,7 @@
     margin: 20vh 30%;
 }
 
-.modal h3{
+.modal-calendario h3{
     color: #7E2C61;
 }
 

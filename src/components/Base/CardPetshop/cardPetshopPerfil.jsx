@@ -6,32 +6,21 @@ import { useNavigate } from "react-router-dom";
 import Avaliacao from '../../Avaliacao/avaliacao';
 import FavoriteButton from '../../Favorito/favorito';
 
-const CardPetshopPerfil = ({ id, imagem, nome, servicos, preco, status }) => {
-
-    const [estrelas, setEstrelas] = useState(
-        parseInt(localStorage.getItem('estrelas')) || 0
-    );
-
-    const handleStarClick = (stars) => {
-        setEstrelas(stars);
-    };
-
-    const navigate = useNavigate()
-
-    function acessPetshop() {
-        navigate(`/info-petshop-cliente/${id}`)
-    }
+const CardPetshopPerfil = ({ imagem, nome, servicos, preco, status, estrelas, handleStarClick, isFavorite, toggleFavorite }) => {
 
     return (
         <>
             <div className="card-items-petshop">
-                <div onClick={acessPetshop} className="card-image-petshop"><img src={imagem} /></div>
+                <div className="card-image-petshop"><img src={imagem} /></div>
                 <div className="card-info-petshop">
-                    <div onClick={acessPetshop} className="card-info-petshop-title">
+                    <div className="card-info-petshop-title">
                         <div className="info-petshop-title-perfil">
                             <p>{nome}</p>
                             <div className="app">
-                                <FavoriteButton />
+                                <FavoriteButton
+                                    isFavorite={isFavorite}
+                                    toggleFavorite = {toggleFavorite}
+                                />
                             </div>
                         </div>
                     </div>
