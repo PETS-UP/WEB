@@ -132,7 +132,7 @@ export default function infoPetshop() {
           .then((result) => {
             if (result.isConfirmed) {
               api
-                .post(`/petshops/inscrever/${id}`, {
+                .post(`/petshops/inscrever/${id}`, {}, {
                   params: {
                     idCliente: sessionStorage.ID_CLIENTE,
                   },
