@@ -92,7 +92,7 @@ export default function meusPets() {
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível deletar o pet.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível deletar.", "O pet ainda tem agendamentos pendentes.", 2000, true, false);
       });
   }
 
