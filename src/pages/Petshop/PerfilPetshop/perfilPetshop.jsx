@@ -2,7 +2,7 @@ import "../PerfilPetshop/perfilPetshop.css";
 
 import Menu from "../../../components/Base/Menu/menuPetshop";
 
-import imgUser from "../../../assets/icons/ICON-PROFILE.png";
+import imgUser from "../../../assets/icons/ICON-PETSHOP.png";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -92,11 +92,11 @@ const PerfilPetshop = () => {
             })
             .then((response) => {
                 console.log(response);
-                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
+                ToastComponent("Perfil editado com sucesso!", "", "success");
             })
             .catch((erro) => {
                 console.log(erro);
-                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", "error");
             });
         setisEdicaoHabiliata(true)
     };

@@ -91,10 +91,10 @@ export default function Inicio() {
             })
             .then((response) => {
                 console.log(response)
-                ToastComponent("Perfil editado com sucesso!", "", 1500, true, true);
+                ToastComponent("Perfil editado com sucesso!", "", "success");
             }).catch((erro) => {
                 console.log(erro)
-                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", 2000, true, false);
+                ToastComponent("Não foi possível editar o perfil.", "Por favor, tente novamente.", "error");
             });
             setisEdicaoHabiliata(true);
     }
@@ -140,7 +140,7 @@ export default function Inicio() {
 
                         <div className="btn-atualizar-perfil-petshop">
                             <button onClick={habilitarEdicao}>Habilitar edição</button>
-                            <button disabled={!isEdicaoHabiliata ? "" : "disabled"} onClick={atualizar}>Salvar</button>
+                            <button disabled={!isEdicaoHabiliata} onClick={atualizar}>Salvar</button>
                         </div>
                     </div>
 

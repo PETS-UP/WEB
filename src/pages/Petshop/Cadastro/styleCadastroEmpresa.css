@@ -56,7 +56,7 @@ p{
 }
 
 .modal-image{
-    width: 45%;
+    width: 60%;
     height: 100%;
     background-color: #F49C63;
     display: flex;
@@ -88,7 +88,7 @@ p{
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin-bottom: 35px;
+
 }
 
 .index-cadastro p{
@@ -120,9 +120,10 @@ p{
 .inputs-cadastro p{
     font-weight: bolder;
     font-size: 20px;
+    color: black;
 }
 
-label{
+.inputs-padrao label{
     color: black;
     display: flex;
     margin-bottom: 5px;
@@ -135,7 +136,7 @@ label{
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 180%;
+    margin-top: 260%;
 }
 
 .inputs-padrao{
@@ -144,7 +145,7 @@ label{
     margin-bottom: 10px;
 }
 
-input{
+.inputs-padrao input{
     width: 99%;
     height: 35px;
     background-color: transparent;

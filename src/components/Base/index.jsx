@@ -10,7 +10,7 @@ const BaseComponent = () => {
     <div className="banner">
       <div className='header'>
         <img src={Logo} alt="" />
-        <div className='btn'>
+        <div className='btn-tela-home'>
           <button onClick={() => navigate("/login-cliente")} id='btn-cliente'>ENTRAR COMO CLIENTE</button>
           <button onClick={() => navigate("/login-empresa")} id='btn-petshop'>ENTRAR COMO EMPRESA</button>
         </div>

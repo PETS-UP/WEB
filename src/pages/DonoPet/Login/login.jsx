@@ -24,14 +24,14 @@ const Login = () => {
       .then((response) => {
         sessionStorage.ID_CLIENTE = response.data.clienteId;
         sessionStorage.JWT = response.data.token;
-        ToastComponent("Login realizado com sucesso!", "", 1500, true, true);
+        ToastComponent("Login realizado com sucesso!", "", "success");
         setTimeout(() => {
           navigate("/inicio");
         }, "1500");
       })
       .catch((erro) => {
         console.log(erro);
-        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", 2000, true, false);
+        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", "error");
       });
   }
 

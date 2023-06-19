@@ -29,14 +29,14 @@ const Cadastro = () => {
     api.post('/clientes', cliente)
     .then((response) => {
       console.log(response);
-      ToastComponent("Cadastro realizado com sucesso!", "", 1500, true, true)
+      ToastComponent("Cadastro realizado com sucesso!", "", "success")
       setTimeout(() => {
         navigate("/login-cliente");
     }, "1500")
 
     }).catch((erro) => {
       console.log(erro)
-      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, tente novamente.", 2000, true, false)
+      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, tente novamente.", "error")
     })
     
   }
@@ -44,7 +44,7 @@ const Cadastro = () => {
   return (
     <div className="container">
       
-      <img src={Background} className="imagebg" />
+      <img src={Background} className="image-background-cadastro" />
       <div className="modal-login-cliente">
         <div className="modal-inputs-cliente">
           <div className="form-inputs-cliente">

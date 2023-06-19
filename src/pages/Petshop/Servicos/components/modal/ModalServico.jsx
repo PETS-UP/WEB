@@ -25,7 +25,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
         },
         {
           params: {
-            id: sessionStorage.ID_PETSHOP,
+            idPetshop: sessionStorage.ID_PETSHOP,
           },
           headers: {
             Authorization: `Bearer ${sessionStorage.JWT}`,
@@ -34,7 +34,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
       )
       .then((response) => {
         if (response.status === 201) {
-          ToastComponent("Serviço cadastrado com sucesso!", "", 1500, true, true);
+          ToastComponent("Serviço cadastrado com sucesso!", "", "success");
           onCloseModal();
         }
 
@@ -42,7 +42,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", "error");
       });
   }
 
@@ -70,7 +70,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
   function handleEditService() {
     api
       .patch(
-        "/petshops/atualizar/preco",
+        "/petshops/atualizar/servico",
         {
           nome: nome,
           preco: preco,
@@ -88,13 +88,13 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
       )
       .then((response) => {
         if (response.status === 200) {
-          ToastComponent("Serviço atualizado com sucesso!", "", 1500, true, true);
+          ToastComponent("Serviço atualizado com sucesso!", "", "success");
           onCloseModal();
         }
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", 2000, true, false);
+        ToastComponent("Não foi possível cadastrar o serviço.", "Por favor, tente novamente.", "error");
       });
   }
 
@@ -123,7 +123,6 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
                   aria-label="Default select example"
                   onChange={(e) => setNome(e.target.value)}
                   value={nome}
-                  disabled={isEdit && true}
                 >
                   <option>Selecione a opção de serviço</option>
                   <option value="BANHO">Banho</option>
@@ -150,7 +149,6 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
                   rows={5}
                   className="TextArea"
                   placeholder="Faça uma descrição sobre o serviço"
-                  disabled={isEdit && true}
                 />
               </div>
 
