@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import { ToastComponent } from "../../../components/Toast/Toast";
 import Swal from "sweetalert2";
+import Avaliacao from "../../../components/Avaliacao/avaliacao";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
@@ -11,6 +12,7 @@ import "../../stylepadrao.css";
 import "../InfoPetshop/styleinfopetshop.css";
 import CardPetshopPerfil from "../../../components/Base/CardPetshop/cardPetshopPerfil";
 import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
+import iconBusca from "../../../assets/icons/ICON-BUSCA.png";
 
 export default function infoPetshop() {
 
@@ -151,6 +153,20 @@ export default function infoPetshop() {
       })
   }
 
+  function avaliar(){
+
+    const avaliacao = {
+      
+    }
+
+    api
+      .post(`/clientes/avaliar/${sessionStorage.ID_CLIENTE}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+  }
+
   function handleDayClick(value) {
     setDate(value)
     setFormatedDate(formatDate(value))
@@ -176,7 +192,7 @@ export default function infoPetshop() {
             imagem={imgPetshop}
           />
         </div>
-
+   
         <div className="info-petshop-servicos">
           <p>Selecione o Serviço</p>
           <div className="info-petshop-card-servicos">
