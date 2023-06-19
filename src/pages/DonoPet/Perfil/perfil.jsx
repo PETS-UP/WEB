@@ -134,7 +134,7 @@ export default function Inicio() {
                                 <label htmlFor="Nome">CPF</label>
                                 <InputMask value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" mask="999.999.999-99" unmask="true" disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Telefone</label>
-                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" disabled={!isEdicaoHabiliata ? "" : "disabled"} />
+                                <InputMask value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" mask="(99) 99999-9999" unmask="true" disabled={!isEdicaoHabiliata} />
                             </div>
                         </div>
 
