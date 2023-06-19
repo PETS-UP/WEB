@@ -7,64 +7,8 @@ import { ToastComponent } from "../Toast/Toast";
 import LinhaTabela from "./components/LinhaTabela";
 import { useEffect } from "react";
 
-function formatDate(date) {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-
-    return `${day < 10 ? "0" + day : day}/${month < 10 ? "0" + month : month}/${year}`;
-}
-
-function downloadTxt() {
-    fetch(`http://localhost:8080/petshops/download/txt/${sessionStorage.ID_PETSHOP}`)
-    //fetch(`http://azure-website.net/petshops/download/txt/${sessionStorage.ID_PETSHOP}`)
-    //fetch(`petsup-api.azurewebsites.net/petshops/download/txt/${sessionStorage.ID_PETSHOP}`)
-    .then(response => {
-      if (response.ok) {
-        return response.blob();
-      }
-      throw new Error('Erro ao realizar o download');
-    })
-    .then(blob => {
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'arquivo.txt';
-      link.click();
-      URL.revokeObjectURL(url);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function downloadCsv() {
-    fetch(`http://localhost:8080/petshops/download/csv/${sessionStorage.ID_PETSHOP}`)
-    //fetch(`http://azure-website.net/petshops/download/csv/${sessionStorage.ID_PETSHOP}`)
-    //fetch(`petsup-api.azurewebsites.net/petshops/download/csv/${sessionStorage.ID_PETSHOP}`)
-    .then(response => {
-      if (response.ok) {
-        return response.blob();
-      }
-      throw new Error('Erro ao realizar o download');
-    })
-    .then(blob => {
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'arquivo.txt';
-      link.click();
-      URL.revokeObjectURL(url);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-
 
 function Calendario() {
-    const [hour, setHour] = useState();
     const [date, setDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -81,7 +25,7 @@ function Calendario() {
     };
 
     const closeModal = () => {
-        setPedido({});
+        setListaPedido([]);
         setShowModal(false);
     };
 
@@ -99,6 +43,8 @@ function Calendario() {
 
     function downloadTxt() {
         fetch(`http://localhost:8080/petshops/download/txt/${sessionStorage.ID_PETSHOP}`, {
+            //fetch(`http://azure-website.net/petshops/download/txt/${sessionStorage.ID_PETSHOP}`)
+            //fetch(`petsup-api.azurewebsites.net/petshops/download/txt/${sessionStorage.ID_PETSHOP}`)
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }
@@ -124,6 +70,8 @@ function Calendario() {
 
     function downloadCsv() {
         fetch(`http://localhost:8080/petshops/download/csv/${sessionStorage.ID_PETSHOP}`, {
+            //fetch(`http://azure-website.net/petshops/download/csv/${sessionStorage.ID_PETSHOP}`)
+            //fetch(`petsup-api.azurewebsites.net/petshops/download/csv/${sessionStorage.ID_PETSHOP}`)
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`
             }
@@ -149,7 +97,7 @@ function Calendario() {
 
     function getInformacoesPedido(date) {
         api
-            .get(`/agendamentos/report/agendamento/${sessionStorage.ID_PETSHOP}`, {
+            .get(`/agendamentos/report/dia/${sessionStorage.ID_PETSHOP}`, {
                 params: {
                     dataHora: formatedDate
                 },
@@ -157,8 +105,9 @@ function Calendario() {
                     Authorization: `Bearer ${sessionStorage.JWT}`
                 }
             })
-            .then(({ data }) => {
-                setListaPedido(data);
+            .then((response) => {
+                console.log(response.data)
+                setListaPedido(response.data);
                 setShowModal(true);
             })
             .catch((error) => {
@@ -185,7 +134,7 @@ function Calendario() {
             {showModal && (
                 <div className="modal-overlay">
 
-                    <div className="modal">
+                    <div className="modal-calendario">
 
                         <div className="content-fechar-modal-calendario">
                             <button onClick={closeModal}>x</button>
@@ -202,32 +151,25 @@ function Calendario() {
                                         <thead>
                                             <tr>
                                                 <th>Cliente</th>
-                                                <th>Espécie</th>
-                                                <th>Sexo</th>
-                                                <th>Excluir</th>
+                                                <th>Serviço</th>
+                                                <th>Pet</th>
+                                                <th>Horário</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {listaPedido.map((pedido) => (
                                                 <LinhaTabela
                                                     nomeCliente={pedido.nomeCliente}
-                                                    hora={pedido.DataHora.substring(11, 19)}
+                                                    hora={pedido.dataHora.substring(11, 19)}
+                                                    pet={pedido.nomePet}
                                                     servico={pedido.servico}
                                                 />
                                             ))}
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         }
-
-                        <div className="buttons-agendamento-calendario">
-
-                            <button className="btn-cancelar-agendamento-calendario" onClick={closeModal}>Cancelar agendamento</button>
-                            <button className="btn-aceitar-agendamento-calendario" onClick={acceptSchedule}>Aceitar agendamento</button>
-
-                        </div>
                     </div>
                 </div>
             )}
