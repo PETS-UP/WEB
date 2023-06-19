@@ -181,15 +181,16 @@
 
 .modal {
     background-color: white;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    height: 60vh;
-    width: 40%;
-    justify-content: space-evenly;
+    height: 60vh !important;
+    width: 40% !important;
+    justify-content: space-evenly !important;
+    margin: 20vh 30%;
 }
 
 .modal h3{
@@ -197,13 +198,43 @@
 }
 
 .modal-overlay {
-    position: fixed;
+    position: fixed !important; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.btn-laranja {
+    background-color: #F49C63;
+    width: 40%;
+    height: 80%;
+    cursor: pointer;
+    font-size: 65%;
+    font-family: 'Signika', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 3px;
+    border: none;
+    margin: 0 1%;
+    color: white;
+}
+
+.btn-roxo {
+    background-color: #7E2C61;
+    border: none;
+    width: 40%;
+    height: 80%;
+    cursor: pointer;
+    font-size: 65%;
+    font-family: 'Signika', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 3px;
+    margin: 0 1%;
+    color: white;
 }
