@@ -2,7 +2,7 @@ import "../PerfilPetshop/perfilPetshop.css";
 
 import Menu from "../../../components/Base/Menu/menuPetshop";
 
-import imgUser from "../../../assets/icons/ICON-PROFILE.png";
+import imgUser from "../../../assets/icons/ICON-PETSHOP.png";
 
 import { useState } from "react";
 import { useEffect } from "react";

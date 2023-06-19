@@ -70,7 +70,7 @@ function ModalServico({ show, handleClose, dados, isEdit }) {
   function handleEditService() {
     api
       .patch(
-        "/petshops/atualizar/preco",
+        "/petshops/atualizar/servico",
         {
           nome: nome,
           preco: preco,
