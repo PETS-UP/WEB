@@ -29,14 +29,14 @@ const Cadastro = () => {
     api.post('/clientes', cliente)
     .then((response) => {
       console.log(response);
-      ToastComponent("Cadastro realizado com sucesso!", "", 1500, true, "success")
+      ToastComponent("Cadastro realizado com sucesso!", "", "success")
       setTimeout(() => {
         navigate("/login-cliente");
     }, "1500")
 
     }).catch((erro) => {
       console.log(erro)
-      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, tente novamente.", 2000, true, "error")
+      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, tente novamente.", "error")
     })
     
   }

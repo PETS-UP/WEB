@@ -111,7 +111,7 @@ function Calendario() {
                 setShowModal(true);
             })
             .catch((error) => {
-                ToastComponent("Nenhum pedido encontrado na data selecionada.", "", true, "warning")
+                ToastComponent("Nenhum pedido encontrado na data selecionada.", "", "warning")
             });
     }
 

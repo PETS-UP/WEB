@@ -6,6 +6,7 @@ import "../../stylepadrao.css";
 import { useState } from "react";
 import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
 import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
+import iconBusca from "../../../assets/icons/ICON-BUSCA.png";
 
 export default function Inicio() {
   useEffect(() => {
@@ -136,7 +137,7 @@ export default function Inicio() {
             <button>
               <img
                 className="image-button"
-                src="/src/assets/icons/ICON-BUSCA.png"
+                src={iconBusca}
               />
             </button>
             <input

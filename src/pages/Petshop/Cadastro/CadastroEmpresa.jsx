@@ -64,13 +64,13 @@ const Cadastro = () => {
     api.post('/petshops', petshop)
     .then((response) => {
       console.log(response);
-      ToastComponent("Cadastro realizado com sucesso!", "", 1500, true, "success")
+      ToastComponent("Cadastro realizado com sucesso!", "", "success")
       setTimeout(() => {
         navigate("/login-empresa");
     }, "1500")
     }).catch((erro) => {
       console.log(erro)
-      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, verifique seus dados.", 2000, true, "error")
+      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, verifique seus dados.", "error")
     })
   }
 

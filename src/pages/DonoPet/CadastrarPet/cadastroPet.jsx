@@ -94,14 +94,14 @@ const CadastrarPet = () => {
         }
       )
       .then((response) => {
-        ToastComponent("Pet cadastrado com sucesso!", "", 1500, true, "success");
+        ToastComponent("Pet cadastrado com sucesso!", "", "success");
         setTimeout(() => {
           navigate("/meus-pets");
       }, "1500")
       })
       .catch((erro) => {
         console.log(erro);
-        ToastComponent("Não foi possível cadastrar o pet.", "Por favor, tente novamente.", 2000, true, "error");
+        ToastComponent("Não foi possível cadastrar o pet.", "Por favor, tente novamente.", "error");
       });
   }
 
