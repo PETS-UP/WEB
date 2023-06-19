@@ -44,7 +44,7 @@ const Cadastro = () => {
   return (
     <div className="container">
       
-      <img src={Background} className="imagebg" />
+      <img src={Background} className="image-background-cadastro" />
       <div className="modal-login-cliente">
         <div className="modal-inputs-cliente">
           <div className="form-inputs-cliente">
