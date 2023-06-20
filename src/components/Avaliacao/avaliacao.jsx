@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import '../Avaliacao/avaliacao.css'
+import api from '../../api';
 
-const Avaliacao = ({ totalStars, onStarClick }) => {
+const Avaliacao = ({ totalStars, onStarClick, id }) => {
     
-    const [estrelas, setEstrelas] = useState(
-        parseInt(localStorage.getItem('estrelas')) || 0
-    );
+    const [estrelasState, setEstrelasState] = useState();
 
     useEffect(() => {
-        localStorage.setItem('estrelas', estrelas.toString());
-    }, [estrelas]);
+        api
+          .get(`/clientes/avaliacao/${sessionStorage.ID_CLIENTE}/${id}`, {
+            headers: {
+              Authorization: `Bearer ${sessionStorage.JWT}`,
+            },
+          })
+          .then((response) => {
+            if (response.status === 200) {
+                setEstrelasState(response.data.nota);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, [])
 
     const handleStarClick = (stars) => {
-        setEstrelas(stars);
+        setEstrelasState(stars);
         onStarClick(stars);
     };
 
@@ -22,7 +34,7 @@ const Avaliacao = ({ totalStars, onStarClick }) => {
         stars.push(
             <span
                 key={i}
-                className={i <= estrelas ? 'star selected' : 'star'}
+                className={i <= estrelasState ? 'star selected' : 'star'}
                 onClick={() => handleStarClick(i)}
             >
                 &#9733;

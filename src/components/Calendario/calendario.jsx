@@ -106,12 +106,23 @@ function Calendario() {
                 }
             })
             .then((response) => {
-                console.log(response.data)
-                setListaPedido(response.data);
-                setShowModal(true);
+                if(response.status === 200){
+                    console.log(response.data)
+                    setListaPedido(response.data);
+                    setShowModal(true);
+                } else {
+                    ToastComponent({
+                        title: "Nenhum pedido encontrado na data selecionada.", 
+                        icon: "warning"
+                    })
+                }
             })
             .catch((error) => {
-                ToastComponent("Nenhum pedido encontrado na data selecionada.", "", "warning")
+                ToastComponent({
+                    title: "Algo deu errado.", 
+                    text: "Por favor, tente novamente mais tarde.",
+                    icon: "error"
+                })
             });
     }
 
