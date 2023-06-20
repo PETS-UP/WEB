@@ -3,6 +3,7 @@ import './styleCadastroEmpresa.css';
 import '../../Global/styleTooltip.css';
 import Background from '../../../assets/images/BACKGROUND-WEB-PETSUP.png';
 import Image from '../../../assets/icons/PETSUP-CADASTRO-ICON.png';
+import { validarConfirmacaoSenha, validarSenha } from '../../../components/Base/validacao';
 import { InputMask } from 'primereact/inputmask';
 import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
@@ -62,16 +63,27 @@ const Cadastro = () => {
     }
 
     api.post('/petshops', petshop)
-    .then((response) => {
-      console.log(response);
-      ToastComponent("Cadastro realizado com sucesso!", "", "success")
-      setTimeout(() => {
-        navigate("/login-empresa");
-    }, "1500")
-    }).catch((erro) => {
-      console.log(erro)
-      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, verifique seus dados.", "error")
-    })
+      .then((response) => {
+        console.log(response);
+        ToastComponent({
+          title: "Cadastro realizado com sucesso!",
+          text: "Você será redirecionado em breve.",
+          icon: "success",
+          timer: 2000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        })
+        setTimeout(() => {
+          navigate("/login-empresa");
+        }, "2000")
+      }).catch((erro) => {
+        console.log(erro)
+        ToastComponent({
+          title: "Não foi possível realizar o cadastro.",
+          text: "Por favor, verifique seus dados.",
+          icon: "error"
+        })
+      })
   }
 
   return (
@@ -82,7 +94,7 @@ const Cadastro = () => {
           <div className="form-inputs">
             <div className="inputs-cadastro">
               <div className="inputs">
-              <p>Faça seu cadastro</p>
+                <p>Faça seu cadastro</p>
                 <div className="inputs-padrao">
                   <label htmlFor="Nome">Nome</label>
                   <input data-tooltip-id='anchor' data-tooltip-content='Digite um nome válido (mínimo 3 letras)'

@@ -1,12 +1,9 @@
-import api from '../../../api';
 import React from "react";
 import './styleCardPetshop.css';
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import Avaliacao from '../../Avaliacao/avaliacao';
 import FavoriteButton from '../../Favorito/favorito';
 
-const CardPetshopPerfil = ({ imagem, nome, servicos, preco, status, estrelas, handleStarClick, isFavorite, toggleFavorite }) => {
+const CardPetshopPerfil = ({ id, imagem, nome, servicos, preco, status, estrelas, handleStarClick, isFavorite, toggleFavorite }) => {
 
     return (
         <>
@@ -39,6 +36,7 @@ const CardPetshopPerfil = ({ imagem, nome, servicos, preco, status, estrelas, ha
                             </div>
                             <div>
                                 <Avaliacao
+                                    id={id}
                                     totalStars={5}
                                     estrelas={estrelas}
                                     onStarClick={handleStarClick}
