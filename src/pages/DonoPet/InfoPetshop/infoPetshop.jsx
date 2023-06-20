@@ -101,10 +101,21 @@ export default function infoPetshop() {
       });
   }, [])
 
-  //useEffect(() => {
-  //  api
-  //    .get(``)
-  //}, [])
+  useEffect(() => {
+    api
+      .get(`/favoritos/${sessionStorage.ID_CLIENTE}/favoritado/${id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setIsFavorite(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [])
 
   function agendarServico() {
     api
@@ -190,6 +201,23 @@ export default function infoPetshop() {
         }).catch((erro) => {
           ToastComponent({
             title: "Não foi possível favoritar o pet shop.",
+            text: "Por favor, tente novamente.",
+            icon: "error"
+          });
+          console.log(erro);
+        })
+    } else {
+      api
+        .delete(`/favoritos/${sessionStorage.ID_CLIENTE}/${id}`, {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`,
+          },
+        })
+        .then((response) => {
+          setIsFavorite(false);
+        }).catch((erro) => {
+          ToastComponent({
+            title: "Não foi possível desfavoritar o petshop",
             text: "Por favor, tente novamente.",
             icon: "error"
           });
@@ -302,7 +330,6 @@ export default function infoPetshop() {
               onChange={(e) => setDate(e.target.value)}
             /> */}
           </div>
-
 
           <div className="div-horario-info-petshop">
             <p>Insira o horário</p>
