@@ -42,19 +42,16 @@ export default function meusPets() {
   const navigate = useNavigate();
 
   const cadastrarPetPorTxt = useCallback(() => {
-    console.log('aaaaaaaa');
-    console.log(file.Fragment);
     if (!file) {
       console.log("Nenhum arquivo selecionado");
     }
 
     const pet = new FormData();
-    pet.append("file", file);
+    pet.append("arquivo", file);
 
     api
-      .post("/pets/upload", {}, {
+      .post("/pets/upload", pet, {
         params: {
-          arquivo: pet,
           idCliente: sessionStorage.ID_CLIENTE,
         },
         headers: {
