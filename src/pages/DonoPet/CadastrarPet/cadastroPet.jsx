@@ -101,7 +101,7 @@ const CadastrarPet = () => {
         });
         setTimeout(() => {
           navigate("/meus-pets");
-        }, "1500")
+        }, "2000")
       })
       .catch((erro) => {
         console.log(erro);
