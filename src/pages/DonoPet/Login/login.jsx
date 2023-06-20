@@ -25,7 +25,7 @@ const Login = () => {
         sessionStorage.ID_CLIENTE = response.data.clienteId;
         sessionStorage.JWT = response.data.token;
         ToastComponent({
-          title: "Cadastro realizado com sucesso!",
+          title: "Login realizado com sucesso!",
           text: "Você será redirecionado em breve.",
           icon: "success",
           timer: 2000,

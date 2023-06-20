@@ -8,6 +8,7 @@ import InputArquivo from "../../../components/InputArquivo/inputArquivo";
 import { ToastComponent } from "../../../components/Toast/Toast";
 
 import DOGGO from "../../../assets/icons/DOGHI-ICON.png";
+import iconBusca from "../../../assets/icons/ICON-BUSCA.png";
 
 import "../MeusPets/meusPets.css";
 
@@ -65,8 +66,8 @@ export default function meusPets() {
           icon: "success"
         });
         setTimeout(() => {
-          location.reload();
-        }, "1500")
+          navigate("/meus-pets");
+        }, "2000")
       })
       .catch((error) => {
         console.log(error);
@@ -131,7 +132,7 @@ export default function meusPets() {
               <button>
                 <img
                   className="image-button"
-                  src="/src/assets/icons/ICON-BUSCA.png"
+                  src={iconBusca}
                 />
               </button>
 
