@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import { ToastComponent } from "../../../components/Toast/Toast";
-import Swal from "sweetalert2";
-import Avaliacao from "../../../components/Avaliacao/avaliacao";
 
 import api from "../../../api";
 import Menu from "../../../components/Base/Menu/menu";
@@ -12,7 +10,7 @@ import "../../stylepadrao.css";
 import "../InfoPetshop/styleinfopetshop.css";
 import CardPetshopPerfil from "../../../components/Base/CardPetshop/cardPetshopPerfil";
 import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
-import iconBusca from "../../../assets/icons/ICON-BUSCA.png";
+import Swal from "sweetalert2";
 
 export default function infoPetshop() {
 
@@ -128,57 +126,75 @@ export default function infoPetshop() {
       )
       .then((response) => {
         console.log(response);
-        ToastComponent("Agendamento realizado com sucesso!", "", "success");
+        ToastComponent({
+          title: "Agendamento realizado com sucesso!",
+          icon: "success"
+        });
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível realizar o agendamento.", "Por favor, tente novamente.", "error");
+        ToastComponent({
+          title: "Não foi possível realizar o agendamento.",
+          text: "Por favor, tente novamente.",
+          icon: "error"
+        });
       });
   }
 
   function favoritar() {
     if (!isFavorite) {
       api
-      .post(`/favoritos/${sessionStorage.ID_CLIENTE}/${id}`, {}, {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.JWT}`,
-        },
-      })
-      .then((response) => {
-        setIsFavorite(true);
-        Swal.fire({
-          title: "Deseja receber notificações deste pet shop via e-mail?",
-          showConfirmButton: true,
-          showDenyButton: true,
-          confirmButtonText: "Sim",
-          denyButtonText: "Não",
-          confirmButtonColor: "#008000",
+        .post(`/favoritos/${sessionStorage.ID_CLIENTE}/${id}`, {}, {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.JWT}`,
+          },
         })
-          .then((result) => {
-            if (result.isConfirmed) {
-              api
-                .post(`/petshops/inscrever/${id}`, {}, {
-                  params: {
-                    idCliente: sessionStorage.ID_CLIENTE,
-                  },
-                  headers: {
-                    Authorization: `Bearer ${sessionStorage.JWT}`,
-                  },
-                })
-                .then((response) => {
-                  console.log(response);
-                }).catch((erro) => {
-                  ToastComponent("Não foi possível realizar a inscrição.", "Por favor, tente novamente.", 2000, true, "error");
-                  console.log(erro);
-                })
-            }
-            ToastComponent("Pet shop favoritado com sucesso!", "", 1500, true, "success");
+        .then((response) => {
+          setIsFavorite(true)
+          Swal.fire({
+            title: "Deseja receber notificações deste pet shop via e-mail?",
+            showConfirmButton: true,
+            showDenyButton: true,
+            confirmButtonText: "Sim",
+            denyButtonText: "Não",
+            confirmButtonColor: "#008000",
           })
-        console.log(response);
-      }).catch((erro) => {
-        ToastComponent("Não foi possível favoritar o pet shop.", "Por favor, tente novamente.", 2000, true, "error");
-        console.log(erro);
-      })
+            .then((result) => {
+              if (result.isConfirmed) {
+                api
+                  .post(`/petshops/inscrever/${id}`, {}, {
+                    params: {
+                      idCliente: sessionStorage.ID_CLIENTE,
+                    },
+                    headers: {
+                      Authorization: `Bearer ${sessionStorage.JWT}`,
+                    },
+                  })
+                  .then((response) => {
+                    console.log(response);;
+                  }).catch((erro) => {
+                    ToastComponent({
+                      title: "Não foi possível realizar a inscrição.",
+                      text: "Por favor, tente novamente.",
+                      icon: "error"
+                    });
+                    console.log(erro);
+                  })
+              }
+              ToastComponent({
+                title: "Pet shop favoritado com sucesso!",
+                icon: "success"
+              });
+            })
+          console.log(response);
+        }).catch((erro) => {
+          ToastComponent({
+            title: "Não foi possível favoritar o pet shop.",
+            text: "Por favor, tente novamente.",
+            icon: "error"
+          });
+          console.log(erro);
+        })
     }
   }
 
@@ -198,7 +214,11 @@ export default function infoPetshop() {
       .then((response) => {
         console.log(response);
       }).catch((erro) => {
-        ToastComponent("Não foi possível realizar a avaliação", "Por favor, tente novamente.", "error");
+        ToastComponent({
+          title: "Não foi possível realizar a avaliação",
+          text: "Por favor, tente novamente.",
+          icon: "error"
+        });
         console.log(erro);
       })
   }

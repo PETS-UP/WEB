@@ -63,14 +63,20 @@ export default function meusPets() {
       })
       .then((response) => {
         console.log(response.data);
-        ToastComponent("Pet cadastrado com sucesso!", "", "success");
+        ToastComponent({
+          title: "Pet cadastrado com sucesso!",
+          icon: "success"
+        });
         setTimeout(() => {
           location.reload();
         }, "1500")
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Erro ao enviar arquivo.", "", "error");
+        ToastComponent({
+          title: "Erro ao enviar arquivo.",
+          icon: "error"
+        });
       });
   }, [file]);
 
@@ -88,11 +94,18 @@ export default function meusPets() {
       })
       .then(({ data }) => {
         setListaPets(listaPets.filter((pet) => pet.id !== id));
-        ToastComponent("Pet deletado com sucesso!", "", "success");
+        ToastComponent({
+          title: "Pet deletado com sucesso!",
+          icon: "success"
+        });
       })
       .catch((error) => {
         console.log(error);
-        ToastComponent("Não foi possível deletar.", "O pet ainda tem agendamentos pendentes.", "warning");
+        ToastComponent({
+          title: "Não foi possível deletar.",
+          text: "O pet ainda tem agendamentos pendentes.",
+          icon: "warning"
+        });
       });
   }
 

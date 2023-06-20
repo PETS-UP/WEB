@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
 
-export const ToastComponent = (title, subtitle, icon) => {
-   Swal.fire(title, subtitle, icon)
+export const ToastComponent = (props) => {
+   Swal.fire(props)
 };

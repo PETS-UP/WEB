@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import { useNavigate } from 'react-router-dom';
 import { ToastComponent } from "../../../components/Toast/Toast";
-import Swal from 'sweetalert2';
 
 const Cadastro = () => {
 
@@ -64,23 +63,27 @@ const Cadastro = () => {
     }
 
     api.post('/petshops', petshop)
-    .then((response) => {
-      console.log(response);
-      Swal.fire({
-        title: "Cadastro realizado com sucesso!",
-        subtitle: "Você será redirecionado em breve.",
-        icon: "success",
-        timer: 2000,
-        timerProgressBar: true,
-        showConfirmButton: false
+      .then((response) => {
+        console.log(response);
+        ToastComponent({
+          title: "Cadastro realizado com sucesso!",
+          text: "Você será redirecionado em breve.",
+          icon: "success",
+          timer: 2000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        })
+        setTimeout(() => {
+          navigate("/login-empresa");
+        }, "2000")
+      }).catch((erro) => {
+        console.log(erro)
+        ToastComponent({
+          title: "Não foi possível realizar o cadastro.",
+          text: "Por favor, verifique seus dados.",
+          icon: "error"
+        })
       })
-      setTimeout(() => {
-        navigate("/login-empresa");
-    }, "2000")
-    }).catch((erro) => {
-      console.log(erro)
-      ToastComponent("Não foi possível realizar o cadastro.", "Por favor, verifique seus dados.", "error")
-    })
   }
 
   return (
@@ -91,7 +94,7 @@ const Cadastro = () => {
           <div className="form-inputs">
             <div className="inputs-cadastro">
               <div className="inputs">
-              <p>Faça seu cadastro</p>
+                <p>Faça seu cadastro</p>
                 <div className="inputs-padrao">
                   <label htmlFor="Nome">Nome</label>
                   <input data-tooltip-id='anchor' data-tooltip-content='Digite um nome válido (mínimo 3 letras)'

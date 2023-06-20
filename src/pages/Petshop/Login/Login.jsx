@@ -5,7 +5,6 @@ import api from "../../../api"
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastComponent } from "../../../components/Toast/Toast";
-import Swal from 'sweetalert2';
 
 const LoginEmpresa = () => {
 
@@ -25,9 +24,9 @@ const LoginEmpresa = () => {
       .then((response) => {
         sessionStorage.ID_PETSHOP = response.data.userId;
         sessionStorage.JWT = response.data.token;
-        Swal.fire({
+        ToastComponent({
           title: "Login realizado com sucesso!",
-          subtitle: "Você será redirecionado em breve.",
+          text: "Você será redirecionado em breve.",
           icon: "success",
           timer: 2000,
           timerProgressBar: true,
@@ -39,7 +38,11 @@ const LoginEmpresa = () => {
       })
       .catch((erro) => {
         console.log(erro);
-        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", "error");
+        ToastComponent({
+          title: "Não foi possível realizar o login.",
+          text: "Por favor, verifique seu e-mail e senha.",
+          icon: "error"
+        });
       });
   }
 

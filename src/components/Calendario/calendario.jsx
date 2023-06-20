@@ -111,11 +111,18 @@ function Calendario() {
                     setListaPedido(response.data);
                     setShowModal(true);
                 } else {
-                    ToastComponent("Nenhum pedido encontrado na data selecionada.", "", 1500, true, "warning")
+                    ToastComponent({
+                        title: "Nenhum pedido encontrado na data selecionada.", 
+                        icon: "warning"
+                    })
                 }
             })
             .catch((error) => {
-                ToastComponent("Algo deu errado.", "Por favor, tente novamente mais tarde.", 2000, true, "error")
+                ToastComponent({
+                    title: "Algo deu errado.", 
+                    text: "Por favor, tente novamente mais tarde.",
+                    icon: "error"
+                })
             });
     }
 

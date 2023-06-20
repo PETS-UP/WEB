@@ -5,7 +5,6 @@ import Image from "../../../assets/icons/PETSUP-LOGIN-ICON.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastComponent } from "../../../components/Toast/Toast";
-import Swal from "sweetalert2";
 import React from "react";
 
 const Login = () => {
@@ -25,9 +24,9 @@ const Login = () => {
       .then((response) => {
         sessionStorage.ID_CLIENTE = response.data.clienteId;
         sessionStorage.JWT = response.data.token;
-        Swal.fire({
+        ToastComponent({
           title: "Cadastro realizado com sucesso!",
-          subtitle: "Você será redirecionado em breve.",
+          text: "Você será redirecionado em breve.",
           icon: "success",
           timer: 2000,
           timerProgressBar: true,
@@ -39,7 +38,11 @@ const Login = () => {
       })
       .catch((erro) => {
         console.log(erro);
-        ToastComponent("Não foi possível realizar o login.", "Por favor, verifique seu e-mail e senha.", "error");
+        ToastComponent({
+          title: "Não foi possível realizar o login.",
+          text: "Por favor, verifique seu e-mail e senha.",
+          icon: "error"
+        });
       });
   }
 
