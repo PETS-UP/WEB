@@ -215,6 +215,7 @@ const PerfilPetshop = () => {
                                 className="select-dia"
                                 isMulti
                                 closeMenuOnSelect = {false}
+                                isSearchable = {false}
                                 placeholder = "Selecione os dias"
                                 options={opcoesDias}
                                 isDisabled={!isEdicaoHabiliata} />
