@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { InputMask } from "primereact/inputmask";
 import api from "../../../api";
 import { ToastComponent } from "../../../components/Toast/Toast";
+import Select from "react-select";
 
 const PerfilPetshop = () => {
     const [nome, setNome] = useState("");
@@ -22,6 +23,10 @@ const PerfilPetshop = () => {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
+    const [horaAbertura, setHoraAbertura] = useState("");
+    const [horaFechamento, setHoraFechamento] = useState("");
+    const [diasFuncionais, setDiasFuncionais] = useState("");
+
 
     const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
 
@@ -58,6 +63,16 @@ const PerfilPetshop = () => {
             }
         }
     };
+
+    const opcoesDias = [
+        {value: 0, label: 'Segunda'},
+        {value: 1, label: 'Terça'},
+        {value: 2, label: 'Quarta'},
+        {value: 3, label: 'Quinta'},
+        {value: 4, label: 'Sexta'},
+        {value: 5, label: 'Sábado'},
+        {value: 6, label: 'Domingo'}
+    ]
 
     function habilitarEdicao() {
         setNome(nome)
@@ -138,18 +153,36 @@ const PerfilPetshop = () => {
                                     onChange={(e) => setNome(e.target.value)}
                                     type="text"
                                     disabled={!isEdicaoHabiliata} />
-                                <label htmlFor="Nome">E-mail</label>
+                                <label htmlFor="E-mail">E-mail</label>
                                 <input
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     type="email"
                                     disabled={!isEdicaoHabiliata} />
-                                <label htmlFor="Nome">N° de endereço</label>
+                                <label htmlFor="NumeroEndereço">N° de endereço</label>
                                 <input
                                     value={numero}
                                     onChange={(e) => setNumero(e.target.value)}
                                     type="text"
                                     disabled={!isEdicaoHabiliata} />
+                                <div className="input-horarios">
+                                    <div>
+                                        <label htmlFor="Hora de Abertura">Hora de Abertura</label>
+                                        <input
+                                            value={horaAbertura}
+                                            onChange={(e) => setHoraAbertura(e.target.value)}
+                                            type="time"
+                                            disabled={!isEdicaoHabiliata} />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="Hora de Fechamento">Hora de Fechamento</label>
+                                        <input
+                                            value={horaFechamento}
+                                            onChange={(e) => setHoraFechamento(e.target.value)}
+                                            type="time"
+                                            disabled={!isEdicaoHabiliata} />
+                                    </div>
+                                </div>
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
@@ -177,6 +210,15 @@ const PerfilPetshop = () => {
                                     mask="(99) 99999-9999"
                                     unmask="true"
                                     disabled={!isEdicaoHabiliata} />
+                                <label htmlFor="Nome">Dias abertos</label>
+                                <Select
+                                className="select-dia"
+                                isMulti
+                                closeMenuOnSelect = {false}
+                                placeholder = "Selecione os dias"
+                                options={opcoesDias}
+                                isDisabled={!isEdicaoHabiliata} />
+
                             </div>
                         </div>
 
