@@ -23,12 +23,34 @@ const PerfilPetshop = () => {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
-    const [horaAbertura, setHoraAbertura] = useState("");
-    const [horaFechamento, setHoraFechamento] = useState("");
-    const [diasFuncionais, setDiasFuncionais] = useState("");
+    const [horaAbertura, setHoraAbertura] = useState();
+    const [horaFechamento, setHoraFechamento] = useState();
+    const opcoesDias = [
+        {value: 0, label: 'Segunda'},
+        {value: 1, label: 'Terça'},
+        {value: 2, label: 'Quarta'},
+        {value: 3, label: 'Quinta'},
+        {value: 4, label: 'Sexta'},
+        {value: 5, label: 'Sábado'},
+        {value: 6, label: 'Domingo'}
+    ]
+    const [diasEscolhidos, setDiasEscolhidos] = useState([]);
 
 
     const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
+
+    function preencherLista(){
+        let dias = []
+        for(var i = 0; i < diasEscolhidos.length; i++){
+                    dias[i] = opcoesDias[diasEscolhidos[i]];     
+                    // console.log("opcoesDias i" + i + ": " +opcoesDias[i])
+                    // console.log("diasEscolhidos i" + i + ": " + diasEscolhidos[i])    
+        }
+        // console.log(opcoesDias)
+        // console.log(diasEscolhidos)
+        // console.log(dias);
+        return dias;
+    }
 
     useEffect(() => {
         api
@@ -44,6 +66,10 @@ const PerfilPetshop = () => {
                 setCep(resposta.data.cep);
                 setCnpj(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
+                setHoraAbertura(resposta.data.horaAbertura);
+                setHoraFechamento(resposta.data.horaFechamento);
+                setDiasEscolhidos(resposta.data.diasFuncionais);
+                console.log(resposta.data)
             })
             .catch((erro) => {
                 console.log(erro);
@@ -64,15 +90,7 @@ const PerfilPetshop = () => {
         }
     };
 
-    const opcoesDias = [
-        {value: 0, label: 'Segunda'},
-        {value: 1, label: 'Terça'},
-        {value: 2, label: 'Quarta'},
-        {value: 3, label: 'Quinta'},
-        {value: 4, label: 'Sexta'},
-        {value: 5, label: 'Sábado'},
-        {value: 6, label: 'Domingo'}
-    ]
+    
 
     function habilitarEdicao() {
         setNome(nome)
@@ -86,6 +104,12 @@ const PerfilPetshop = () => {
     }
 
     function atualizar(e) {
+        if(horaAbertura != ""){
+            atualizarHora();
+        }
+        if(diasEscolhidos != ""){
+            atualizarDias();
+        }
         e.preventDefault();
         const petshop = {
             nome: nome,
@@ -122,6 +146,29 @@ const PerfilPetshop = () => {
             });
         setisEdicaoHabiliata(true)
     };
+
+    function atualizarHora(){
+        const horarios = {
+            horaAbertura: horaAbertura,
+            horaFechamento: horaFechamento
+        }
+        api.post(`petshops/adicionarHoraFuncionamento/${sessionStorage.ID_PETSHOP}`, horarios,{
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`,
+            },
+        })
+    }
+
+    function atualizarDias(){
+        const diasAbertos = {
+            diasFuncionais: diasEscolhidos 
+        }
+        api.post(`petshops/adicionarDiasFuncionais/${sessionStorage.ID_PETSHOP}`, diasAbertos,{
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`,
+            },
+        })
+    }
 
     return (
 
@@ -212,11 +259,19 @@ const PerfilPetshop = () => {
                                     disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Dias abertos</label>
                                 <Select
+                                defaultValue={preencherLista}
                                 className="select-dia"
                                 isMulti
                                 closeMenuOnSelect = {false}
                                 isSearchable = {false}
                                 placeholder = "Selecione os dias"
+                                onChange={(opcoesDias) => {
+                                    let dias = []
+                                    for(var i = 0; i < opcoesDias.length; i++){
+                                        dias[i] = opcoesDias[i].value;
+                                    }
+                                    setDiasEscolhidos(dias)
+                                }}
                                 options={opcoesDias}
                                 isDisabled={!isEdicaoHabiliata} />
 

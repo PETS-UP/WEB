@@ -113,9 +113,10 @@
 .select-dia{
     width: 80%;
     max-width: 80%;
+    overflow-y: auto;
 }
 
-.select-dia.is-disabled{
+.select-dia.disabled{
     background-color: pink;
 }
 
