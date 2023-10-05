@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { InputMask } from "primereact/inputmask";
 import api from "../../../api";
 import { ToastComponent } from "../../../components/Toast/Toast";
+import Select from "react-select";
 
 const PerfilPetshop = () => {
     const [nome, setNome] = useState("");
@@ -22,8 +23,34 @@ const PerfilPetshop = () => {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
+    const [horaAbertura, setHoraAbertura] = useState();
+    const [horaFechamento, setHoraFechamento] = useState();
+    const opcoesDias = [
+        {value: 0, label: 'Segunda'},
+        {value: 1, label: 'Terça'},
+        {value: 2, label: 'Quarta'},
+        {value: 3, label: 'Quinta'},
+        {value: 4, label: 'Sexta'},
+        {value: 5, label: 'Sábado'},
+        {value: 6, label: 'Domingo'}
+    ]
+    const [diasEscolhidos, setDiasEscolhidos] = useState([]);
+
 
     const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
+
+    function preencherLista(){
+        let dias = []
+        for(var i = 0; i < diasEscolhidos.length; i++){
+                    dias[i] = opcoesDias[diasEscolhidos[i]];     
+                    // console.log("opcoesDias i" + i + ": " +opcoesDias[i])
+                    // console.log("diasEscolhidos i" + i + ": " + diasEscolhidos[i])    
+        }
+        // console.log(opcoesDias)
+        // console.log(diasEscolhidos)
+        // console.log(dias);
+        return dias;
+    }
 
     useEffect(() => {
         api
@@ -39,6 +66,10 @@ const PerfilPetshop = () => {
                 setCep(resposta.data.cep);
                 setCnpj(resposta.data.cnpj);
                 setTelefone(resposta.data.telefone);
+                setHoraAbertura(resposta.data.horaAbertura);
+                setHoraFechamento(resposta.data.horaFechamento);
+                setDiasEscolhidos(resposta.data.diasFuncionais);
+                console.log(resposta.data)
             })
             .catch((erro) => {
                 console.log(erro);
@@ -59,6 +90,8 @@ const PerfilPetshop = () => {
         }
     };
 
+    
+
     function habilitarEdicao() {
         setNome(nome)
         setEmail(email)
@@ -71,6 +104,8 @@ const PerfilPetshop = () => {
     }
 
     function atualizar(e) {
+       
+        atualizarDias();
         e.preventDefault();
         const petshop = {
             nome: nome,
@@ -83,6 +118,8 @@ const PerfilPetshop = () => {
             bairro: bairro,
             rua: rua,
             numero: numero,
+            horaAbertura: horaAbertura,
+            horaFechamento: horaFechamento
         };
         api
             .patch(`/petshops/${sessionStorage.ID_PETSHOP}`, petshop, {
@@ -107,6 +144,17 @@ const PerfilPetshop = () => {
             });
         setisEdicaoHabiliata(true)
     };
+
+    function atualizarDias(){
+        const diasAbertos = {
+            diasFuncionais: diasEscolhidos 
+        }
+        api.post(`petshops/adicionarDiasFuncionais/${sessionStorage.ID_PETSHOP}`, diasAbertos,{
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`,
+            },
+        })
+    }
 
     return (
 
@@ -138,18 +186,36 @@ const PerfilPetshop = () => {
                                     onChange={(e) => setNome(e.target.value)}
                                     type="text"
                                     disabled={!isEdicaoHabiliata} />
-                                <label htmlFor="Nome">E-mail</label>
+                                <label htmlFor="E-mail">E-mail</label>
                                 <input
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     type="email"
                                     disabled={!isEdicaoHabiliata} />
-                                <label htmlFor="Nome">N° de endereço</label>
+                                <label htmlFor="NumeroEndereço">N° de endereço</label>
                                 <input
                                     value={numero}
                                     onChange={(e) => setNumero(e.target.value)}
                                     type="text"
                                     disabled={!isEdicaoHabiliata} />
+                                <div className="input-horarios">
+                                    <div>
+                                        <label htmlFor="Hora de Abertura">Hora de Abertura</label>
+                                        <input
+                                            value={horaAbertura}
+                                            onChange={(e) => setHoraAbertura(e.target.value)}
+                                            type="time"
+                                            disabled={!isEdicaoHabiliata} />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="Hora de Fechamento">Hora de Fechamento</label>
+                                        <input
+                                            value={horaFechamento}
+                                            onChange={(e) => setHoraFechamento(e.target.value)}
+                                            type="time"
+                                            disabled={!isEdicaoHabiliata} />
+                                    </div>
+                                </div>
                             </div>
                             <div className="inputs-user-perfil-petshop">
                                 <label htmlFor="Nome">CEP</label>
@@ -177,6 +243,25 @@ const PerfilPetshop = () => {
                                     mask="(99) 99999-9999"
                                     unmask="true"
                                     disabled={!isEdicaoHabiliata} />
+                                <label htmlFor="Nome">Dias abertos</label>
+                                <Select
+                                // defaultValue={preencherLista}
+                                className="select-dia"
+                                isMulti
+                                closeMenuOnSelect = {false}
+                                isSearchable = {false}
+                                placeholder = "Selecione os dias"
+                                menuPlacement="auto"
+                                onChange={(opcoesDias) => {
+                                    let dias = []
+                                    for(var i = 0; i < opcoesDias.length; i++){
+                                        dias[i] = opcoesDias[i].value;
+                                    }
+                                    setDiasEscolhidos(dias)
+                                }}
+                                options={opcoesDias}
+                                isDisabled={!isEdicaoHabiliata} />
+
                             </div>
                         </div>
 
