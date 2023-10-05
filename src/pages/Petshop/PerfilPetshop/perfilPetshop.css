@@ -113,7 +113,6 @@
 .select-dia{
     width: 80%;
     max-width: 80%;
-    overflow-y: auto;
 }
 
 .select-dia.disabled{

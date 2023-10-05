@@ -104,12 +104,8 @@ const PerfilPetshop = () => {
     }
 
     function atualizar(e) {
-        if(horaAbertura != ""){
-            atualizarHora();
-        }
-        if(diasEscolhidos != ""){
-            atualizarDias();
-        }
+       
+        atualizarDias();
         e.preventDefault();
         const petshop = {
             nome: nome,
@@ -122,6 +118,8 @@ const PerfilPetshop = () => {
             bairro: bairro,
             rua: rua,
             numero: numero,
+            horaAbertura: horaAbertura,
+            horaFechamento: horaFechamento
         };
         api
             .patch(`/petshops/${sessionStorage.ID_PETSHOP}`, petshop, {
@@ -146,18 +144,6 @@ const PerfilPetshop = () => {
             });
         setisEdicaoHabiliata(true)
     };
-
-    function atualizarHora(){
-        const horarios = {
-            horaAbertura: horaAbertura,
-            horaFechamento: horaFechamento
-        }
-        api.post(`petshops/adicionarHoraFuncionamento/${sessionStorage.ID_PETSHOP}`, horarios,{
-            headers: {
-                Authorization: `Bearer ${sessionStorage.JWT}`,
-            },
-        })
-    }
 
     function atualizarDias(){
         const diasAbertos = {
@@ -259,12 +245,13 @@ const PerfilPetshop = () => {
                                     disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Dias abertos</label>
                                 <Select
-                                defaultValue={preencherLista}
+                                // defaultValue={preencherLista}
                                 className="select-dia"
                                 isMulti
                                 closeMenuOnSelect = {false}
                                 isSearchable = {false}
                                 placeholder = "Selecione os dias"
+                                menuPlacement="auto"
                                 onChange={(opcoesDias) => {
                                     let dias = []
                                     for(var i = 0; i < opcoesDias.length; i++){
