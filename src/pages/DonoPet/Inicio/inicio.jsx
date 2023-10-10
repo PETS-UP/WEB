@@ -124,9 +124,26 @@ export default function Inicio() {
     })
   }
 
+  function getStatusPetshop(id) {
+    api.get(`/petshops/checarAberto/${id}`, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
+    .then((response) => { 
+      console.log(response.data)
+      console.log(response.data ? "Correto" : "Errado")
+      if(response.data == true){
+        return true;
+      }else if(response.data == false){
+        return false;
+      }
+    })
+    .catch((erro) => {
+      console.log(erro);
+    })
+  }
+
   const [petshops, setPetshops] = useState([]);
   const servicos = "Banho & Tosa";
-  const status = "Aberto agora";
 
   return (
     <div className="container-main">
@@ -157,12 +174,11 @@ export default function Inicio() {
         <div className="cards-petshop">
         {petshops.length > 0 && petshops.map((petshop) => (
             <React.Fragment key={petshop.id}>
-              {console.log(petshop.id)}
               <CardPetshop
                 id={petshop.id}
                 nome={petshop.nome}
                 servicos={servicos}
-                status={status}
+                status={getStatusPetshop(petshop.id) ? "Aberto agora" : "Fechado"}
                 imagem={imgPetshop}
               />
             </React.Fragment>
