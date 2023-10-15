@@ -4,7 +4,7 @@ import './styleCardPetshop.css';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
+const CardPetshop = ({ id, imagem, nome, servicos, preco, status, nota }) => {
 
     const navigate = useNavigate()
 
@@ -37,6 +37,9 @@ const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="petshop-content-rating">
+                    <p>{nota}</p>
                 </div>
             </div>
         </>
