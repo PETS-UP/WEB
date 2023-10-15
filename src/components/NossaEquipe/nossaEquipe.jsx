@@ -3,7 +3,6 @@ import NOGUEIRA from '../../assets/images/NOGUEIRA.png';
 import BELTRAO from '../../assets/images/BELTRAO.png';
 import FERRAZ from '../../assets/images/FERRAZ.png';
 import MAURICIO from '../../assets/images/MAURICIO.png';
-import WILLIAM from '../../assets/images/WILLIAM.png';
 
 
 const NossaEquipe = () => {
@@ -86,23 +85,6 @@ const NossaEquipe = () => {
 
                 </div>
 
-            </div>
-
-            <div className='retangulos3'>
-                <div className='retangulo5'>
-                    <div className='circulo5'><img src={WILLIAM} alt="" /></div>
-                    <div className='content-textos5'>
-                        <div className='nome5'>
-                            <h4>William Matos</h4>
-                            <div className="bordinha5"></div>
-                        </div>
-                        <div className='content-text5'>
-                            <p>
-                                “O segredo de um grande sucesso está no trabalho de uma grande equipe.”
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>

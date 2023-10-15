@@ -153,3 +153,22 @@
     font-size: 25px;
     color: green;
 }
+
+.petshop-content-rating {
+    display: flex;
+    align-items: flex-start;
+    height: 80%;
+    margin-right: 2%;
+}
+
+.petshop-content-rating img {
+    width: 32px;
+    height: 32px;
+    margin-top: 10%;
+    margin-right: 5%;
+}
+
+.petshop-content-rating p {
+    font-size: 32px;
+    color: #F49C63;
+}
