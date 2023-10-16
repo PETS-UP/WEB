@@ -23,6 +23,7 @@ const LoginEmpresa = () => {
     api.post("/petshops/login", petshop)
       .then((response) => {
         sessionStorage.ID_PETSHOP = response.data.userId;
+        sessionStorage.NOME = response.data.nome;
         sessionStorage.JWT = response.data.token;
         ToastComponent({
           title: "Login realizado com sucesso!",
