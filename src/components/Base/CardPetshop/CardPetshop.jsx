@@ -3,8 +3,9 @@ import React from "react";
 import './styleCardPetshop.css';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import icon_star from "../../../assets/icons/icon_star.svg";
 
-const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
+const CardPetshop = ({ id, imagem, nome, servicos, preco, status, nota }) => {
 
     const navigate = useNavigate()
 
@@ -37,6 +38,10 @@ const CardPetshop = ({ id, imagem, nome, servicos, preco, status }) => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="petshop-content-rating">
+                    <img src={icon_star}></img>
+                    <p>{nota}</p>
                 </div>
             </div>
         </>

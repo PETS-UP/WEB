@@ -24,6 +24,17 @@ export default function Inicio() {
       .catch((erro) => {
         console.log(erro);
       });
+
+    api
+      .get(`/petshops/media-avaliacao`, {
+        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+      })
+      .then((response) => {
+        setNotas(response.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      })
   }, []);
 
   function getLocation() {
@@ -44,11 +55,11 @@ export default function Inicio() {
     };
 
     api.patch(
-        `/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}/${latitude}/${longitude}`,
-        {}, {
-          headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
-        }
-      )
+      `/clientes/latitude-longitude/${sessionStorage.ID_CLIENTE}/${latitude}/${longitude}`,
+      {}, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    }
+    )
       .then((response) => {
         console.log(response);
       })
@@ -78,8 +89,8 @@ export default function Inicio() {
 
   function getPetshopsProximos() {
     api.get(`/clientes/petshops-proximos/${sessionStorage.ID_CLIENTE}`, {
-        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
-      })
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
       .then((response) => {
         setPetshops(response.data);
       })
@@ -92,32 +103,50 @@ export default function Inicio() {
     api.get(`/clientes/ordenar-media-avaliacao`, {
       headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
     })
-    .then((response) => {
-      setPetshops(response.data);
-    })
-    .catch((erro) => {
-      console.log(erro);
-    });
+      .then((response) => {
+        setPetshops(response.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
   }
 
   function getPetshopsMediaPreco() {
     api.get(`/clientes/ordenar-media-preco`, {
       headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
     })
-    .then((response) => {
-      setPetshops(response.data);
-    })
-    .catch((erro) => {
-      console.log(erro);
-    });
+      .then((response) => {
+        setPetshops(response.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
   }
 
   function getPetshopsFavoritos() {
     api.get(`/favoritos/${sessionStorage.ID_CLIENTE}`, {
       headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
     })
-    .then((response) => {
-      setPetshops(response.data);
+      .then((response) => {
+        setPetshops(response.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      })
+  }
+
+  function getStatusPetshop(id) {
+    api.get(`/petshops/checarAberto/${id}`, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
+    .then((response) => { 
+      console.log(response.data)
+      console.log(response.data ? "Correto" : "Errado")
+      if(response.data == true){
+        return true;
+      }else if(response.data == false){
+        return false;
+      }
     })
     .catch((erro) => {
       console.log(erro);
@@ -125,8 +154,8 @@ export default function Inicio() {
   }
 
   const [petshops, setPetshops] = useState([]);
+  const [notas, setNotas] = useState([]);
   const servicos = "Banho & Tosa";
-  const status = "Aberto agora";
 
   return (
     <div className="container-main">
@@ -155,18 +184,23 @@ export default function Inicio() {
         </div>
 
         <div className="cards-petshop">
-        {petshops.length > 0 && petshops.map((petshop) => (
-            <React.Fragment key={petshop.id}>
-              {console.log(petshop.id)}
-              <CardPetshop
-                id={petshop.id}
-                nome={petshop.nome}
-                servicos={servicos}
-                status={status}
-                imagem={imgPetshop}
-              />
-            </React.Fragment>
-          ))}
+          {petshops.length > 0 && petshops.map((petshop) => {
+            const notaEncontrada = notas.find(nota => nota.id == petshop.id);
+            const notaDoPetshop = notaEncontrada ? notaEncontrada.media : 0.0;
+            
+            return (
+              <React.Fragment key={petshop.id}>
+                <CardPetshop
+                  id={petshop.id}
+                  nome={petshop.nome}
+                  servicos={servicos}
+                  status={status}
+                  imagem={imgPetshop}
+                  nota={notaDoPetshop.toFixed(1)}
+                />
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
     </div>
