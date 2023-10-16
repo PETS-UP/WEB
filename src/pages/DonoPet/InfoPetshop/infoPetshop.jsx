@@ -182,7 +182,7 @@ export default function infoPetshop() {
                     },
                   })
                   .then((response) => {
-                    console.log(response);;
+                    console.log(response);
                   }).catch((erro) => {
                     ToastComponent({
                       title: "Não foi possível realizar a inscrição.",
@@ -272,6 +272,7 @@ export default function infoPetshop() {
           <CardPetshopPerfil
             id={id}
             nome={petshop.nome}
+            //TODO: Aberto ou fechado
             status={"Aberto agora"}
             imagem={imgPetshop}
             handleStarClick={avaliar}

@@ -135,10 +135,27 @@ export default function Inicio() {
       })
   }
 
+  function getStatusPetshop(id) {
+    api.get(`/petshops/checarAberto/${id}`, {
+      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+    })
+    .then((response) => { 
+      console.log(response.data)
+      console.log(response.data ? "Correto" : "Errado")
+      if(response.data == true){
+        return true;
+      }else if(response.data == false){
+        return false;
+      }
+    })
+    .catch((erro) => {
+      console.log(erro);
+    })
+  }
+
   const [petshops, setPetshops] = useState([]);
   const [notas, setNotas] = useState([]);
   const servicos = "Banho & Tosa";
-  const status = "Aberto agora";
 
   return (
     <div className="container-main">
