@@ -15,6 +15,7 @@ const Menu = () => {
     return (
         <div className='menu-lateral'>
             <div className='img-user-cliente' />
+            <p className='cliente-name'>{sessionStorage.NOME}</p>
             <div className='container-icons'>
                 <div className='div-menu-lateral-edit' onClick={() => navigate('/inicio')}>
                     <LabelMenu img={inicio} item="Inicio" />

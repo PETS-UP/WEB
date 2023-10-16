@@ -23,6 +23,7 @@ const Login = () => {
     api.post("/clientes/login", cliente)
       .then((response) => {
         sessionStorage.ID_CLIENTE = response.data.clienteId;
+        sessionStorage.NOME = response.data.nome;
         sessionStorage.JWT = response.data.token;
         ToastComponent({
           title: "Login realizado com sucesso!",
