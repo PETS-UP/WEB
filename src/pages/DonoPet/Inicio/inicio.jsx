@@ -35,6 +35,17 @@ export default function Inicio() {
       .catch((erro) => {
         console.log(erro);
       })
+
+    api
+      .get(`/petshops/checarAberto`, {
+        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+      })
+      .then((response) => {
+        setStatuses(response.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      })
   }, []);
 
   function getLocation() {
@@ -135,26 +146,9 @@ export default function Inicio() {
       })
   }
 
-  function getStatusPetshop(id) {
-    api.get(`/petshops/checarAberto/${id}`, {
-      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
-    })
-    .then((response) => { 
-      console.log(response.data)
-      console.log(response.data ? "Correto" : "Errado")
-      if(response.data == true){
-        return true;
-      }else if(response.data == false){
-        return false;
-      }
-    })
-    .catch((erro) => {
-      console.log(erro);
-    })
-  }
-
   const [petshops, setPetshops] = useState([]);
   const [notas, setNotas] = useState([]);
+  const [statuses, setStatuses] = useState([]);
   const servicos = "Banho & Tosa";
 
   return (
@@ -187,14 +181,17 @@ export default function Inicio() {
           {petshops.length > 0 && petshops.map((petshop) => {
             const notaEncontrada = notas.find(nota => nota.id == petshop.id);
             const notaDoPetshop = notaEncontrada ? notaEncontrada.media : 0.0;
-            
+
+            const statusEncontrado = statuses.find(status => status.id == petshop.id);
+            const statusDoPetshop = statusEncontrado ? "Aberto agora" : "Fechado";
+
             return (
               <React.Fragment key={petshop.id}>
                 <CardPetshop
                   id={petshop.id}
                   nome={petshop.nome}
                   servicos={servicos}
-                  status={status}
+                  status={statusDoPetshop}
                   imagem={imgPetshop}
                   nota={notaDoPetshop.toFixed(1)}
                 />
