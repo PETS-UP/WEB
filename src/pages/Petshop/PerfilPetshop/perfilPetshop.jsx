@@ -17,34 +17,34 @@ const PerfilPetshop = () => {
     const [cep, setCep] = useState("");
     const [cnpj, setCnpj] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [imagem, setImagem] = useState("");
     const [estado, setEstado] = useState("");
     const [cidade, setCidade] = useState("");
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numero, setNumero] = useState("");
+    const [image, setImage] = useState({
+        selectedFile: null
+    });
     const [horaAbertura, setHoraAbertura] = useState();
     const [horaFechamento, setHoraFechamento] = useState();
     const opcoesDias = [
-        {value: 0, label: 'Segunda'},
-        {value: 1, label: 'Terça'},
-        {value: 2, label: 'Quarta'},
-        {value: 3, label: 'Quinta'},
-        {value: 4, label: 'Sexta'},
-        {value: 5, label: 'Sábado'},
-        {value: 6, label: 'Domingo'}
+        { value: 0, label: 'Segunda' },
+        { value: 1, label: 'Terça' },
+        { value: 2, label: 'Quarta' },
+        { value: 3, label: 'Quinta' },
+        { value: 4, label: 'Sexta' },
+        { value: 5, label: 'Sábado' },
+        { value: 6, label: 'Domingo' }
     ]
     const [diasEscolhidos, setDiasEscolhidos] = useState([]);
-
-
     const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
 
-    function preencherLista(){
+    function preencherLista() {
         let dias = []
-        for(var i = 0; i < diasEscolhidos.length; i++){
-                    dias[i] = opcoesDias[diasEscolhidos[i]];     
-                    // console.log("opcoesDias i" + i + ": " +opcoesDias[i])
-                    // console.log("diasEscolhidos i" + i + ": " + diasEscolhidos[i])    
+        for (var i = 0; i < diasEscolhidos.length; i++) {
+            dias[i] = opcoesDias[diasEscolhidos[i]];
+            // console.log("opcoesDias i" + i + ": " +opcoesDias[i])
+            // console.log("diasEscolhidos i" + i + ": " + diasEscolhidos[i])    
         }
         // console.log(opcoesDias)
         // console.log(diasEscolhidos)
@@ -69,6 +69,7 @@ const PerfilPetshop = () => {
                 setHoraAbertura(resposta.data.horaAbertura);
                 setHoraFechamento(resposta.data.horaFechamento);
                 setDiasEscolhidos(resposta.data.diasFuncionais);
+                setImage(resposta.data.image);
                 console.log(resposta.data)
             })
             .catch((erro) => {
@@ -90,23 +91,14 @@ const PerfilPetshop = () => {
         }
     };
 
-    
-
     function habilitarEdicao() {
-        setNome(nome)
-        setEmail(email)
-        setNumero(numero)
-        setCep(cep)
-        setCnpj(cnpj)
-        setTelefone(telefone)
-        buscarCep()
         setisEdicaoHabiliata(true)
     }
 
     function atualizar(e) {
-       
-        atualizarDias();
         e.preventDefault();
+        atualizarDias();
+        editarFotoPerfil();
         const petshop = {
             nome: nome,
             email: email,
@@ -142,18 +134,41 @@ const PerfilPetshop = () => {
                     icon: "error"
                 });
             });
-        setisEdicaoHabiliata(true)
+        setisEdicaoHabiliata(false)
     };
 
-    function atualizarDias(){
+    function atualizarDias() {
         const diasAbertos = {
-            diasFuncionais: diasEscolhidos 
+            diasFuncionais: diasEscolhidos
         }
-        api.post(`petshops/adicionarDiasFuncionais/${sessionStorage.ID_PETSHOP}`, diasAbertos,{
+        api.post(`/petshops/adicionarDiasFuncionais/${sessionStorage.ID_PETSHOP}`, diasAbertos, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.JWT}`,
             },
         })
+    }
+
+    function fileSelectedHandler(event) {
+        setImage({
+            selectedFile: event.target.files[0]
+        })
+    }
+
+    function editarFotoPerfil() {
+        const fd = new FormData()
+        if (image.selectedFile != null) fd.append('image', image.selectedFile, image.selectedFile.name);
+
+        api.put(`/petshops/atualizar-imagem/${sessionStorage.ID_PETSHOP}`, fd, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.JWT}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     return (
@@ -172,6 +187,8 @@ const PerfilPetshop = () => {
                             <div className="img-user-perfil-petshop">
                                 <img src={imgUser} />
                             </div>
+                            <input className="input-imagem" type="file"
+                                onChange={fileSelectedHandler} />
 
                             <div className="text-user-perfil-petshop">
                                 <p>{nome}</p>
@@ -199,7 +216,7 @@ const PerfilPetshop = () => {
                                     type="text"
                                     disabled={!isEdicaoHabiliata} />
                                 <div className="input-horarios">
-                                    <div>
+                                    <div className="div-input-horarios">
                                         <label htmlFor="Hora de Abertura">Hora de Abertura</label>
                                         <input
                                             value={horaAbertura}
@@ -207,7 +224,7 @@ const PerfilPetshop = () => {
                                             type="time"
                                             disabled={!isEdicaoHabiliata} />
                                     </div>
-                                    <div>
+                                    <div className="div-input-horarios">
                                         <label htmlFor="Hora de Fechamento">Hora de Fechamento</label>
                                         <input
                                             value={horaFechamento}
@@ -245,22 +262,22 @@ const PerfilPetshop = () => {
                                     disabled={!isEdicaoHabiliata} />
                                 <label htmlFor="Nome">Dias abertos</label>
                                 <Select
-                                // defaultValue={preencherLista}
-                                className="select-dia"
-                                isMulti
-                                closeMenuOnSelect = {false}
-                                isSearchable = {false}
-                                placeholder = "Selecione os dias"
-                                menuPlacement="auto"
-                                onChange={(opcoesDias) => {
-                                    let dias = []
-                                    for(var i = 0; i < opcoesDias.length; i++){
-                                        dias[i] = opcoesDias[i].value;
-                                    }
-                                    setDiasEscolhidos(dias)
-                                }}
-                                options={opcoesDias}
-                                isDisabled={!isEdicaoHabiliata} />
+                                    // defaultValue={preencherLista}
+                                    className="select-dia"
+                                    isMulti
+                                    closeMenuOnSelect={false}
+                                    isSearchable={false}
+                                    placeholder="Selecione os dias"
+                                    menuPlacement="auto"
+                                    onChange={(opcoesDias) => {
+                                        let dias = []
+                                        for (var i = 0; i < opcoesDias.length; i++) {
+                                            dias[i] = opcoesDias[i].value;
+                                        }
+                                        setDiasEscolhidos(dias)
+                                    }}
+                                    options={opcoesDias}
+                                    isDisabled={!isEdicaoHabiliata} />
 
                             </div>
                         </div>
