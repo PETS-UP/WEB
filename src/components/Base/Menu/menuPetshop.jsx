@@ -13,7 +13,9 @@ const MenuPetshop = () => {
 
     return (
         <div className='menu-lateral'>
-            <div className='img-user-petshop' />
+            <div>
+                <img className='img-user-petshop' src={sessionStorage.IMG_PERFIL} />
+            </div>
             <p className='petshop-name'>{sessionStorage.NOME}</p>
             <div className='container-icons'>
                 {/* <div className='div-menu-lateral-edit' onClick={() => navigate('/inicio')}>
