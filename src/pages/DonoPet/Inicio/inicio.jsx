@@ -182,6 +182,11 @@ export default function Inicio() {
             const notaEncontrada = notas.find(nota => nota.id == petshop.id);
             const notaDoPetshop = notaEncontrada ? notaEncontrada.media : 0.0;
 
+            const imagemDoPetshop =
+              notaEncontrada.imagemPerfil != "https://petsupstorage.blob.core.windows.net/imagesstorage/null"
+                && notaEncontrada.imagemPerfil != "https://petsupstorage.blob.core.windows.net/imagesstorage/" 
+                ? notaEncontrada.imagemPerfil : imgPetshop
+
             const statusEncontrado = statuses.find(status => status.id == petshop.id);
             const statusDoPetshop = statusEncontrado ? "Aberto agora" : "Fechado";
 
@@ -192,7 +197,7 @@ export default function Inicio() {
                   nome={petshop.nome}
                   servicos={servicos}
                   status={statusDoPetshop}
-                  imagem={imgPetshop}
+                  imagem={imagemDoPetshop}
                   nota={notaDoPetshop.toFixed(1)}
                 />
               </React.Fragment>

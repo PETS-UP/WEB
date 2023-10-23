@@ -39,6 +39,8 @@ const PerfilPetshop = () => {
     const [diasEscolhidos, setDiasEscolhidos] = useState([]);
     const [isEdicaoHabiliata, setisEdicaoHabiliata] = useState(false);
 
+    const [imagemPerfil, setImagemPerfil] = useState("");
+
     function preencherLista() {
         let dias = []
         for (var i = 0; i < diasEscolhidos.length; i++) {
@@ -69,12 +71,25 @@ const PerfilPetshop = () => {
                 setHoraAbertura(resposta.data.horaAbertura);
                 setHoraFechamento(resposta.data.horaFechamento);
                 setDiasEscolhidos(resposta.data.diasFuncionais);
-                setImage(resposta.data.image);
                 console.log(resposta.data)
             })
             .catch((erro) => {
                 console.log(erro);
             });
+
+        api
+            .get(`/petshops/retornar-imagem/${sessionStorage.ID_PETSHOP}`, {
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.JWT}`,
+                },
+            })
+            .then((resposta) => {
+                setImagemPerfil(resposta.data);
+                sessionStorage.IMG_PERFIL = resposta.data;
+            })
+            .catch((erro) => {
+                console.log(erro);
+            })
     }, []);
 
     const buscarCep = async () => {
@@ -171,6 +186,11 @@ const PerfilPetshop = () => {
             });
     }
 
+    let imagemDoPetshop =
+        sessionStorage.IMG_PERFIL != "https://petsupstorage.blob.core.windows.net/imagesstorage/null"
+            && sessionStorage.IMG_PERFIL != "https://petsupstorage.blob.core.windows.net/imagesstorage/"
+            ? sessionStorage.IMG_PERFIL : imgUser
+
     return (
 
         <div className='content-main-perfil-petshop'>
@@ -184,11 +204,16 @@ const PerfilPetshop = () => {
 
                         <div className="header-items-perfil-petshop">
 
-                            <div className="img-user-perfil-petshop">
-                                <img src={imgUser} />
+                            <div className="container-img-perfil">
+                                <div className="img-user-perfil-petshop">
+                                    <img src={imagemDoPetshop} />
+                                </div>
+                                <label htmlFor="input-imagem" className="label-imagem">
+                                    Editar imagem
+                                    <input className="input-imagem" type="file"
+                                        onChange={fileSelectedHandler} />
+                                </label>
                             </div>
-                            <input className="input-imagem" type="file"
-                                onChange={fileSelectedHandler} />
 
                             <div className="text-user-perfil-petshop">
                                 <p>{nome}</p>
