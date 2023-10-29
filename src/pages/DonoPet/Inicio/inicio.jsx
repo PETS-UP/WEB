@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import "../../stylepadrao.css";
 import { useState } from "react";
 import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
-import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
 import iconBusca from "../../../assets/icons/ICON-BUSCA.png";
 
 export default function Inicio() {
@@ -24,28 +23,6 @@ export default function Inicio() {
       .catch((erro) => {
         console.log(erro);
       });
-
-    api
-      .get(`/petshops/media-avaliacao`, {
-        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
-      })
-      .then((response) => {
-        setNotas(response.data);
-      })
-      .catch((erro) => {
-        console.log(erro);
-      })
-
-    api
-      .get(`/petshops/checarAberto`, {
-        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
-      })
-      .then((response) => {
-        setStatuses(response.data);
-      })
-      .catch((erro) => {
-        console.log(erro);
-      })
   }, []);
 
   function getLocation() {
@@ -147,8 +124,6 @@ export default function Inicio() {
   }
 
   const [petshops, setPetshops] = useState([]);
-  const [notas, setNotas] = useState([]);
-  const [statuses, setStatuses] = useState([]);
   const servicos = "Banho & Tosa";
 
   return (
@@ -179,16 +154,7 @@ export default function Inicio() {
 
         <div className="cards-petshop">
           {petshops.length > 0 && petshops.map((petshop) => {
-            const notaEncontrada = notas.find(nota => nota.id == petshop.id);
-            const notaDoPetshop = notaEncontrada ? notaEncontrada.media : 0.0;
-
-            const imagemDoPetshop =
-              notaEncontrada.imagemPerfil != "https://petsupstorage.blob.core.windows.net/imagesstorage/null"
-                && notaEncontrada.imagemPerfil != "https://petsupstorage.blob.core.windows.net/imagesstorage/" 
-                ? notaEncontrada.imagemPerfil : imgPetshop
-
-            const statusEncontrado = statuses.find(status => status.id == petshop.id);
-            const statusDoPetshop = statusEncontrado ? "Aberto agora" : "Fechado";
+            console.log(petshop)
 
             return (
               <React.Fragment key={petshop.id}>
@@ -196,9 +162,15 @@ export default function Inicio() {
                   id={petshop.id}
                   nome={petshop.nome}
                   servicos={servicos}
-                  status={statusDoPetshop}
-                  imagem={imagemDoPetshop}
-                  nota={notaDoPetshop.toFixed(1)}
+                  status={
+                    petshop.open ? (
+                      <p style={{ color: 'green' }}>Aberto</p>
+                    ) : (
+                      <p style={{ color: 'red' }}>Fechado agora</p>
+                    )
+                  }
+                  imagem={petshop.imagemPerfil}
+                  nota={petshop.nota.toFixed(1)}
                 />
               </React.Fragment>
             );
