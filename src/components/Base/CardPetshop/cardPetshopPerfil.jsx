@@ -3,12 +3,12 @@ import './styleCardPetshop.css';
 import Avaliacao from '../../Avaliacao/avaliacao';
 import FavoriteButton from '../../Favorito/favorito';
 
-const CardPetshopPerfil = ({ id, imagem, nome, servicos, preco, status, estrelas, handleStarClick, isFavorite, toggleFavorite }) => {
+const CardPetshopPerfil = ({ id, imagemPerfil, nome, servicos, preco, status, estrelas, handleStarClick, isFavorite, toggleFavorite }) => {
 
     return (
         <>
             <div className="card-items-petshop">
-                <div className="card-image-petshop"><img src={imagem} /></div>
+                <div className="card-image-petshop"><img src={imagemPerfil} /></div>
                 <div className="card-info-petshop">
                     <div className="card-info-petshop-title">
                         <div className="info-petshop-title-perfil">
