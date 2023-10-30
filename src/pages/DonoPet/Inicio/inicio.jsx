@@ -23,6 +23,19 @@ export default function Inicio() {
       .catch((erro) => {
         console.log(erro);
       });
+
+    api
+      .get(`/clientes/${sessionStorage.ID_CLIENTE}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
+      })
+      .then((resposta) => {
+        sessionStorage.IMG_PERFIL = resposta.data.imagemPerfil
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
   }, []);
 
   function getLocation() {

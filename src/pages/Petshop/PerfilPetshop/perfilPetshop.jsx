@@ -78,20 +78,6 @@ const PerfilPetshop = () => {
             .catch((erro) => {
                 console.log(erro);
             });
-
-        // api
-        //     .get(`/petshops/retornar-imagem/${sessionStorage.ID_PETSHOP}`, {
-        //         headers: {
-        //             Authorization: `Bearer ${sessionStorage.JWT}`,
-        //         },
-        //     })
-        //     .then((resposta) => {
-        //         setImagemPerfil(resposta.data);
-        //         sessionStorage.IMG_PERFIL = resposta.data;
-        //     })
-        //     .catch((erro) => {
-        //         console.log(erro);
-        //     })
     }, []);
 
     const buscarCep = async () => {
