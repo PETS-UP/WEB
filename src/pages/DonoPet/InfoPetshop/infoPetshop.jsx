@@ -40,6 +40,7 @@ export default function infoPetshop() {
       })
       .then((resposta) => {
         setPetshop(resposta.data);
+        console.log("Petshop: " + resposta.data.imagemPerfil)
       })
       .catch((erro) => {
         console.log(erro);
@@ -264,6 +265,8 @@ export default function infoPetshop() {
     return `${year}-${month < 10 ? "0" + month : month}-${day < 10 ? "0" + day : day}`;
   }
 
+  console.log("Aqui está a imagem: " + petshop.imagemPerfil)
+
   return (
     <div className="container-main">
       <Menu />
@@ -272,9 +275,17 @@ export default function infoPetshop() {
           <CardPetshopPerfil
             id={id}
             nome={petshop.nome}
-            //TODO: Aberto ou fechado
-            status={"Aberto agora"}
-            imagem={imgPetshop}
+            rua={petshop.rua}
+            numero={petshop.numero}
+            telefone={petshop.telefone}
+            status={
+              petshop.open ? (
+                <p style={{ color: 'green' }}>Aberto</p>
+              ) : (
+                <p style={{ color: 'red' }}>Fechado agora</p>
+              )
+            }
+            imagemPerfil={petshop.imagemPerfil}
             handleStarClick={avaliar}
             isFavorite={isFavorite}
             toggleFavorite={favoritar}
@@ -285,13 +296,23 @@ export default function infoPetshop() {
           <p>Selecione o Serviço</p>
           <div className="info-petshop-card-servicos">
             {listaServicos.length > 0 ? (
-              listaServicos.map((servico) => (
-                <button key={servico.id} onClick={() => setIdServico(servico.id)} style={{
-                  backgroundColor: idServico === servico.id ? "#451935" : ""
-                }}>
-                  {servico.nome}
-                </button>
-              ))
+              listaServicos.map((servico) => {
+                const formattedName = servico.nome
+                  .toLowerCase()
+                  .split('_')
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ');
+
+                return (
+                  <button
+                    key={servico.id}
+                    onClick={() => setIdServico(servico.id)}
+                    style={{ backgroundColor: idServico === servico.id ? "#451935" : "" }}
+                  >
+                    {formattedName}
+                  </button>
+                );
+              })
             ) : (
               <p>O petshop selecionado não possui serviços</p>
             )}

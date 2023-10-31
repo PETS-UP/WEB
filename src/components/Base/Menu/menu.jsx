@@ -14,6 +14,9 @@ const Menu = () => {
 
     return (
         <div className='menu-lateral'>
+            <div>
+                <img className='img-user-cliente' src={sessionStorage.IMG_PERFIL} />
+            </div>
             <div className='img-user-cliente' />
             <p className='cliente-name'>{sessionStorage.NOME}</p>
             <div className='container-icons'>
