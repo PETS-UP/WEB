@@ -275,6 +275,9 @@ export default function infoPetshop() {
           <CardPetshopPerfil
             id={id}
             nome={petshop.nome}
+            rua={petshop.rua}
+            numero={petshop.numero}
+            telefone={petshop.telefone}
             status={
               petshop.open ? (
                 <p style={{ color: 'green' }}>Aberto</p>

@@ -174,6 +174,8 @@ export default function Inicio() {
                 <CardPetshop
                   id={petshop.id}
                   nome={petshop.nome}
+                  rua={petshop.rua}
+                  numero={petshop.numero}
                   servicos={servicos}
                   status={
                     petshop.open ? (

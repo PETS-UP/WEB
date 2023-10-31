@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import icon_star from "../../../assets/icons/icon_star.svg";
 
-const CardPetshop = ({ id, imagem, nome, servicos, preco, status, nota }) => {
+const CardPetshop = ({ id, imagem, nome, servicos, status, nota, rua, numero }) => {
 
     const navigate = useNavigate()
 
@@ -25,14 +25,12 @@ const CardPetshop = ({ id, imagem, nome, servicos, preco, status, nota }) => {
                     </div>
                     <div className="card-info-petshop-content">
                         <div className="petshop-content-title">
+                            <div className="petshop-content-local">
+                                <p>{rua}, {numero}</p>
+                            </div>
                             <div className="petshop-content-servicos">
                                 <p>{servicos}</p>
                             </div>
-                            <div className="petshop-content-preco">
-                                <p>{preco}</p>
-                            </div>
-                        </div>
-                        <div className="petshop-content-subtitle">
                             <div className="petshop-content-status">
                                 <p>{status}</p>
                             </div>
