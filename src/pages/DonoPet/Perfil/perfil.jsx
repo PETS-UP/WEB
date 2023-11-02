@@ -15,7 +15,9 @@ export default function Inicio() {
     const [cep, setCep] = useState("");
     const [cpf, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [image, setImage] = useState([]);
+    const [image, setImage] = useState({
+        selectedFile: null
+    });
     const [imagemPerfil, setImagemPerfil] = useState("");
     const [estado, setEstado] = useState("");
     const [cidade, setCidade] = useState("");
