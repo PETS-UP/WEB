@@ -74,6 +74,7 @@ const PerfilPetshop = () => {
                 setImagemPerfil(resposta.data.imagemPerfil);
                 console.log(resposta.data)
                 sessionStorage.IMG_PERFIL = resposta.data.imagemPerfil;
+                sessionStorage.NOME = resposta.data.nome;
             })
             .catch((erro) => {
                 console.log(erro);
