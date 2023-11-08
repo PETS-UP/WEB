@@ -42,6 +42,7 @@ export default function Inicio() {
                 setNumero(resposta.data.numero);
                 setImagemPerfil(resposta.data.imagemPerfil);
                 sessionStorage.IMG_PERFIL = resposta.data.imagemPerfil
+                sessionStorage.NOME = resposta.data.nome
             })
             .catch((erro) => {
                 console.log(erro);
