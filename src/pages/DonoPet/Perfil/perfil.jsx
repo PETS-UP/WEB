@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { InputMask } from 'primereact/inputmask';
 import { ToastComponent } from "../../../components/Toast/Toast";
+import PreviewImagem from '../../../components/PreviewImagem/PreviewImagem';
+import editarFotoPerfil from '../../../components/PreviewImagem/PreviewImagem';
 
 export default function Inicio() {
 
@@ -15,9 +17,7 @@ export default function Inicio() {
     const [cep, setCep] = useState("");
     const [cpf, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [image, setImage] = useState({
-        selectedFile: null
-    });
+
     const [imagemPerfil, setImagemPerfil] = useState("");
     const [estado, setEstado] = useState("");
     const [cidade, setCidade] = useState("");
@@ -40,8 +40,6 @@ export default function Inicio() {
                 setCpf(resposta.data.cpf);
                 setTelefone(resposta.data.telefone);
                 setNumero(resposta.data.numero);
-                setImagemPerfil(resposta.data.imagemPerfil);
-                sessionStorage.IMG_PERFIL = resposta.data.imagemPerfil
                 sessionStorage.NOME = resposta.data.nome
             })
             .catch((erro) => {
@@ -116,24 +114,7 @@ export default function Inicio() {
     function fileSelectedHandler(event) {
         setImage({
             selectedFile: event.target.files[0]
-        })
-    }
-
-    function editarFotoPerfil() {
-        const fd = new FormData()
-        if (image.selectedFile != null) fd.append('image', image.selectedFile, image.selectedFile.name);
-
-        api.put(`/clientes/atualizar-imagem/${sessionStorage.ID_CLIENTE}`, fd, {
-            headers: {
-                Authorization: `Bearer ${sessionStorage.JWT}`
-            }
-        })
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        })  
     }
 
     let imagemDoCliente =
@@ -153,16 +134,8 @@ export default function Inicio() {
 
                         <div className="header-items-perfil">
 
-                            <div className="container-img-perfil">
-                                <div className="img-user-perfil">
-                                    <img src={imagemDoCliente} />
-                                </div>
-                                <label htmlFor="input-imagem" className="label-imagem">
-                                    Editar imagem
-                                    <input className="input-imagem" type="file"
-                                        onChange={fileSelectedHandler} />
-                                </label>
-                            </div>
+                        <PreviewImagem />
+                            
                             <div className="text-user-perfil">
                                 <p>{nome}</p>
                             </div>
