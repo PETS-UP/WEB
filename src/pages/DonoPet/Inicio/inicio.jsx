@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import "../../stylepadrao.css";
 import { useState } from "react";
 import CardPetshop from "../../../components/Base/CardPetshop/CardPetshop";
-import imgPetshop from "../../../assets/icons/ICON-PETSHOP.png";
 import iconBusca from "../../../assets/icons/ICON-BUSCA.png";
 
 export default function Inicio() {
@@ -26,15 +25,17 @@ export default function Inicio() {
       });
 
     api
-      .get(`/petshops/media-avaliacao`, {
-        headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
+      .get(`/clientes/${sessionStorage.ID_CLIENTE}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.JWT}`,
+        },
       })
-      .then((response) => {
-        setNotas(response.data);
+      .then((resposta) => {
+        sessionStorage.IMG_PERFIL = resposta.data.imagemPerfil
       })
       .catch((erro) => {
         console.log(erro);
-      })
+      });
   }, []);
 
   function getLocation() {
@@ -135,26 +136,7 @@ export default function Inicio() {
       })
   }
 
-  function getStatusPetshop(id) {
-    api.get(`/petshops/checarAberto/${id}`, {
-      headers: { Authorization: `Bearer ${sessionStorage.JWT}` },
-    })
-    .then((response) => { 
-      console.log(response.data)
-      console.log(response.data ? "Correto" : "Errado")
-      if(response.data == true){
-        return true;
-      }else if(response.data == false){
-        return false;
-      }
-    })
-    .catch((erro) => {
-      console.log(erro);
-    })
-  }
-
   const [petshops, setPetshops] = useState([]);
-  const [notas, setNotas] = useState([]);
   const servicos = "Banho & Tosa";
 
   return (
@@ -185,18 +167,25 @@ export default function Inicio() {
 
         <div className="cards-petshop">
           {petshops.length > 0 && petshops.map((petshop) => {
-            const notaEncontrada = notas.find(nota => nota.id == petshop.id);
-            const notaDoPetshop = notaEncontrada ? notaEncontrada.media : 0.0;
-            
+            console.log(petshop)
+
             return (
               <React.Fragment key={petshop.id}>
                 <CardPetshop
                   id={petshop.id}
                   nome={petshop.nome}
+                  rua={petshop.rua}
+                  numero={petshop.numero}
                   servicos={servicos}
-                  status={status}
-                  imagem={imgPetshop}
-                  nota={notaDoPetshop.toFixed(1)}
+                  status={
+                    petshop.open ? (
+                      <p style={{ color: 'green' }}>Aberto</p>
+                    ) : (
+                      <p style={{ color: 'red' }}>Fechado agora</p>
+                    )
+                  }
+                  imagem={petshop.imagemPerfil}
+                  nota={petshop.nota.toFixed(1)}
                 />
               </React.Fragment>
             );

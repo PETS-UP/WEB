@@ -40,16 +40,12 @@
     cursor: pointer;
 }
 
-.img-user-petshop {
+.menu-lateral div .img-user-petshop {
     margin-top: 10%;
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background-image: url(../../../assets/icons/ICON-PETSHOP.png);
-    background-size: cover;
-    background-position: center;
     background-color: rgb(255, 255, 255);
-
 }
 
 .div-menu-lateral-edit {
