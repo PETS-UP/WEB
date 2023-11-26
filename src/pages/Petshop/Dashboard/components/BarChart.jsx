@@ -80,7 +80,7 @@ export default function BarChart() {
             date.getDate() -
             contador-- +
             "/" +
-            date.getMonth() +
+            (date.getMonth() + 1) +
             "/" +
             date.getFullYear();
     });
